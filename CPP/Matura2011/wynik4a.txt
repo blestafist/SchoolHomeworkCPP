@@ -1,0 +1,2 @@
+W pliku znajduje się 105 parzystych hasel
+W pliku znajduje się 95 nieparzystych hasel
