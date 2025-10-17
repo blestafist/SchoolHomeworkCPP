@@ -1,3 +1,8 @@
+# About
+All my school homeworks in C++ and LibreOffice Calc
+
+---
+
 # Compilation
 
 ```
@@ -8,4 +13,4 @@ chmod +x outputFileName
 ---
 
 # Usage
-Just use it on any purposes you want :)
+Free for use :)
