@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int Multiply(int num, int upNum) {
+    int result = 1;
+    for (int i = 0; i < upNum; i++) {
+        result *= num;
+    } return result;
+}
+
+int IndexOf(string arr, char target) {
+    for (int i = 0; i < arr.size(); i++) {
+        if (target == arr[i]) { return i; }
+    }
+    return -1;
+}
+
+int Convert(string num, int sys) {
+    int result = 0, numTemp;
+    string num16Table = "0123456789ABCDEF";
+    for (int i = 0; i < num.size(); i++) {
+        result += Multiply(sys, i) * IndexOf(num16Table, num[num.size() - 1 - i]);
+    }
+    return result;
+}
+
+int main() {
+    string num;
+    int sys;
+    cout << "Podaj liczbę: ";
+    cin >> num;
+
+    cout << "Podaj system: ";
+    cin >> sys;
+
+    cout << endl << Convert(num ,sys);
+
+}
