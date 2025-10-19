@@ -23,12 +23,10 @@ You’ll find a mix of educational, practical, and just-for-fun projects.
 - 🧩 Basic programming exercises (loops, conditions, arrays)  
 - 🧠 Algorithmic problems and small console utilities  
 - 🗂️ File input/output and structured programs  
-- 🎯 Object-oriented programming examples (classes, structs, inheritance)  
 
 ### 📊 LibreOffice Calc  
 - 📈 Automated calculations and formulas  
 - 🧮 Small data analysis projects  
-- 🗓️ Simple planning and accounting tables  
 
 ---
 
@@ -56,7 +54,6 @@ chmod +x outputFileName
 
 ## 🌐 Connect With Me  
 
-> *(Replace the links with your real ones!)*  
 
 - 💬 **Telegram:** [@pestit](#)
 - 💻 **GitHub:** [blestafist](#)  
