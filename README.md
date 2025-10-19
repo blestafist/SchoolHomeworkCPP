@@ -58,7 +58,7 @@ chmod +x outputFileName
 
 > *(Replace the links with your real ones!)*  
 
-- 💬 **Telegram:** [@pestit] (#)
+- 💬 **Telegram:** [@pestit](#)
 - 💻 **GitHub:** [blestafist](#)  
 - 📷 **Instagram:** [@pestitbig](#)  
 - 📧 **Email:** pestit@proton.me
