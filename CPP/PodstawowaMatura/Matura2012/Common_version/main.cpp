@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <limits.h>
 
 using namespace std;
 
@@ -7,6 +8,17 @@ bool NumIsEven(int num) { // func checks if given num is Even (parzyste)
     return num % 2 == 0;
 }
 
+int stringToInt(string str) { // func that converts string var to int
+    int outputNum = 0;
+    char tempChar;
+    for (int i = 0; i < str.size(); i++) {
+        outputNum *= 10;
+        tempChar = str[i];
+        outputNum += tempChar - 48;
+    }
+
+    return outputNum;
+}
 
 int main() { // program entry point 
     fstream inputFile, outputFile;
@@ -20,7 +32,7 @@ int main() { // program entry point
 
     for (int i = 0; i < 1000; i++) {
         inputFile >> tempWord;
-        if (NumIsEven(tempWord)) { 
+        if (NumIsEven(stringToInt(tempWord))) { 
             counterEven++;
         }
     }

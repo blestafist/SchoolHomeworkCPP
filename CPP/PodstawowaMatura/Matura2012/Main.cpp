@@ -4,10 +4,6 @@
 
 using namespace std;
 
-bool NumIsEven(int num) { // func checks if given num is Even (parzyste)
-    return num % 2 == 0;
-}
-
 int stringToInt(string str) { // func that converts string var to int
     int outputNum = 0;
     char tempChar;
@@ -20,9 +16,26 @@ int stringToInt(string str) { // func that converts string var to int
     return outputNum;
 }
 
+bool NumIsEven(int num) { // func checks if given num is Even (parzyste)
+    return num % 2 == 0;
+}
+
+int NumCharSum (int num) {
+    int sum = 0;
+    do {
+        sum += num % 10;
+        num /= 10;
+    } while (num > 0);
+
+    return sum;
+}
+
+
 int main() { // program entry point 
     fstream inputFile, outputFile;
+
     string tempWord;
+    int tempWordInt;
 
     int counterEven = 0;
 
@@ -32,6 +45,8 @@ int main() { // program entry point
 
     for (int i = 0; i < 1000; i++) {
         inputFile >> tempWord;
+        tempWordInt = stringToInt(tempWord);
+
         if (NumIsEven(stringToInt(tempWord))) { 
             counterEven++;
         }
