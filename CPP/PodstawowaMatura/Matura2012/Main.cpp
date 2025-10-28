@@ -4,8 +4,8 @@
 
 using namespace std;
 
-bool NumIsEven(int num) { // func checks if given num is Even (parzyste)
-    return num % 2 == 0;
+bool NumIsEven(int* num) { // func checks if given num is Even (parzyste)
+    return *num % 2 == 0;
 }
 
 int SumDigits(int num) {
@@ -33,12 +33,12 @@ bool DigitsIncreasingOrder(int num) {
     return true;    
 }
 
-int stringToInt(string str) { // func that converts string var to int
+int stringToInt(string* str) { // func that converts string var to int
     int outputNum = 0;
     char tempChar;
-    for (int i = 0; i < str.size(); i++) {
+    for (int i = 0; i < (*str).size(); i++) {
         outputNum *= 10;
-        tempChar = str[i];
+        tempChar = (*str)[i];
         outputNum += tempChar - 48;
     }
 
@@ -62,9 +62,9 @@ int main() {
 
     for (int i = 0; i < 1000; i++) {
         inputFile >> tempWord;
-        tempNum = stringToInt(tempWord);
+        tempNum = stringToInt(&tempWord);
 
-        if (NumIsEven(tempNum)) { 
+        if (NumIsEven(&tempNum)) { 
             counterEven++;
         }
 
@@ -91,7 +91,7 @@ int main() {
 
     for (int i = 0; i < 1000; i++) {
         inputFile >> tempWord;
-        tempNum = stringToInt(tempWord);
+        tempNum = stringToInt(&tempWord);
 
         if (DigitsIncreasingOrder(tempNum)) {
             cout << tempNum << endl;
