@@ -35,7 +35,9 @@ bool ConsistrsOnlyFromOnes(string* str) {
     return true;
 }
 
-void 
+void AddNumberLengthToArray(string* str, int* arr) {
+
+}
 
 int main() {
 
