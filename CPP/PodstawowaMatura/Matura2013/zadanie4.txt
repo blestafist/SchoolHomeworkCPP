@@ -1,0 +1,22 @@
+1. Ilość napisów o parzystej długości: 504
+
+2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: 110
+
+3. Ilość napisów, zawierających same zera: 32
+Ilość napisów, zawierających same jedynki: 50
+
+4. Ilośc napisów o długości K: 
+K = 2: 43
+K = 3: 38
+K = 4: 37
+K = 5: 57
+K = 6: 53
+K = 7: 68
+K = 8: 78
+K = 9: 103
+K = 10: 83
+K = 11: 90
+K = 12: 86
+K = 13: 81
+K = 14: 68
+K = 15: 59
