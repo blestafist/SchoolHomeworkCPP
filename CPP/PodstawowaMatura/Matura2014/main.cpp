@@ -1,67 +1,59 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
 
-// =================== CONFIGURATION ===================
+// ================================ CONFIGURATION ===================================
 
-const int FILE_LENGTH = 1000;
+std::string INPUT_FILE_NAME = "PARY_LICZB.TXT"; // input file name here
+std::string OUTPUT_FILE_NAME = "ZADANIE5.TXT"; // output file name here
 
-const std::string INPUT_FILE_NAME = "PARY_LICZB.TXT";
-const std::string OUTPUT_FILE_NAME = "";
+int FILE_LENGTH = 1000; // lenth of input data array
 
-// =====================================================
+// =================================================================================
 
 
-bool IsNumberMultiple(int firstNum, int secondNum) {
-    return firstNum % secondNum == 0 || secondNum % firstNum == 0;
-}
+struct KeyValuePair { // struct for a pair of numbers
+    public:
+        int key;
+        int value;
 
-int SumNumDigitals(int num) {
-    int sum = 0;
+        KeyValuePair(int _key, int _value) {
+            key = _key;
+            value = _value;
+        }
+    
+};
 
-    while (num > 0) {
-        sum += num % 10;
-        num /= 10;
-    }
 
-    return sum;
-}
+// some funcs definitions (minimal)
 
-bool SumNumEquals(int* firstNum, int* secondNum) {
-    return SumNumDigitals(*firstNum) == SumNumDigitals(*secondNum);
-}
-
-int* HigerNumOfTwo(int* firstNum, int* secondNum) {
-    if (*firstNum > *secondNum) { return firstNum; }
-    return secondNum;
-}
-
-bool EqFirst(int* firstNum, int* secondNum) {
-    for (int i = 2; i <= *HigerNumOfTwo(firstNum, secondNum); i++) {
-        if (*firstNum % i == 0 || *secondNum % i == 0) { return false; }
-    }
-    return true;
-}
 
 
 int main() {
-    std::fstream inputFile, outputFile;
+	std::fstream inputFile, outputFile;
+	std::string tempWord;
 
-    int firstNumTemp, secondNumTemp;
-    int numberMultipleCounter = 0, eqFirstCounter = 0, sumNumEqualsCounter = 0;
+    std::vector<KeyValuePair> pairs = {};
 
-    inputFile.open(INPUT_FILE_NAME, std::ios::in);
-    outputFile.open(OUTPUT_FILE_NAME, std::ios::out);
+	inputFile.open(INPUT_FILE_NAME, std::ios::in);
 
-    for (int i = 0; i < FILE_LENGTH; i++) {
-        inputFile >> firstNumTemp;
-        inputFile >> secondNumTemp;
 
-        
-        std::cout << firstNumTemp << ", " << secondNumTemp << std::endl; 
-    }
+	for (int i = 0; i < FILE_LENGTH; i++) {
+		int tempKey, tempVal;
 
-    inputFile.close();
-    outputFile.close();
+        inputFile >> tempKey >> tempVal;
+        pairs.push_back({tempKey, tempVal});
 
-    return 0;
+        std::cout << pairs[i].key << ": " << pairs[i].value << std::endl;
+	}
+
+	inputFile.close();
+	
+	outputFile.open(OUTPUT_FILE_NAME, std::ios::out);
+
+	// write answers
+	
+	outputFile.close();
+
+	return 0;
 }
