@@ -5,7 +5,7 @@
 
 const int FILE_LENGTH = 1000;
 
-const std::string INPUT_FILE_NAME = "";
+const std::string INPUT_FILE_NAME = "PARY_LICZB.TXT";
 const std::string OUTPUT_FILE_NAME = "";
 
 // =====================================================
@@ -42,36 +42,22 @@ bool EqFirst(int* firstNum, int* secondNum) {
     return true;
 }
 
-void ParseNumber(std::string* word, int* firstNum, int* secondNum) {
-    bool parsingFirstNum = true;
-    for (int i = 0; i < (*word).size(); i++) {
-        if (parsingFirstNum) {
-            if ((*word)[i] == ' ') { parsingFirstNum = !parsingFirstNum; continue;}
-            *firstNum *= 10;
-            *firstNum += (int)(*word)[i] - 48;
-        }
-
-        else {
-            *secondNum *= 10;
-            *secondNum += (int)(*word)[i] - 48;
-        }
-    }
-}
 
 int main() {
     std::fstream inputFile, outputFile;
 
-    std::string tempWord;
     int firstNumTemp, secondNumTemp;
+    int numberMultipleCounter = 0, eqFirstCounter = 0, sumNumEqualsCounter = 0;
 
     inputFile.open(INPUT_FILE_NAME, std::ios::in);
     outputFile.open(OUTPUT_FILE_NAME, std::ios::out);
 
     for (int i = 0; i < FILE_LENGTH; i++) {
-        inputFile >> tempWord;
+        inputFile >> firstNumTemp;
+        inputFile >> secondNumTemp;
 
-        ParseNumber(&tempWord, &firstNumTemp, &secondNumTemp);
-        std::cout << firstNumTemp << ", " << secondNumTemp; 
+        
+        std::cout << firstNumTemp << ", " << secondNumTemp << std::endl; 
     }
 
     inputFile.close();

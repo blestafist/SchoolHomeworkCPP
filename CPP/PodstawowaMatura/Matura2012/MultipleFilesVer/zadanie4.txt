@@ -1,0 +1,11 @@
+Zadanie 1.
+Ilość parzystych: 495
+
+Zadanie B. Największa suma cyfr w liczbie: 187869866
+Najmniejsza suma cyfr w liczbie: 10010
+
+Zadanie C. Liczby w increasing order: 
+2389
+23567
+123456789
+3468
