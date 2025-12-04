@@ -4,54 +4,63 @@
 
 // ================================ CONFIGURATION ===================================
 
-std::string INPUT_FILE_NAME = "PARY_LICZB.TXT"; // input file name here
-std::string OUTPUT_FILE_NAME = "ZADANIE5.TXT"; // output file name here
+std::string INPUT_FILE_NAME = ""; // input file name here
+std::string OUTPUT_FILE_NAME = ""; // output file name here
 
-int FILE_LENGTH = 1000; // lenth of input data array
+int FILE_LENGTH = 1000; // lenth of input data array (num of pairs)
 
 // =================================================================================
 
+// minimal wrapper for program (remove comment)
 
-struct KeyValuePair { // struct for a pair of numbers
+// two value struct 
+struct Pair {
     public:
-        int key;
-        int value;
+        int x;
+        int y;
 
-        KeyValuePair(int _key, int _value) {
-            key = _key;
-            value = _value;
+        Pair(int _x, int _y) {
+            x = _x;
+            y = _y;
         }
-    
 };
 
+// end of structs
 
-// some funcs definitions (minimal)
+// addictional funcs
 
 
+bool MultipleNumOfTwo(int* x, int* y) {
+    if (*x > *y) { return *x % *y == 0; }
+    return *y % *x == 0;
+}
+
+// program entry point ↓
 
 int main() {
-	std::fstream inputFile, outputFile;
-	std::string tempWord;
+	std::ifstream inputFile(INPUT_FILE_NAME);
+	std::ofstream outputFile; // not opening it yet
 
-    std::vector<KeyValuePair> pairs = {};
+	int firstNum, secondNum;
+    std::vector<Pair> pairs; // vector, that'll be containing pairs of numbers
 
 	inputFile.open(INPUT_FILE_NAME, std::ios::in);
 
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
-		int tempKey, tempVal;
+		inputFile >> firstNum >> secondNum;
 
-        inputFile >> tempKey >> tempVal;
-        pairs.push_back({tempKey, tempVal});
-
-        std::cout << pairs[i].key << ": " << pairs[i].value << std::endl;
+        pairs.push_back({firstNum, secondNum});	
 	}
 
 	inputFile.close();
 	
-	outputFile.open(OUTPUT_FILE_NAME, std::ios::out);
+	outputFile.open(OUTPUT_FILE_NAME);
 
 	// write answers
+    for (int i = 0; i < pairs.size(); i++) {
+        // program logic
+    }
 	
 	outputFile.close();
 
