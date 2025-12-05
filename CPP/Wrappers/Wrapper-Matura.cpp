@@ -14,12 +14,9 @@ int FILE_LENGTH = 1000; // lenth of input data array
 
 int main() {
 	std::ifstream inputFile(INPUT_FILE_NAME);
-	std::ofstream outputFile(OUTPUT_FILE_NAME);
+	std::ofstream outputFile;
 
 	std::string tempWord; // string / int (change on need)
-
-	inputFile.open(INPUT_FILE_NAME, std::ios::in);
-
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
 		inputFile >> tempWord;
@@ -29,7 +26,7 @@ int main() {
 
 	inputFile.close();
 	
-	outputFile.open(OUTPUT_FILE_NAME, std::ios::out);
+	outputFile.open(OUTPUT_FILE_NAME);
 
 	// write answers
 	

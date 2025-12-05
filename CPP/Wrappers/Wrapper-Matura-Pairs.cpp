@@ -32,9 +32,6 @@ int main() {
 	int firstNum, secondNum;
     std::vector<Pair> pairs; // vector, that'll be containing pairs of numbers
 
-	inputFile.open(INPUT_FILE_NAME, std::ios::in);
-
-
 	for (int i = 0; i < FILE_LENGTH; i++) {
 		inputFile >> firstNum >> secondNum;
 
