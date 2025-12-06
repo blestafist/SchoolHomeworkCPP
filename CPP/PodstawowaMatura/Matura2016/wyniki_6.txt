@@ -1,0 +1,12 @@
+Zadanie 6.1: 
+Ilosc liczb pierwszych: 236
+
+Zadanie 6.2: 
+Minimalna liczba pierwsza: 73
+Maksymalna liczba pierwsza: 29881
+
+Zadanie 6.3. Liczby blużniące: 
+1999 i 1997
+1721 i 1723
+1481 i 1483
+809 i 811
