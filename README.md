@@ -53,12 +53,8 @@ chmod +x outputFileName
 ---
 
 ## 🌐 Connect With Me  
-
-
-- 💬 **Telegram:** [@pestit](#)
 - 💻 **GitHub:** [blestafist](#)  
-- 📷 **Instagram:** [@pestitbig](#)  
-- 📧 **Email:** pestit@proton.me
+- 📧 **Email:** ufw-public@proton.me
 
 ---
 
