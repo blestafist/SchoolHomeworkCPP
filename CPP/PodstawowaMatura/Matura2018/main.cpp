@@ -16,13 +16,13 @@ const int FILE_LENGTH = 1000; // lenth of input data array
 
 bool ReversedEqualsOrginal(short num) {
     short reversed = 0, original = num;
-    while (original > 0) {
+    while (num > 0) {
         reversed *= 10;
         reversed += num % 10;
         num /= 10;
     }
 
-    return reversed == num;
+    return reversed == original;
 } 
 
 uint8_t SumDigitals(short num) {
@@ -67,7 +67,25 @@ int main() {
 	
 	outputFile.open(OUTPUT_FILE_NAME);
 
-	
+	std::cout << "Zadanie 5.1. Największa liczba parzysta: " << highestEvenNum << "\n\n";
+    outputFile << "Zadanie 5.1. Największa liczba parzysta: " << highestEvenNum << "\n\n";
+
+    std::cout << "Zadanie 5.2. Wszystkie palindromiczne liczby: " << "\n";
+    outputFile << "Zadanie 5.2. Wszystkie palindromiczne liczby: " << "\n";
+    for (int i = 0; i < palindromeNumbers.size(); i++) {
+        std::cout << palindromeNumbers[i] << "\n";
+        outputFile << palindromeNumbers[i] << "\n";
+    }
+
+    std::cout << "\nZadanie 5.3. Liczby, których suma cyfr jest większa od 30: \n";
+    outputFile << "\nZadanie 5.3. Liczby, których suma cyfr jest większa od 30: \n";
+    for (int i = 0; i < sumGreaterThan30.size(); i++) {
+        std::cout << sumGreaterThan30[i] << "\n";
+        outputFile << sumGreaterThan30[i] << "\n";
+    }
+
+    std::cout << "\nSuma wszystkich cyfr w pliku: " << sumOfAllDigitals;
+    outputFile << "\nSuma wszystkich cyfr w pliku: " << sumOfAllDigitals;
 	
 	outputFile.close();
 
