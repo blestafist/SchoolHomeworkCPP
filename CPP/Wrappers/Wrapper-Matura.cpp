@@ -4,7 +4,7 @@
 // ================================ CONFIGURATION ===================================
 
 const std::string INPUT_FILE_NAME = ""; // input file name here
-cosnt std::string OUTPUT_FILE_NAME = ""; // output file name here
+const std::string OUTPUT_FILE_NAME = ""; // output file name here
 
 const int FILE_LENGTH = 1000; // lenth of input data array
 
