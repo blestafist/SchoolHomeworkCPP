@@ -45,7 +45,8 @@ int main() {
     std::vector<unsigned short> sumGreaterThan30;
 
 	unsigned short tempWord, highestEvenNum = 0; // short because limited 30000, unsigned just for safety
-    // int 
+    unsigned short sumOfAllDigitals = 0; // max sum of digitals in a number limited by 30000 is 38, so 38 * 1000 = 38000, 
+    // unsigned short contains that (up to 65000)
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
 		inputFile >> tempWord;
@@ -58,14 +59,15 @@ int main() {
 
         if (ReversedEqualsOrginal(tempWord)) { palindromeNumbers.push_back(tempWord); }
 
-
+        if (SumDigitals(tempWord) > 30) { sumGreaterThan30.push_back(tempWord); }
+        sumOfAllDigitals += SumDigitals(tempWord);
 	}
 
 	inputFile.close();
 	
 	outputFile.open(OUTPUT_FILE_NAME);
 
-	// write answers
+	
 	
 	outputFile.close();
 
