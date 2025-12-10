@@ -1,0 +1,8 @@
+Zadanie 4.1: Ilość wierszów z liczbami rosnącymi: 139
+
+Zadanie 4.2: Suma NWD: 1404
+
+Zadanie 4.3: 
+Liczba wierszy, których suma cyfr jest równa 35: 4
+Największa suma: 88
+Liczba wystąpień największej sumy: 2

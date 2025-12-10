@@ -10,28 +10,6 @@ int FILE_LENGTH = 1000; // lenth of input data array
 
 // =================================================================================
 
-int GCD();
-int SumNum();
-
-// triple struct
-struct ThreeNums {
-    int first;
-    int second; 
-    int third;
-
-    bool IncreasingOrder() {
-        return first < second && second < third;
-    }
-
-	int SumDigitsOfThree() {
-		return SumNum(first) + SumNum(second) + SumNum(third);
-	}
-
-	bool SumEquals35() {
-		return SumDigitsOfThree() == 35;
-	}
-};
-
 int GCD(int x, int y) {
 	int temp;
 	while (y != 0) {
@@ -53,6 +31,27 @@ int SumNum(int num) {
 
 	return result;
 }
+
+
+// triple struct
+struct ThreeNums {
+    int first;
+    int second; 
+    int third;
+
+    bool IncreasingOrder() {
+        return first < second && second < third;
+    }
+
+	int SumDigitsOfThree() {
+		return SumNum(first) + SumNum(second) + SumNum(third);
+	}
+
+	bool SumEquals35() {
+		return SumDigitsOfThree() == 35;
+	}
+};
+
 
 int main() {
 	std::ifstream inputFile(INPUT_FILE_NAME);
@@ -81,14 +80,20 @@ int main() {
 	}
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
-		
+		if (arraySumsDigits[i] == highest) { highestLinesCount++; }
 	}
-
 	inputFile.close();
 	
 	outputFile.open(OUTPUT_FILE_NAME);
 
-	// write answers
+	std::cout << "Zadanie 4.1: Ilość wierszów z liczbami rosnącymi: " << increasingCount << "\n\n";
+	outputFile << "Zadanie 4.1: Ilość wierszów z liczbami rosnącymi: " << increasingCount << "\n\n";
+	
+	std::cout << "Zadanie 4.2: Suma NWD: " << NWDSum << "\n\n";
+	outputFile << "Zadanie 4.2: Suma NWD: " << NWDSum << "\n\n";
+
+	std::cout << "Zadanie 4.3: \nLiczba wierszy, których suma cyfr jest równa 35: " << sumEquals35 << "\nNajwiększa suma: " << highest << "\nLiczba wystąpień największej sumy: " << highestLinesCount; 
+	outputFile << "Zadanie 4.3: \nLiczba wierszy, których suma cyfr jest równa 35: " << sumEquals35 << "\nNajwiększa suma: " << highest << "\nLiczba wystąpień największej sumy: " << highestLinesCount; 
 	
 	outputFile.close();
 
