@@ -1,0 +1,14 @@
+Zadanie 6.1. Liczba kobiet: 442Liczba mężczyzn: 558
+
+Zadanie 6.2. Liczba osób, urodzonych w listopadzie: 90
+
+Zadanie 6.3. Blędne numery pesel: 
+72040163352
+46020791664
+93071087527
+92011957236
+91031889675
+58082023664
+55123056262
+94080371827
+88091348655
