@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <cstdint>
+#include <vector>
 
 // ================================ CONFIGURATION ===================================
 
@@ -35,19 +35,26 @@ int main() {
 
 	std::string tempWord; // string cause all operation on pesel will be better to make on strs
 
+	short manCount = 0, womanCount = 0, bornInNovemberCount = 0;
+	std::vector<std::string> incorrectPesels;
+
 	std::cout << CharToByte('5');
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
 		inputFile >> tempWord;
 
-		// here place the conditions for nums / strs checking	
+		if (IsMan(&tempWord)) { manCount++; }
+		else { womanCount++; }
+
+		if (IsBornInNovember(&tempWord)) { bornInNovemberCount++; }
+		if (!IsCorrect(&tempWord)) { incorrectPesels.push_back(tempWord); }	
 	}
 
 	inputFile.close();
 	
 	outputFile.open(OUTPUT_FILE_NAME);
 
-	// write answers
+	
 	
 	outputFile.close();
 
