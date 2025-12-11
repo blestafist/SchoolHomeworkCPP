@@ -15,6 +15,10 @@ bool IsMan(const std::string* pesel) {
 	return overLast % 2 == 1;
 }
 
+bool IsBornInNovember(const std::string* pesel) {
+	return ((*pesel)[2] == '1' && (*pesel)[3] == '1') || ((*pesel)[2] == '3' && (*pesel)[3] == '1')
+}
+
 int main() {
 	std::ifstream inputFile(INPUT_FILE_NAME);
 	std::ofstream outputFile;
