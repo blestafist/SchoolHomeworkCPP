@@ -10,13 +10,16 @@ const int FILE_LENGTH = 1000; // lenth of input data array
 
 // =================================================================================
 
-// minimal wrapper for program (remove comment)
+bool IsMan(const std::string* pesel) {
+	char overLast = (*pesel)[(*pesel).size() - 2] - 48;
+	return overLast % 2 == 1;
+}
 
 int main() {
 	std::ifstream inputFile(INPUT_FILE_NAME);
 	std::ofstream outputFile;
 
-	std::string tempWord; // string / int (change on need)
+	std::string tempWord; // string cause all operation on pesel will be better to make on strs
 
 	for (int i = 0; i < FILE_LENGTH; i++) {
 		inputFile >> tempWord;
