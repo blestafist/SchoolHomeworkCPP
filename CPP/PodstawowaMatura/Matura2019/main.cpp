@@ -54,7 +54,14 @@ int main() {
 	
 	outputFile.open(OUTPUT_FILE_NAME);
 
-	
+	std::cout << "Zadanie 6.1. Liczba kobiet: " << womanCount << "Liczba mężczyzn: " << manCount << "\n\n";
+
+	std::cout << "Zadanie 6.2. Liczba osób, urodzonych w listopadzie: " << bornInNovemberCount << "\n\n";
+
+	std::cout << "Zadanie 6.3. Blędne numery pesel: \n";
+	for (int i = 0; i < incorrectPesels.size(); i++) {
+		std::cout << incorrectPesels[i] << "\n";
+	}
 	
 	outputFile.close();
 
