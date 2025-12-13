@@ -15,5 +15,14 @@ std::string Converter(int decimalNum, uint8_t sys) {
 }
 
 int main() {
-    
+    uint8_t base;
+    int numberToConvert;
+
+    std::cout << "Give a number to convert: ";
+    std::cin >> numberToConvert;
+
+    std::cout << "Give a base: ";
+    std::cin >> base;
+
+    std::cout << "\n\n" << Converter(numberToConvert, base);
 }
