@@ -2,27 +2,33 @@
 #include <cstdint>
 
 std::string Converter(int decimalNum, uint8_t sys) {
-    std::string result = 0;
-    char currentChar; 
-
+    if (decimalNum == 0) return "0";
+    
+    std::string result = "";
+    
     while (decimalNum > 0) {
-        currentChar = decimalNum % sys + 48;
-        result = result + currentChar;
-        decimalNum /= 10;
+        int remainder = decimalNum % sys;
+        char currentChar;
+        
+        if (remainder < 10) {
+            currentChar = remainder + '0';
+        } else {
+            currentChar = remainder - 10 + 'A';
+        }
+        
+        result = currentChar + result;
+        decimalNum /= sys;
     }
-
+    
     return result;
 }
 
 int main() {
-    uint8_t base;
-    int numberToConvert;
+    uint8_t base = 2;
+    int numberToConvert = 4;
 
-    std::cout << "Give a number to convert: ";
-    std::cin >> numberToConvert;
-
-    std::cout << "Give a base: ";
-    std::cin >> base;
-
-    std::cout << "\n\n" << Converter(numberToConvert, base);
+    
+    std::cout << "\n\nResult: " << Converter(numberToConvert, base) << std::endl;
+    
+    return 0;
 }
