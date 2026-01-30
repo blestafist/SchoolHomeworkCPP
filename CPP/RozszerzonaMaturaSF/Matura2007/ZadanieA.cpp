@@ -12,10 +12,10 @@
 */
 
 bool IsPrime(int num) { // 1
-    if (num == 2 || num == 3) { return true; }
+    if (num == 2) { return true; }
     if (num < 2 || num % 2 == 0) { return false; }
 
-    for (int i = 5; i * i <= num; i += 6) {
+    for (int i = 3; i * i <= num; i += 2) {
         if (num % i == 0) { return false; }
     }
 
@@ -63,6 +63,6 @@ int main() { // entry point
     WriteToFile("1.txt", 2, 1000);
     WriteToFile("2.txt", 100, 10000);
     WriteToFile("3.txt", 1000, 100000);
-    
+
     return 0;
 }
