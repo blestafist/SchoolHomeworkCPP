@@ -22,6 +22,7 @@ bool IsPrime(int num) { // 1
     return true;
 }
 
+
 bool SumDigitsPrime(int num) { // 2
     short result = 0;
 
@@ -33,6 +34,7 @@ bool SumDigitsPrime(int num) { // 2
     return IsPrime(result);
 }
 
+
 bool SumDigitsPrimeBin(int num) { // 3
     short result = 0;
 
@@ -43,6 +45,7 @@ bool SumDigitsPrimeBin(int num) { // 3
 
     return IsPrime(result);
 }
+
 
 void WriteToFile(const std::string& fileName, int downRange, int upperRange) {
     std::ofstream output(fileName);
@@ -58,6 +61,7 @@ void WriteToFile(const std::string& fileName, int downRange, int upperRange) {
     std::cout << counter << "\n";
     output.close();
 }
+
 
 int main() { // entry point
     WriteToFile("1.txt", 2, 1000);
