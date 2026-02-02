@@ -1,0 +1,2 @@
+Minimal length: 4 in word "AJHE"
+Max length: 28 in word "JAHHJIGABCDCCDCBAGIJHHAJABCD"
