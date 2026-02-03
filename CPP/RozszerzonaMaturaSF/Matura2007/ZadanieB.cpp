@@ -28,6 +28,8 @@ bool IsPrime(unsigned short num) { // most efficient IsPrime (3-5x faster than D
     return true;
 }
 
+
+
 bool SumDigitsPrime(unsigned short num) { // 2
     short result = 0;
 
