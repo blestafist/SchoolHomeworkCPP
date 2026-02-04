@@ -1,0 +1,8 @@
+Ilość parzystych liczb: 497
+
+
+Największa liczba: 64502, dwójkowy: 1111101111110110
+
+
+Ilość liczb z 9 cyframi: 101
+Ich suma: 1001100111110111
