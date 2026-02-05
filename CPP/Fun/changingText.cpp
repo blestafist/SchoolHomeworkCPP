@@ -6,7 +6,7 @@
 
 
 const std::string inputWord = "Ja takaja kak vse, on skazal eto vseeem i ja takaja kak vse, glupaja sovsem"; // here place your word 
-const int delayInMicroSeconds = 1; // delay in microseconds (800-1000 recommended)
+const int delayInMicroSeconds = 500; // delay in microseconds (800-1000 recommended)
 
 
 

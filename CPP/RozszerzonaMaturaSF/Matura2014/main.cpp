@@ -36,6 +36,7 @@ bool IncreasingNum(const std::string& str) {
     return true;
 }
 
+
 int main() {
     std::ifstream inputFile (INPUT_FILE);
     std::ofstream outputFile (OUTPUT_FILE);
