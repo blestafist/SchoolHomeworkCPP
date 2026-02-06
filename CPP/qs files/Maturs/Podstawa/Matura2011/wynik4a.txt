@@ -1,0 +1,2 @@
+hasła parzyste: 105
+hasła nie parzyste: 95
