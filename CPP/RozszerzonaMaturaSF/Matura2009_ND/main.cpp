@@ -31,7 +31,6 @@ struct TwoStr {
     private:
         void ComposeLongestFromFront() {
             for (char i = 0; i < b.size(); i++) {
-                if ()
             }
         }
 };

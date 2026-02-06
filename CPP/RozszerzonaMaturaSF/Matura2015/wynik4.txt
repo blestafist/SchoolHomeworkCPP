@@ -1,0 +1,7 @@
+Liczba słow, w których liczba zer jest większa od liczby jedynek: 441
+
+Liczba słow, składających się z 2 bloków zer i jedynek: 44
+
+Najdłuższy blok, złożony z samych zer: 10
+1001010001000000000011001
+001010000000000
