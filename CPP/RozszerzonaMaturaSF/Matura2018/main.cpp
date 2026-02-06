@@ -40,6 +40,8 @@ int main() {
 
     std::vector<std::string> anagrams;
 
+    if (!inputFile.is_open()) { std::cout << "Error while opening file!"; }
+
     while (inputFile >> firstWord >> secondWord) {
         if (firstWord[firstWord.size() - 1] == 'A') { endwithACounter++; }
         if (secondWord[secondWord.size() - 1] == 'A') { endwithACounter++; }
