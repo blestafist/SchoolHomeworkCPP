@@ -37,7 +37,7 @@ int main()
 
     string tempPassword;
 
-    int counterOfEven = 0, counterOfNotEven;
+    int counterOfEven = 0, counterOfNotEven = 0;
 
     while (inputFile >> tempPassword)
     {
