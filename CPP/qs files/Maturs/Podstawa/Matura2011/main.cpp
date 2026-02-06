@@ -2,20 +2,18 @@
 #include <fstream>
 using namespace std;
 
-int const  ASCII_SUM = 220;
-
 string const INPUT_FILE = "hasla.txt";
 
 string const OUTPUT_FILE_A = "wynik4a.txt";
 string const OUTPUT_FILE_B = "wynik4b.txt";
 string const OUTPUT_FILE_C = "wynik4c.txt";
 
-int IsEven(string tempPassword)
+int IsEven(const string& tempPassword)
 {
     return (tempPassword.size() % 2 == 0) ? true : false;
 }
 
-bool IsPalindrome(string tempPassword)
+bool IsPalindrome(const string& tempPassword)
 {
     for (int i = 0; i < tempPassword.size() / 2; i++)
     {
@@ -40,17 +38,33 @@ int main()
     string tempPassword;
 
     int counterOfEven = 0, counterOfNotEven;
+
     while (inputFile >> tempPassword)
     {
         (IsEven(tempPassword)) ? counterOfEven++ : counterOfNotEven++;
-
-        if(IsPalindrome(tempPassword)) outputFileB << tempPassword << endl;
-        if(IsAsciiSum220(tempPassword)) outputFileC << tempPassword << endl;
     }
+    cout << "Zadanie A" << endl;
+    cout << "hasła parzyste: " << counterOfEven << endl << "hasła nie parzyste: " << counterOfNotEven <<endl;
     outputFileA << "hasła parzyste: " << counterOfEven << endl << "hasła nie parzyste: " << counterOfNotEven;
 
+    inputFile.close();
+    inputFile.open(INPUT_FILE);
 
+    cout << "Zadanie B" << endl;
+    while (inputFile >> tempPassword)
+    {
+        if(IsPalindrome(tempPassword)) { cout << tempPassword << endl; outputFileB << tempPassword << endl; }
+    }
+    
+    inputFile.close();
+    inputFile.open(INPUT_FILE);
+    cout << "Zadanie C" << endl;
+    while (inputFile >> tempPassword)
+    {
+        if(IsAsciiSum220(tempPassword)) { cout << tempPassword << endl; outputFileC << tempPassword << endl; }
+    }
 
     inputFile.close();
     outputFileA.close(), outputFileB.close(), outputFileC.close();
+
 }

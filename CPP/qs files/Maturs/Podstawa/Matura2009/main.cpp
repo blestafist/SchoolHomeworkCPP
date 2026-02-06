@@ -33,7 +33,7 @@ int main()
     
     while(inputFile >> tempNum)
     {    
-        if(IsRootPrime(tempNum)) { outputFile << tempNum << endl; }
+        if(IsRootPrime(tempNum)) { cout << tempNum <<endl;  outputFile  << tempNum << endl; }
     }
 
     inputFile.close();

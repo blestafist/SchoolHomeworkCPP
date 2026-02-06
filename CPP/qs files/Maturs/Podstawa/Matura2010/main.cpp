@@ -22,8 +22,9 @@ int main()
     ofstream outputFile(OUTPUT_FILE);
 
     string tempWord;
+
     while(inputFile >> tempWord)
-        if(IsPalindrome(tempWord)) {outputFile << tempWord << endl; }
+        if(IsPalindrome(tempWord)) {cout << tempWord << endl; outputFile << tempWord << endl; }
 
     inputFile.close();
     outputFile.close();
