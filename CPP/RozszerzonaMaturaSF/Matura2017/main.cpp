@@ -1,4 +1,3 @@
-#include <cstddef>
 #include <iostream>
 #include <fstream>
 
@@ -60,6 +59,7 @@ int main() {
     std::string binary, highestBinary, twoSubstr;
     
     short longestSubstr = 0, minimalInorrectLength = 30000;
+
     int decimal, highestD = 0, substrCounter = 0, incorrectCounter = 0;
 
     while (inputFile >> binary) {
@@ -82,9 +82,18 @@ int main() {
         }
     }
 
+    inputFile.close();
+
     std::cout << "A. Ilość napisów dwucyklicznych: " << substrCounter << ". Najdłuższy: " << twoSubstr << ". Jego długość: " << twoSubstr.length();
+    outputFile << "A. Ilość napisów dwucyklicznych: " << substrCounter << ". Najdłuższy: " << twoSubstr << ". Jego długość: " << twoSubstr.length();
 
     std::cout << "\n\nB. Liczba niepoprawnych napisów: " << incorrectCounter << ". Najkrótszy: " << minimalInorrectLength;
+    outputFile << "\n\nB. Liczba niepoprawnych napisów: " << incorrectCounter << ". Najkrótszy: " << minimalInorrectLength;
 
     std::cout << "\n\nC. Największa poniżej 65535: " << highestD << ". W binarnym: " << highestBinary << "\n";
+    outputFile << "\n\nC. Największa poniżej 65535: " << highestD << ". W binarnym: " << highestBinary << "\n";
+
+    outputFile.close();
+
+    return 0;
 }
