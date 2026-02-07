@@ -48,8 +48,8 @@ short MaxSquare(const char (&arr)[DIMENSIONS][DIMENSIONS]) {
     short maxSquare = 0;
 
     for (int i = 0; i < DIMENSIONS; i++) {
-
+        
     }
 
-    return maxSquare;y
+    return maxSquare;
 }
