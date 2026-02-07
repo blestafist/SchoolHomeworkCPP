@@ -6,19 +6,18 @@
 const std::string INPUT_FILE_NAME = ""; // input file name here
 const std::string OUTPUT_FILE_NAME = ""; // output file name here
 
-const int FILE_LENGTH = 1000; // lenth of input data array
-
 // =================================================================================
 
 // minimal wrapper for program (remove comment)
 
 int main() {
-	std::ifstream inputFile(INPUT_FILE_NAME);
+	std::ifstream inputFile (INPUT_FILE_NAME);
 	std::ofstream outputFile;
 
 	std::string tempWord; // string / int (change on need)
+	// int tempNum;
 
-	for (int i = 0; i < FILE_LENGTH; i++) {
+	while (inputFile >> tempWord) {
 		inputFile >> tempWord;
 
 		// here place the conditions for nums / strs checking	
