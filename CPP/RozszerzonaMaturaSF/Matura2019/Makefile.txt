@@ -1,0 +1,5 @@
+To make:
+
+$ g++ *.cpp -o output.bin && ./output.bin
+
+(Write this command in term)
