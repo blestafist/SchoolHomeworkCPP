@@ -20,3 +20,4 @@ Ilość napisów, zawierających same jedynki: 50
 13: 81
 14: 68
 15: 59
+16: 56

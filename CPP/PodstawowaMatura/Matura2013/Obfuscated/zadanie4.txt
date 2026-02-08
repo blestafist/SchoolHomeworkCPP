@@ -1,0 +1,23 @@
+a) Podaj ile jest napisow o parzystej dlugosci: 504
+
+b) Podaj ile jest napisow  ktore zawieraja taka sama liczbe zer i jedynek: 110
+
+c) Podaj ile jest napisow skladajacych sie z samych zer: 32
+oraz podaj ile jest napisow skladajacych sie z samych jedynek: 50
+
+d) 
+dlugosc 2: 43
+dlugosc 3: 38
+dlugosc 4: 37
+dlugosc 5: 57
+dlugosc 6: 53
+dlugosc 7: 68
+dlugosc 8: 78
+dlugosc 9: 103
+dlugosc 10: 83
+dlugosc 11: 90
+dlugosc 12: 86
+dlugosc 13: 81
+dlugosc 14: 68
+dlugosc 15: 59
+dlugosc 16: 56

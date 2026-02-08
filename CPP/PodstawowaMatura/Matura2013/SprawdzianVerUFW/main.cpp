@@ -52,7 +52,7 @@ int main() {
     int evenCharsCounter = 0, sameCharsQuantityCounter = 0, wordsOnlyFromZeroes = 0, wordsOnlyFromOnes = 0;
 
     // define an array with "cups"
-    int sizeArr[14] {};
+    int sizeArr[15] {};
 
     while (inputFile >> tempWord) {
         if (tempWord.size() % 2 == 0) { evenCharsCounter++; }
@@ -81,7 +81,7 @@ int main() {
     std::cout << "\n\n4. Ilośc napisów o długości K: \n";
     outputFile << "\n\n4. Ilośc napisów o długości K: \n";
 
-    for (int i = 0; i < 14; i++) {
+    for (int i = 0; i < 15; i++) {
         std::cout << i + 2 << ": " << sizeArr[i] << "\n";
         outputFile << i + 2 << ": " << sizeArr[i] << "\n";
     }
