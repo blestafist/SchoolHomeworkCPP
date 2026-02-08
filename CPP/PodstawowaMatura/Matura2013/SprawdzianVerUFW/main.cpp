@@ -4,8 +4,8 @@
 
 // ===================== CONFIGURATION =====================
 
-const std::string INPUT_FILE = "dzialki.txt";
-const std::string OUTPUT_FILE = "wynik4.txt";
+const std::string INPUT_FILE = "napisy.txt";
+const std::string OUTPUT_FILE = "zadanie4.txt";
 
 // =========================================================
 
@@ -41,6 +41,9 @@ bool ConsistsOnlyOneType(const std::string& str, char flag) {
 
 int main() {
     std::ifstream inputFile (INPUT_FILE);
+
+    if (!inputFile.is_open()) { std::cout << "Error while opening the file"; return -1; }
+
     std::ofstream outputFile;
 
     std::string tempWord;
@@ -57,12 +60,31 @@ int main() {
         else if (ConsistsOnlyOneType(tempWord, '0')) { wordsOnlyFromZeroes++; }
         else if (ConsistsOnlyOneType(tempWord, '1')) { wordsOnlyFromOnes++; }
 
-        
+        sizeArr[tempWord.size() - 2]++;
     }
 
     inputFile.close();
 
     outputFile.open(OUTPUT_FILE);
+
+    std::cout << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
+    outputFile << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
+
+    std::cout << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
+    outputFile << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
+
+    std::cout << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
+    std::cout << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
+    outputFile << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
+    outputFile << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
+
+    std::cout << "\n\n4. Ilośc napisów o długości K: \n";
+    outputFile << "\n\n4. Ilośc napisów o długości K: \n";
+
+    for (int i = 0; i < 14; i++) {
+        std::cout << i + 2 << ": " << sizeArr[i] << "\n";
+        outputFile << i + 2 << ": " << sizeArr[i] << "\n";
+    }
 
 
     outputFile.close();
