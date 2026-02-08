@@ -1,2 +1,10 @@
 zadanieA
 495
+zadanieB
+największa suma cyfr: 187869866
+najmniejsza suma cyfr: 10010
+zadanieC
+2389
+23567
+123456789
+3468

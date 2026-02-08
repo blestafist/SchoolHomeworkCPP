@@ -1,46 +1,93 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
 
-const string INPUT_FILE = "cyfry.txt";
-const string OUTPUT_FILE = "zadanie4.txt";
+// =========================== CONFIGURATION ===========================
+
+const std::string INPUT_FILE = "cyfry.txt";
+const std::string OUTPUT_FILE = "zadanie4.txt";
+
+// ======================================================================
 
 bool IsEven(int tempInt)
 {
-    return tempInt % 2 == 0 ? true : false;
+    return tempInt % 2 == 0;
 }
+
+
+int SumOfNumbers(int tempInt)
+{
+    int sum = 0;
+    while (tempInt > 0)
+    {
+        sum += tempInt % 10;
+        tempInt /= 10;
+    }
+    return sum;
+}
+
+
+bool IsGrowingSequence(int tempInt)
+{
+    
+    while (tempInt >= 10)
+    {
+        int last = tempInt % 10;
+        int prev = (tempInt / 10) % 10;
+
+        if (prev >= last) { return false; }
+
+        tempInt /= 10;
+    }
+    return true;
+}
+
 
 int main()
 {
-    ifstream inputFile (INPUT_FILE);
-    ofstream outputFile (OUTPUT_FILE);
+    std::ifstream inputFile (INPUT_FILE);
+    std::ofstream outputFile (OUTPUT_FILE);
 
-    if(!inputFile.is_open()) cout << "error open file";
+    if (!inputFile.is_open()) { std::cout << "error open file"; }
 
-    int tempInt, counter = 0, minNum;
+    int tempInt, counter = 0;
 
-    while(inputFile >> tempInt)
+    while (inputFile >> tempInt)
     {
-        if(IsEven(tempInt)) counter++;
+        if (IsEven(tempInt)) { counter++; }
     }
 
-    cout << "zadanieA" << endl << counter << endl;
-    outputFile << "zadanieA" << endl << counter << endl;
+    std::cout << "zadanieA" << std::endl << counter << std::endl;
+    outputFile << "zadanieA" << std::endl << counter << std::endl;
 
     inputFile.close();
     inputFile.open(INPUT_FILE);
 
     inputFile >> tempInt;
-    minNum = tempInt;
-    
-    cout << minNum << endl;
-    while(inputFile >> tempInt)
+
+    int maxNum = tempInt;
+    int minNum = tempInt;
+
+    while (inputFile >> tempInt)
     {
-        if(minNum < tempInt)
-            minNum = tempInt;
+        if ( SumOfNumbers(maxNum) < SumOfNumbers(tempInt) ) { maxNum = tempInt; }
+        if ( SumOfNumbers(minNum) > SumOfNumbers(tempInt) ) { minNum = tempInt; }
     }
     
+    std::cout << "zadanieB" << std::endl << "największa suma cyfr: " << maxNum << std::endl << "najmniejsza suma cyfr: " << minNum <<std::endl;
+    outputFile << "zadanieB" << std::endl << "największa suma cyfr: " << maxNum << std::endl << "najmniejsza suma cyfr: " << minNum <<std::endl;
+
+    std::cout   << "zadanieC" <<std::endl;
+    outputFile  << "zadanieC" << std::endl;
+
+    inputFile.close();
+    inputFile.open(INPUT_FILE);
+
+    while (inputFile >> tempInt)
+    {
+        if (IsGrowingSequence(tempInt)) {std::cout << tempInt << std::endl; outputFile << tempInt << std::endl;}
+    }
+
     inputFile.close();
     outputFile.close();
 }
@@ -58,3 +105,5 @@ int main()
 7. Дальше как я понимаю еще не сделано тк там логические ошибки
 
 */
+
+// с вектором некст сделаю
