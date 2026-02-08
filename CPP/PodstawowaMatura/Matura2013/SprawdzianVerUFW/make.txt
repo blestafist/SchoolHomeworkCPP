@@ -1,0 +1,6 @@
+1. Rename the file as it is named in tresc.pdf
+2. Run the following code
+
+$ g++ main.cpp -o output.bin && ./output.bin 
+
+Change main.cpp to your file name
