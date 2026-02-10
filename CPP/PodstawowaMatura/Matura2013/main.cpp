@@ -1,116 +1,92 @@
 #include <iostream>
 #include <fstream>
 
-using namespace std;
 
+// ===================== CONFIGURATION =====================
 
-// ================ CONFIGURATION =================
+const std::string INPUT_FILE = "napisy.txt";
+const std::string OUTPUT_FILE = "zadanie4.txt";
 
-const int FILE_LENTH = 1000;
+// =========================================================
 
-const string INPUT_FILE_NAME = "napisy.txt";
-const string OUTPUT_FILE_NAME = "zadanie4.txt";
+/* 
 
-// ================================================
+1. Count all words with size() % 2 == 0;
+2. Count all words where num of '0' == num of '1'
+3. Count words with:
+    - All chars are '0'
+    - All chars are '1'
+4. Make an arr with .size()
+5. Obfuscate the fucking code
 
+*/
 
-bool IsCharsNumEven(string* str) {
-    return (*str).size() % 2 == 0;
-}
-
-bool NumZeroesEqNumOnes(string* str) {
+bool SameCharsQuantity(const std::string& str) {
     int numZeroes = 0, numOnes = 0;
-
-    for (int i = 0; i < (*str).size(); i++) {
-        if ((*str)[i] == '0') { numZeroes++; }
+    for (char c : str) {
+        if (c == '0') { numZeroes++; }
         else { numOnes++; }
     }
 
-    return numZeroes == numOnes;
+    return numOnes == numZeroes;
 }
 
-bool ConsistrsOnlyFromZeroes(string* str) {
-    for (int i = 0; i < (*str).size(); i++) {
-        if ((*str)[i] == '1') { return false; }
-    }
-    
-    return true;
-}
-
-bool ConsistrsOnlyFromOnes(string* str) {
-    for (int i = 0; i < (*str).size(); i++) {
-        if ((*str)[i] == '0') { return false; }
+bool ConsistsOnlyOneType(const std::string& str, char flag) {
+    for (char c : str) {
+        if (c != flag) { return false; }
     }
 
     return true;
 }
-
-void AddNumberLengthToArray(string* str, int* arr) {
-    int size = (*str).size();
-
-    (*(arr + (size - 2)))++;
-}
-
-
 
 int main() {
-    fstream inputFile, outputFile;
+    std::ifstream inputFile (INPUT_FILE);
 
-    int lengthesArray[14] {}; // min is 2, max is 16 (length)
+    if (!inputFile.is_open()) { std::cout << "Error while opening the file"; return -1; }
 
-    int EvenCharsQuantity = 0, NumZeroesEqNumOnesQuantity = 0, ConsistrsOnlyFromZeroesQuantity = 0, ConsistrsOnlyFromOnesQuantity = 0;
-    string currentWord;
+    std::ofstream outputFile;
 
+    std::string tempWord;
 
+    // define counters
+    int evenCharsCounter = 0, sameCharsQuantityCounter = 0, wordsOnlyFromZeroes = 0, wordsOnlyFromOnes = 0;
 
-    inputFile.open(INPUT_FILE_NAME, ios::in);
-    outputFile.open(OUTPUT_FILE_NAME, ios::out);
+    // define an array with "cups"
+    int sizeArr[15] {};
 
-    for (int i = 0; i < FILE_LENTH; i++) {
-        inputFile >> currentWord;
+    while (inputFile >> tempWord) {
+        if (tempWord.size() % 2 == 0) { evenCharsCounter++; }
+        if (SameCharsQuantity(tempWord)) { sameCharsQuantityCounter++; }
+        else if (ConsistsOnlyOneType(tempWord, '0')) { wordsOnlyFromZeroes++; }
+        else if (ConsistsOnlyOneType(tempWord, '1')) { wordsOnlyFromOnes++; }
 
-        if (IsCharsNumEven(&currentWord)) {
-            EvenCharsQuantity++;
-
-            if (NumZeroesEqNumOnes(&currentWord)) {
-                NumZeroesEqNumOnesQuantity++;
-            }
-        }  
-
-        if (ConsistrsOnlyFromOnes(&currentWord)) {
-            ConsistrsOnlyFromOnesQuantity++;
-        }
-
-        else if (ConsistrsOnlyFromZeroes(&currentWord)) {
-            ConsistrsOnlyFromZeroesQuantity++;
-        }
-
-        AddNumberLengthToArray(&currentWord, lengthesArray);
+        sizeArr[tempWord.size() - 2]++;
     }
 
     inputFile.close();
 
-    cout << "1. Ilość napisów o parzystej długości: " << EvenCharsQuantity << endl << endl;
-    outputFile << "1. Ilość napisów o parzystej długości: " << EvenCharsQuantity << endl << endl;
+    outputFile.open(OUTPUT_FILE);
 
-    cout << "2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << NumZeroesEqNumOnesQuantity << endl << endl;
-    outputFile << "2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << NumZeroesEqNumOnesQuantity << endl << endl;
+    std::cout << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
+    outputFile << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
 
-    cout << "3. Ilość napisów, zawierających same zera: " << ConsistrsOnlyFromZeroesQuantity << endl;
-    cout << "Ilość napisów, zawierających same jedynki: " << ConsistrsOnlyFromOnesQuantity << endl << endl;
+    std::cout << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
+    outputFile << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
 
-    outputFile << "3. Ilość napisów, zawierających same zera: " << ConsistrsOnlyFromZeroesQuantity << endl;
-    outputFile << "Ilość napisów, zawierających same jedynki: " << ConsistrsOnlyFromOnesQuantity << endl << endl;
+    std::cout << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
+    std::cout << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
+    outputFile << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
+    outputFile << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
 
-    cout << "4. Ilośc napisów o długości K: " << endl;
-    outputFile << "4. Ilośc napisów o długości K: " << endl;
+    std::cout << "\n\n4. Ilośc napisów o długości K: \n";
+    outputFile << "\n\n4. Ilośc napisów o długości K: \n";
 
-
-    for (int i = 0; i < 14; i++) {
-        cout << "K = " << i + 2 << ": " << lengthesArray[i] << endl;
-        outputFile << "K = " << i + 2 << ": " << lengthesArray[i] << endl;
+    for (int i = 0; i < 15; i++) {
+        std::cout << i + 2 << ": " << sizeArr[i] << "\n";
+        outputFile << i + 2 << ": " << sizeArr[i] << "\n";
     }
 
-    outputFile.close();
 
+    outputFile.close();
+    return 0;
 }
