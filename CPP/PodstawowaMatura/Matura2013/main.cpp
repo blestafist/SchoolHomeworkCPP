@@ -22,13 +22,12 @@ const std::string OUTPUT_FILE = "zadanie4.txt";
 */
 
 bool SameCharsQuantity(const std::string& str) {
-    int numZeroes = 0, numOnes = 0;
+    int counter = 0;
     for (char c : str) {
-        if (c == '0') { numZeroes++; }
-        else { numOnes++; }
+        c == '0' ? counter++ : counter--;
     }
 
-    return numOnes == numZeroes;
+    return counter == 0;
 }
 
 bool ConsistsOnlyOneType(const std::string& str, char flag) {
@@ -42,7 +41,7 @@ bool ConsistsOnlyOneType(const std::string& str, char flag) {
 int main() {
     std::ifstream inputFile (INPUT_FILE);
 
-    if (!inputFile.is_open()) { std::cout << "Error while opening the file"; return -1; }
+    if (!inputFile.is_open()) { std::cerr << "Error while opening the file"; return -1; }
 
     std::ofstream outputFile;
 
@@ -66,6 +65,7 @@ int main() {
     inputFile.close();
 
     outputFile.open(OUTPUT_FILE);
+    if (!outputFile.is_open()) { std::cerr << "Error while opening output file!"; return -1;}
 
     std::cout << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
     outputFile << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;

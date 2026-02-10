@@ -3,18 +3,20 @@
 
 // ================================ CONFIGURATION ===================================
 
-const std::string INPUT_FILE_NAME = ""; // input file name here
-const std::string OUTPUT_FILE_NAME = ""; // output file name here
+const std::string INPUT_FILE = ""; // input file name here
+const std::string OUTPUT_FILE = ""; // output file name here
 
 // =================================================================================
 
 // minimal wrapper for program (remove comment)
 
 int main() {
-	std::ifstream inputFile (INPUT_FILE_NAME);
+	std::ifstream inputFile (INPUT_FILE);
+	if (!inputFile.is_open()) { std::cerr << "Error while opening input file!"; return -1; }
+
 	std::ofstream outputFile;
 
-	std::string tempWord; // string / int (change on need)
+	std::string tempWord; // string / int (change on need)	
 	// int tempNum;
 
 	while (inputFile >> tempWord) {
@@ -24,7 +26,8 @@ int main() {
 
 	inputFile.close();
 	
-	outputFile.open(OUTPUT_FILE_NAME);
+	outputFile.open(OUTPUT_FILE);
+	if (!outputFile.is_open()) { std::cerr << "Error while opening output file!"; return -1; }
 
 	// write answers
 	

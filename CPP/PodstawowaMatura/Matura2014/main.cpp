@@ -11,8 +11,7 @@ const std::string OUTPUT_FILE_NAME = "ZADANIE5.TXT"; // output file name here
 
 
 bool IsMultiplier(short num1, short num2) {
-    if (num1 > num2) { return num1 % num2 == 0; }
-    return num2 % num1 == 0;
+	return num1 > num2 ? num1 % num2 == 0 : num2 % num1 == 0;
 }
 
 bool GPD1(short num1, short num2) {
