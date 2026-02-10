@@ -67,4 +67,7 @@ chmod +x outputFileName
 Feel free to **learn, modify, and share**.  
 If you like this repository, please consider giving it a ⭐ to support my work!
 
+
 ---
+
+![HelloWorld(print)](https://github.com/blestafist/SchoolHomeworkCPP/blob/main/MrRobot.jpg)
