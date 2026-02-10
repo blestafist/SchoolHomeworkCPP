@@ -1,0 +1,23 @@
+zadanieA
+504
+zadanieB
+110
+zadanieC
+ilosc liczb zawierajace same zera 32
+ilosc liczb zawierajace same jedynki 50
+zadanieD
+napisów o 2 znakach 43
+napisów o 3 znakach 38
+napisów o 4 znakach 37
+napisów o 5 znakach 57
+napisów o 6 znakach 53
+napisów o 7 znakach 68
+napisów o 8 znakach 78
+napisów o 9 znakach 103
+napisów o 10 znakach 83
+napisów o 11 znakach 90
+napisów o 12 znakach 86
+napisów o 13 znakach 81
+napisów o 14 znakach 68
+napisów o 15 znakach 59
+napisów o 16 znakach 56

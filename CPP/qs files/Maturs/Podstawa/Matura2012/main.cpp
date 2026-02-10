@@ -48,7 +48,7 @@ int main()
     std::ifstream inputFile (INPUT_FILE);
     std::ofstream outputFile (OUTPUT_FILE);
 
-    if (!inputFile.is_open()) { std::cout << "error open file"; }
+    if (!inputFile.is_open()) { std::cout << "error open file"; return -1; }
 
     int tempInt, counter = 0;
 
