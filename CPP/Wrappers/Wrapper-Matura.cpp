@@ -18,7 +18,6 @@ int main() {
 	// int tempNum;
 
 	while (inputFile >> tempWord) {
-		inputFile >> tempWord;
 
 		// here place the conditions for nums / strs checking	
 	}
