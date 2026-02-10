@@ -1,3 +1,6 @@
-Zadanie A: 10
-Zadanie B: 584
-Zadanie C: 48
+a) Liczba par, w ktorych jedna liczba jest wielokrotnoscia drugiej: 10
+
+b) Liczba par wzglednie pierwszych (NWD = 1): 584
+
+c) Liczba par o tej samej sumie cyfr: 48
+
