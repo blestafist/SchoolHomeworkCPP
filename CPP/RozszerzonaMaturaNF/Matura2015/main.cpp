@@ -81,12 +81,18 @@ int main() {
 	outputFile.open(OUTPUT_FILE_NAME);
 
 	std::cout << "1. " << zeroGreaterOneCounter;
+	outputFile << "1. " << zeroGreaterOneCounter;
+
 
 
 	std::cout << "\n\n2. 2: " << divideBy2Counter << "\n8: " << divideBy8Counter;
+	outputFile << "\n\n2. 2: " << divideBy2Counter << "\n8: " << divideBy8Counter;
 
 	std::cout << "\n\n3. " << minLine + 1 << ": " << minBin;
 	std::cout << "\n" << maxLine + 1 << ": " << maxBin;
+
+	outputFile << "\n\n3. " << minLine + 1 << ": " << minBin;
+	outputFile << "\n" << maxLine + 1 << ": " << maxBin;
 
 	// write answers
 
