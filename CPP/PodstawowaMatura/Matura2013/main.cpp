@@ -44,18 +44,21 @@ int main() {
     if (!inputFile.is_open()) { std::cerr << "Error while opening the file"; return -1; }
 
     std::ofstream outputFile;
-
     std::string tempWord;
 
     // define counters
-    int evenCharsCounter = 0, sameCharsQuantityCounter = 0, wordsOnlyFromZeroes = 0, wordsOnlyFromOnes = 0;
+    int evenCharsCounter = 0, 
+    sameCharsQuantityCounter = 0, 
+    wordsOnlyFromZeroes = 0, 
+    wordsOnlyFromOnes = 0;
 
     // define an array with "cups"
     int sizeArr[15] {};
 
     while (inputFile >> tempWord) {
         if (tempWord.size() % 2 == 0) { evenCharsCounter++; }
-        if (SameCharsQuantity(tempWord)) { sameCharsQuantityCounter++; }
+
+        if      (SameCharsQuantity(tempWord)) { sameCharsQuantityCounter++; }
         else if (ConsistsOnlyOneType(tempWord, '0')) { wordsOnlyFromZeroes++; }
         else if (ConsistsOnlyOneType(tempWord, '1')) { wordsOnlyFromOnes++; }
 

@@ -39,23 +39,31 @@ int main()
     std::string const OUTPUT_FILE = "zadanie4.txt";
 
     std::ifstream inputFile(INPUT_FILE);
-    std::ofstream outputFile(OUTPUT_FILE);
+    std::ofstream outputFile(OUTPUT_FILE); // эту херь можешь открывать после закрытия inputFile.close()
 
-    if (!inputFile) { std::cout << "error open file"; return -1; }
+    if (!inputFile) { std::cout << "error open file"; return -1; } // cout на cerr
 
     std::string tempString;
 
-    int arr[15] {}, counterOfEven = 0, counterContainsOnlyZeros = 0, counterContainsOnlyOnes = 0, counterSameCharsQuantity = 0;
+
+    int arr[15] {}, // можно сделать вот так и подписывать комментариями переменные
+    counterOfEven = 0, 
+    counterContainsOnlyZeros = 0, 
+    counterContainsOnlyOnes = 0, 
+    counterSameCharsQuantity = 0;
+
 
     while (inputFile >> tempString)
     {
-        ArrSupplement(arr, tempString);
+        ArrSupplement(arr, tempString); // это можно без функции
+        // arr[tempString.size() - 2]++;
 
-        if (IsEven(tempString)) { counterOfEven++; }
+        if (IsEven(tempString)) { counterOfEven++; } 
+        // if (tempString.size() % 2 == 0) {}
 
         AreSameDigitsCount(tempString) ? counterSameCharsQuantity++ : 0;
 
-        char result = DoesItConteinsOnlyZerosOrOnes(tempString);
+        char result = DoesItConteinsOnlyZerosOrOnes(tempString); // выглядит прям максимально неплохо
         result == '0' ? counterContainsOnlyZeros++ :
         result == '1' ? counterContainsOnlyOnes++ : 0;
     }
@@ -75,12 +83,26 @@ int main()
     std::cout << "zadanieD" << '\n';
     outputFile << "zadanieD" << '\n';
 
-    for (int i = 0 ; i < 15; i++)
+    for (int i = 0; i < 15; i++)  // норм
     {
         std::cout << "napisów o " << i + 2 << " znakach" << " " <<arr[i] << '\n';
         outputFile << "napisów o " << i + 2 << " znakach" << " " <<arr[i] << '\n';
     }
 
-    inputFile.close();
+    inputFile.close(); // закрытие файоа входа можно перенести прям после цикла, снизит риск огромного раздутия памяти
     outputFile.close();
 }
+
+/* 
+
+1. Код хуйни
+2. IsEven можно в функцию не писать по идее
+3. В AreSameDigitsCount надо использовать foreach, в основном норм
+4. В проверке на одну цифру логика неплоха, можешь добавить foreach / поменять на условие с флагом
+5. Функция под ArrSuplement вроде даже не нужна, можно просто хуярить без функции как и IsEven
+6. 38, 39 строчка вынеси в блок ====== в начале (тк константы)
+7. Проверка открытия outputFile
+8. Декларацию можно разделить на несколько строк, чтобы выглядело получше (я уже сделал)
+9. 
+
+*/
