@@ -10,8 +10,8 @@ const std::string OUTPUT_FILE_NAME = "ZADANIE5.TXT"; // output file name here
 // =================================================================================
 
 
-bool IsMultiplier(short num1, short num2) {
-	return num1 > num2 ? num1 % num2 == 0 : num2 % num1 == 0;
+bool IsMultiplier(short num1, short num2) { // the numbers cannot be 0 (task), so i didnt checked if num 1 || num 2 == 0
+	return (num1 > num2) ? (num1 % num2 == 0) : (num2 % num1 == 0);
 }
 
 bool GPD1(short num1, short num2) {
@@ -39,10 +39,9 @@ int main() {
 	std::ifstream inputFile (INPUT_FILE_NAME);
 	if (!inputFile.is_open()) { std::cerr << "Error while opening input file!"; return -1; }
 
-
 	std::ofstream outputFile;
 
-	short tempNum1, tempNum2; 
+	short tempNum1, tempNum2; // limit is 30000, so using short (32768 max)
     short multiplierCounter = 0, gpd1Counter = 0, sumDigitsEqCounter = 0;
 
 	// int tempNum;
