@@ -42,7 +42,10 @@ int main() {
 	std::ofstream outputFile;
 
 	short tempNum1, tempNum2; // limit is 30000, so using short (32768 max)
-    short multiplierCounter = 0, gpd1Counter = 0, sumDigitsEqCounter = 0;
+	
+    short multiplierCounter = 0, 
+	gpd1Counter = 0, 
+	sumDigitsEqCounter = 0;
 
 	// int tempNum;
 

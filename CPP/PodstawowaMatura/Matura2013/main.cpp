@@ -30,6 +30,7 @@ bool SameCharsQuantity(const std::string& str) {
     return counter == 0;
 }
 
+
 bool ConsistsOnlyOneType(const std::string& str, char flag) {
     for (char c : str) {
         if (c != flag) { return false; }
@@ -37,6 +38,7 @@ bool ConsistsOnlyOneType(const std::string& str, char flag) {
 
     return true;
 }
+
 
 int main() {
     std::ifstream inputFile (INPUT_FILE);
