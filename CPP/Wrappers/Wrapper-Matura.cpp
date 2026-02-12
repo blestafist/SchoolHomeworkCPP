@@ -8,8 +8,6 @@ const std::string OUTPUT_FILE = ""; // output file name here
 
 // =================================================================================
 
-// minimal wrapper for program (remove comment)
-
 int main() {
 	std::ifstream inputFile (INPUT_FILE);
 	if (!inputFile.is_open()) { std::cerr << "Error while opening input file!"; return -1; }
