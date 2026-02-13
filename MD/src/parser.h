@@ -3,6 +3,6 @@
 
 #include <iostream>
 
-char HeaderLever(const std::string& header);
+char HeaderLever(const std::string& header); // used by renderer to render propriate header
 
 #endif
