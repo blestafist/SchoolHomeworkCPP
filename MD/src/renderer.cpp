@@ -1,4 +1,5 @@
 #include "renderer.h"
+#include "parser.h"
 
 void PrintDivider(char flag, const std::string &style) {
     struct winsize w;
@@ -13,3 +14,6 @@ void PrintDivider(char flag, const std::string &style) {
     std::cout << Style::RESET << "\n\n";
 }
 
+void PrintHeader(const std::string& text) {
+
+}
