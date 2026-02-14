@@ -10,7 +10,7 @@ const std::string OUTPUT_FILE = ""; // output file name here
 
 int main() {
 	std::ifstream inputFile (INPUT_FILE);
-	if (!inputFile.is_open()) { std::cerr << "Error while opening input file!"; return -1; }
+	if (!inputFile) { std::cerr << "Error while opening input file!"; return -1; }
 
 	std::ofstream outputFile;
 
@@ -25,7 +25,7 @@ int main() {
 	inputFile.close();
 	
 	outputFile.open(OUTPUT_FILE);
-	if (!outputFile.is_open()) { std::cerr << "Error while opening output file!"; return -1; }
+	if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
 
 	// write answers
 	
