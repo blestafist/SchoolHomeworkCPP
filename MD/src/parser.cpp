@@ -10,3 +10,10 @@ char HeaderLever(const std::string &header) {
     if (header[i + 1] == ' ') { return (i + 1 <= 6) ? i + 1 : -1; }
     return -1;
 }
+
+Types WhatType(const std::string &line) {
+    for (char c : line) {
+        
+    }
+}
+
