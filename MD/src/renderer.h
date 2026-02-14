@@ -3,6 +3,7 @@
 
 // include block
 #include <iostream>
+#include <string>
 #include <sys/ioctl.h> // for terminal size
 #include <unistd.h>
 
@@ -45,6 +46,8 @@ namespace Style {
 }
 
 void PrintDivider(char flag, const std::string& style);
+
+void PrintHeader(const std::string& header);
 
 
 #endif

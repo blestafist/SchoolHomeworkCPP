@@ -1,5 +1,6 @@
 #include "parser.h"
+#include "renderer.h"
 
 int main() {
-    std::cout << (int)HeaderLever("##### H");
+    PrintHeader("###### Nigger");
 }
