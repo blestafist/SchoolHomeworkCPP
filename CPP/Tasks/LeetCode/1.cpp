@@ -62,16 +62,27 @@ int ConainerWithMostWater(vector<int>& height) {
 }
 
 vector<string> letterCombinations(string digits) {
-    map<string, string> origin = { // origin map
-        {"2", "abc"},
-        {"3", "def"},
-        {"4", "ghi"},
-        {"5", "jkl"},
-        {"6", "mno"},
-        {"7", "pqrs"},
-        {"8", "tuv"},
-        {"3", "wxyz"},
+    vector<string> result;
+
+    map<char, string> origin = { // origin map
+        {'2', "abc"},
+        {'3', "def"},
+        {'4', "ghi"},
+        {'5', "jkl"},
+        {'6', "mno"},
+        {'7', "pqrs"},
+        {'8', "tuv"},
+        {'3', "wxyz"},
     };
 
-    string originStr
+    string originStr = "";
+    for (char c : digits) {
+        originStr += origin[c];
+    }
+
+    for (int i = 0; i < originStr.size(); i++) {
+        for (int j = i; j < originStr.size(); j++) {
+            
+        }
+    }
 }
