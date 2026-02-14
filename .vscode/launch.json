@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
+<<<<<<< HEAD
       "cwd": "/home/qsiry/code/SchoolhomeworkCPP/CPP/Wrappers",
       "program": "/home/qsiry/code/SchoolhomeworkCPP/CPP/Wrappers/build/Debug/outDebug",
+=======
+      "cwd": "/home/pestit/code/SchoolHomeworkCPP/MD/src",
+      "program": "/home/pestit/code/SchoolHomeworkCPP/MD/src/build/Debug/outDebug",
+>>>>>>> e01a15d2886b68fbca154f46fc7ace4aebc2da4b
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
