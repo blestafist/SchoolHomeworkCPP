@@ -15,5 +15,5 @@ void PrintDivider(char flag, const std::string &style) {
 }
 
 void PrintHeader(const std::string& text) {
-
+    
 }

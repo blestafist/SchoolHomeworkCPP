@@ -3,10 +3,10 @@
 char HeaderLever(const std::string &header) {
     char i; // 0 means invalid header
 
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < header.size() - 1; i++) {
         if (header[i] != '#') { i--; break; }
     }
 
-    if (header[i + 1] != ' ') { return 0; }
-    return i;
+    if (header[i + 1] == ' ') { return (i + 1 <= 6) ? i + 1 : -1; }
+    return -1;
 }
