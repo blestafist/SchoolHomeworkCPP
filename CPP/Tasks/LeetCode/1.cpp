@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_set>
 #include <map>
+#include <stack>
 
 using namespace std;
 
@@ -86,3 +87,27 @@ vector<string> letterCombinations(string digits) {
         }
     }
 }
+
+bool ValidParentheses(string s) {
+    stack<char> seen;
+
+    map<char, char> matching = {
+        { '}', '{' },
+        { ']', '[' },
+        { ')', '(' }
+    };
+
+    for (char c : s) {
+        if (c == '{' || c == '[' || c == '(') {
+            seen.push(c); continue;
+        }
+
+        else if (matching.count(c)) {
+            if (seen.empty() || seen.top() != matching[c]) { return false; }
+            seen.pop();
+        }
+    }
+
+    return seen.empty();
+}
+
