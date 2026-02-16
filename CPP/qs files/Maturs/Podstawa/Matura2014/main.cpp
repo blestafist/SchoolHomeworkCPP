@@ -1,22 +1,20 @@
 #include <iostream>
 #include <fstream>
 
+// ============================== CONFIGURATIONS ===================================
+
 const std::string INPUT_FILE_NAME = "PARY_LICZB.TXT";
 const std::string OUTPUT_FILE_NAME = "ZADANIE5.TXT";
 
-
-bool IsDivisible(short num1, short num2)
-{ 
-    return num1 % num2 == 0 or num2 % num1 == 0;
-}
+// ==================================================================================
 
 
-short NOD1(short a, short b)
+short GCD(short a, short b)
 {
     if (b == 0)
         return a;
 
-    return NOD1(b, a%b);
+    return GCD(b, a%b);
 }
 
 
@@ -47,18 +45,25 @@ int main()
     std::ofstream outputFile(OUTPUT_FILE_NAME);
     if (!outputFile) { std::cerr << "Error while openig outputFile\n"; return -1; }
 
-    short tempNum1, tempNum2, counerDivisible = 0, counterNOD1 = 0, counterSameSum = 0;
+    short tempNum1, tempNum2, 
+    counterDivisible = 0, 
+    counterNOD1 = 0, 
+    counterSameSum = 0;
 
     while (inputFile >> tempNum1 >> tempNum2)
     {
-        if(IsDivisible(tempNum1,tempNum2)) { counerDivisible ++; }
+        if(tempNum1 % tempNum2 == 0 || tempNum2 % tempNum1 == 0) { counterDivisible ++; }
 
-        if(NOD1(tempNum1, tempNum2) == 1) { counterNOD1++; }
+        if(GCD(tempNum1, tempNum2) == 1) { counterNOD1++; }
 
         if(IsSumOfDigitsSame(tempNum1, tempNum2)) { counterSameSum++; }
     }
 
-    std::cout <<"ZadanieA\n" << counerDivisible <<"\n";
+    std::cout <<"ZadanieA\n" << counterDivisible <<"\n";
     std::cout <<"ZadanieB\n" << counterNOD1 <<"\n";
     std::cout <<"ZadanieC\n" << counterSameSum <<"\n";
+
+    outputFile <<"ZadanieA\n" << counterDivisible <<"\n";
+    outputFile <<"ZadanieB\n" << counterNOD1 <<"\n";
+    outputFile <<"ZadanieC\n" << counterSameSum <<"\n";
 }
