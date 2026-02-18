@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <unordered_map>
+#include <vector>
 
 // ======================== CONFIGURATION ========================
 
@@ -21,16 +22,18 @@ int main() {
 
     std::string tempWord;
 
-    std::unordered_map<std::string, int> words;
-    std::unordered_map<std::string, int> mirrorWords;
+    std::unordered_map<std::string, int> words, mirrorWords;
+    std::vector<std::string> seq;
 
 
     while (inputFileNew >> tempWord) {
+        seq.push_back(tempWord);
         words[tempWord] = 0;
 
-        std::reverse(tempWord.begin(), tempWord.end());
+        std::string mirror = tempWord;
+        std::reverse(mirror.begin(), mirror.end());
 
-        mirrorWords[tempWord] = 0;
+        mirrorWords[mirror] = 0;
     }
 
     inputFileNew.close(); // end of work with inputFileNew
@@ -41,8 +44,20 @@ int main() {
             words[tempWord]++;
         }
 
-        if (mirrorWords.count(tempWord) != 0) {
+        if (mirrorWords.count(tempWord)) {
             mirrorWords[tempWord]++;
         }
     }
+
+    // now displaying answers
+
+    for (const std::string& str : seq) {
+        std::string mirror = str;
+        std::reverse(mirror.begin(), mirror.end());
+
+        std::cout << str << " → " << words[str] << " → " << mirrorWords[mirror] << "\n";
+        outputFile << str << " → " << words[str] << " → " << mirrorWords[mirror] << "\n";
+    }
+
+    return 0;
 }
