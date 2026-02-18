@@ -21,6 +21,7 @@ int main() {
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
 
     std::string tempWord;
+    auto rev = [] (std::string s) -> std::string { std::reverse(s.begin(), s.end());  return s; };
 
     std::unordered_map<std::string, int> words, mirrorWords;
     std::vector<std::string> seq;
@@ -29,11 +30,7 @@ int main() {
     while (inputFileNew >> tempWord) {
         seq.push_back(tempWord);
         words[tempWord] = 0;
-
-        std::string mirror = tempWord;
-        std::reverse(mirror.begin(), mirror.end());
-
-        mirrorWords[mirror] = 0;
+        mirrorWords[rev(tempWord)] = 0;
     }
 
     inputFileNew.close(); // end of work with inputFileNew
@@ -52,11 +49,9 @@ int main() {
     // now displaying answers
 
     for (const std::string& str : seq) {
-        std::string mirror = str;
-        std::reverse(mirror.begin(), mirror.end());
 
-        std::cout << str << " → " << words[str] << " → " << mirrorWords[mirror] << "\n";
-        outputFile << str << " → " << words[str] << " → " << mirrorWords[mirror] << "\n";
+        std::cout << str << " → " << words[str] << " → " << mirrorWords[rev(str)] << "\n";
+        outputFile << str << " → " << words[str] << " → " << mirrorWords[rev(str)] << "\n";
     }
 
     return 0;
