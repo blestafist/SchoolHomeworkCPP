@@ -45,8 +45,4 @@ int main() {
             mirrorWords[tempWord]++;
         }
     }
-
-    for (int i = 0; i < words.size(); i++) {
-        std::cout << mirrorWords.
-    }
 }
