@@ -4,15 +4,13 @@
 // ======================== CONFIGURATION ========================
 
 const std::string INPUT_FILE_NAME = "slowa.txt";
-const std::string NEW_INPUT_FILE_NAME = "nowe.txt";
-
 const std::string OUTPUT_FILE_NAME = "wynik5.txt";
 
 // ===============================================================
 
 int main() {
-    std::ifstream inputFile (INPUT_FILE_NAME), newInputFile(NEW_INPUT_FILE_NAME);
-    if (!inputFile || !newInputFile) { std::cerr << "Error while opening input files!"; return -1; }
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    if (!inputFile) { std::cerr << "Error while opening input files!"; return -1; }
 
     std::ofstream outputFile (OUTPUT_FILE_NAME);
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
@@ -25,12 +23,10 @@ int main() {
         cupArr[tempWord.size() - 1]++;
     }
 
-    int sum = 0;
-
     for (char i = 0; i < 12; i++) {
         std::cout << (int)i + 1 << " → " << cupArr[i] << "\n";
-        sum += cupArr[i];
+        outputFile << (int)i + 1 << " → " << cupArr[i] << "\n";
     }
 
-    std::cout << "\n\n" << sum;
+    return 0;
 }
