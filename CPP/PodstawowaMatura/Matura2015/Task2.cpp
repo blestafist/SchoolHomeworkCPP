@@ -47,7 +47,6 @@ int main() {
     }
 
     // now displaying answers
-
     for (const std::string& str : seq) {
         std::cout << str << " → " << words[str] << " → " << mirrorWords[rev(str)] << "\n";
         outputFile << str << " → " << words[str] << " → " << mirrorWords[rev(str)] << "\n";
