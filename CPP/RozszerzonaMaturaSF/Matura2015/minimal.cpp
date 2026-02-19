@@ -1,18 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
-
-/* 
-
-1. Check where number of 0 higher than number of 1
-2. Check if the number contain two blocks
-    - Just count occurencies of "01" or "10"
-
-3. Iterate and find words with longest 0-block, save them to vector
-    - If found a longer block, clear the vector && write a word to it
-
-*/
 
 // =========================== CONFIGURATION ===========================
 
@@ -63,10 +51,9 @@ int main() {
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
 
     std::string tempWord;
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
 
-    short more0Than1Counter = 0, 
-    containsTwoBlocksCounter = 0;
-
+    short more0Than1Counter = 0, containsTwoBlocksCounter = 0;
     unsigned char currentOcc, maxOcc = 0;
 
     std::vector<std::string> maxOccList;
@@ -80,23 +67,13 @@ int main() {
         else if (maxOcc < currentOcc) { maxOcc = currentOcc; maxOccList.clear(); maxOccList.push_back(tempWord); }
     }
 
-    inputFile.close();
-
-    std::cout << "Liczba słow, w których liczba zer jest większa od liczby jedynek: " << more0Than1Counter;
-    outputFile << "Liczba słow, w których liczba zer jest większa od liczby jedynek: " << more0Than1Counter;
-
-    std::cout << "\n\nLiczba słow, składających się z 2 bloków zer i jedynek: " << containsTwoBlocksCounter;
-    outputFile << "\n\nLiczba słow, składających się z 2 bloków zer i jedynek: " << containsTwoBlocksCounter;
-
-    std::cout << "\n\nNajdłuższy blok, złożony z samych zer: " << (short)maxOcc << "\n";
-    outputFile << "\n\nNajdłuższy blok, złożony z samych zer: " << (short)maxOcc << "\n";
+    Print("Liczba słow, w których liczba zer jest większa od liczby jedynek: ", more0Than1Counter, "\n");
+    Print("Liczba słow, składających się z 2 bloków zer i jedynek: ", containsTwoBlocksCounter, "\n");
+    Print("Najdłuższy blok, złożony z samych zer: ", (short)maxOcc);
 
     for (std::string w : maxOccList) {
-        std::cout << w << "\n";
-        outputFile << w << "\n";
+        Print(w);
     }
-
-    outputFile.close();
 
     return 0;
 }
