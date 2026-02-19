@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <utility>
 
 // ================================ CONFIGURATION ===================================
 
@@ -10,15 +11,13 @@ int FILE_LENGTH = 1000; // lenth of input data array
 
 // =================================================================================
 
-int GCD(int x, int y) {
-	int temp;
-	while (y != 0) {
-		temp = x % y;
-		x = y;
-		y = temp;
+int GCD(int a, int b) {
+	while (b) {
+		a %= b;
+		std::swap(a, b);
 	}
 
-	return x;
+	return a;
 }
 
 int SumNum(int num) {

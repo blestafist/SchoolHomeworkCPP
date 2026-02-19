@@ -8,22 +8,18 @@
 std::string INPUT_FILE_NAME = "dane_6.txt"; // input file name here
 std::string OUTPUT_FILE_NAME = "wyniki_6.txt"; // output file name here
 
-int FILE_LENGTH = 2000; // lenth of input data array
-
 // =================================================================================
 
 // additional funcs
 bool IsPrime(short num) {
-    if (num < 0) { return false; }
-    for (int i = 2; i * i <= num; i++) {
-        if (num % i == 0) { return false; }
-    }
-    return true;
-}
+    if (num == 2 || num == 3) { return true; }
+    if (num % 2 == 0 || num % 3 == 0 || num < 2) { return false; }
 
-bool AreNeightbors(short x, short y) {
-    if (x - y == 2 || y - x == 2) { return true; }
-    return false;
+    for (short i = 5; i * i < num; i += 6) {
+        if (num % i == 0 || num % (i + 2) == 0) { return false; }
+    }
+
+    return true;
 }
 
 // entry point
@@ -33,12 +29,13 @@ int main() {
 
     std::vector<short> primeNums;
     int primeNumsCount = 0;
-    short highest = -32768, lowest = 32767;
+    short highest = SHRT_MIN, lowest = SHRT_MAX;
 
+    auto AreNeightbors = [] (short a, short b) -> bool { return a - b == 2 || b - a == 2; };
+    
 	short tempWord; // string / int (change on need)
 
-	for (int i = 0; i < FILE_LENGTH; i++) {
-		inputFile >> tempWord;
+	while (inputFile >> tempWord) {
         if (IsPrime(tempWord)) { 
             primeNums.push_back(tempWord); 
             primeNumsCount++; 

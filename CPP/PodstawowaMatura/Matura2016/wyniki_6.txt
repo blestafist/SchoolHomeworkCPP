@@ -1,5 +1,5 @@
 Zadanie 6.1: 
-Ilosc liczb pierwszych: 236
+Ilosc liczb pierwszych: 238
 
 Zadanie 6.2: 
 Minimalna liczba pierwsza: 73
