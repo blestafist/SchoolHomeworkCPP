@@ -1,3 +1,4 @@
+#include <cstddef>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -25,15 +26,22 @@ bool IsPrime(short num) {
 // entry point
 int main() {
 	std::ifstream inputFile(INPUT_FILE_NAME);
-	std::ofstream outputFile;
+    if (!inputFile) { std::cerr << "Error while opening input file!"; return -1; }
+
+	std::ofstream outputFile (OUTPUT_FILE_NAME);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
 
     std::vector<short> primeNums;
-    int primeNumsCount = 0;
-    short highest = SHRT_MIN, lowest = SHRT_MAX;
+
+    short highest = SHRT_MIN, 
+    lowest = SHRT_MAX, 
+    primeNumsCount = 0;
+
+    short tempWord; // string / int (change on need)
 
     auto AreNeightbors = [] (short a, short b) -> bool { return a - b == 2 || b - a == 2; };
+    auto Print = [&] (auto&&... args) -> void { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
     
-	short tempWord; // string / int (change on need)
 
 	while (inputFile >> tempWord) {
         if (IsPrime(tempWord)) { 
@@ -45,27 +53,15 @@ int main() {
         }
 	}
 
-	inputFile.close();
+    Print("Zadanie 6.1: \nIlosc liczb pierwszych: ", primeNumsCount, "\n");
+    Print("Zadanie 6.2: \nMinimalna liczba pierwsza: ", lowest, "\nMaksymalna liczba pierwsza: ", highest, "\n");
+    Print("Zadanie 6.3. Liczby blużniące: ");
 	
-	outputFile.open(OUTPUT_FILE_NAME);
-
-    std::cout << "Zadanie 6.1: \nIlosc liczb pierwszych: " << primeNumsCount << "\n\n"; 
-    outputFile << "Zadanie 6.1: \nIlosc liczb pierwszych: " << primeNumsCount << "\n\n"; 
-
-    std::cout << "Zadanie 6.2: \nMinimalna liczba pierwsza: " << lowest << "\nMaksymalna liczba pierwsza: " << highest << "\n\n"; 
-    outputFile << "Zadanie 6.2: \nMinimalna liczba pierwsza: " << lowest << "\nMaksymalna liczba pierwsza: " << highest << "\n\n"; 
-
-    std::cout << "Zadanie 6.3. Liczby blużniące: \n"; 
-    outputFile << "Zadanie 6.3. Liczby blużniące: \n"; 
-	
-    for (int i = 0; i < primeNums.size() - 1; i++) {
+    for (size_t i = 0; i < primeNums.size() - 1; i++) {
         if(AreNeightbors(primeNums[i], primeNums[i + 1])) {
-            std::cout << primeNums[i] << " i " << primeNums[i + 1] << std::endl;
-            outputFile << primeNums[i] << " i " << primeNums[i + 1] << std::endl;
+            Print(primeNums[i], " i ", primeNums[i + 1]);
         }
     }
-
-	outputFile.close();
 
 	return 0;
 }
