@@ -84,9 +84,11 @@ int NumLinesToRemove(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            
+            if (arr[x][y] != arr[DIMENSIONS_X - 1 - x][y]) { counter++; }
         }
     }
+
+    return counter;
 }
 
 
