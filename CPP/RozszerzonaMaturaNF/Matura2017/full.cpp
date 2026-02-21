@@ -80,6 +80,13 @@ void FindMinMax(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], unsigned char&
 
 
 int NumLinesToRemove(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    int counter = 0; 
+
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            
+        }
+    }
 }
 
 
