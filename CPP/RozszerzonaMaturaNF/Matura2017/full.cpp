@@ -92,12 +92,31 @@ int NumLinesToRemove(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
+int SameBrightnessLongestOcc(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    int longest = 0, curr = 0;
+
+    for (int x = 0; x < DIMENSIONS_X; x++) {
+        curr = 1;
+        
+        for (int y = 1; y < DIMENSIONS_Y; y++) {
+            if (arr[x][y] == arr[x][y - 1]) {
+                curr++;
+                if (curr > longest) { longest = curr; } 
+            }
+
+            else { curr = 1; }
+        }
+    }
+
+    return longest;
+}
+
+
 int main() {
     unsigned char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
     unsigned char min = 255, max = 0; // opposite values
 
     ParseFile(mainArr);
-    PrintArr(mainArr);
     
-    std::cout << ContrastNeightboor(mainArr);
+    std::cout << SameBrightnessLongestOcc(mainArr);
 }
