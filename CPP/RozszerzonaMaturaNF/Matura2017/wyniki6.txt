@@ -1,0 +1,8 @@
+1. Najmniejszy: 7
+Największy: 221
+
+2. Liczba wierszy: 149
+
+3. Kontrastujące piksele: 753
+
+4. Najdłuższa linia: 5

@@ -1,3 +1,4 @@
+#include <alloca.h>
 #include <iostream>
 #include <fstream>
 
@@ -84,7 +85,7 @@ int NumLinesToRemove(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            if (arr[x][y] != arr[DIMENSIONS_X - 1 - x][y]) { counter++; }
+            if (arr[x][y] != arr[DIMENSIONS_X - 1 - x][y]) { counter++; break; }
         }
     }
 
@@ -93,11 +94,11 @@ int NumLinesToRemove(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 
 int SameBrightnessLongestOcc(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    int longest = 0, curr = 0;
+    int longest = 1, curr = 0;
 
     for (int x = 0; x < DIMENSIONS_X; x++) {
         curr = 1;
-        
+
         for (int y = 1; y < DIMENSIONS_Y; y++) {
             if (arr[x][y] == arr[x][y - 1]) {
                 curr++;
@@ -113,10 +114,21 @@ int SameBrightnessLongestOcc(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 
 int main() {
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
+
     unsigned char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
     unsigned char min = 255, max = 0; // opposite values
-
-    ParseFile(mainArr);
     
-    std::cout << SameBrightnessLongestOcc(mainArr);
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
+
+    ParseFile(mainArr); // opening an input file here
+    FindMinMax(mainArr, min, max);
+    
+    Print("1. Najmniejszy: ", (int)min, "\nNajwiększy: ", (int)max);
+    Print("\n2. Liczba wierszy: ", NumLinesToRemove(mainArr));
+    Print("\n3. Kontrastujące piksele: ", ContrastNeightboor(mainArr));
+    Print("\n4. Najdłuższa linia: ", SameBrightnessLongestOcc(mainArr));
+
+    return 0;
 }
