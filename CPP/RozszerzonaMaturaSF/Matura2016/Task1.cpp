@@ -27,7 +27,9 @@ void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
-void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], char (&helperArr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    char helperArr[DIMENSIONS_X][DIMENSIONS_Y];
+
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
             int aliveNeightbors = 0;
@@ -43,15 +45,22 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], char (&helperArr)[
 
             // now calculating
             if ((aliveNeightbors == 3 && arr[x][y] == '.') || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y] == 'X')) {
-                 /* will be alive*/ 
+                helperArr[x][y] = 'X';
             }
         }
     }
+
+    // swap arrays
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            arr[x][y] = helperArr[x][y];
+        }
+    }
+    // no need to return
 }
 
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
-    char helperArr[DIMENSIONS_X][DIMENSIONS_Y];
 
     ParseFile(mainArr);
 }
