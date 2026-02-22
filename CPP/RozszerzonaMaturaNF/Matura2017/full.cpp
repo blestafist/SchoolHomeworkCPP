@@ -1,6 +1,6 @@
-#include <alloca.h>
 #include <iostream>
 #include <fstream>
+#include <stdexcept>
 
 
 // ================================ CONFIGURATION ===================================
@@ -19,7 +19,7 @@ const int vectorY[] = { 1, -1, 0, 0 };
 
 void ParseFile(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     std::ifstream inputFile (INPUT_FILE_NAME);
-    if (!inputFile) { std::cerr << "Error while opening output file!"; throw -1; }
+    if (!inputFile) { std::cerr << "Error while opening output file!"; throw std::runtime_error("FILE ERROR!"); }
 
     short current;
 
@@ -35,8 +35,8 @@ void ParseFile(unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 // a helper func, not used in real program
 void PrintArr(const unsigned char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    for (int x = 0; x < DIMENSIONS_X; x++) {
-        for (int y = 0; y < DIMENSIONS_Y; y++) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
             std::cout << (short)arr[x][y] << ' ';
         }
 
@@ -122,7 +122,15 @@ int main() {
     
     auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
 
-    ParseFile(mainArr); // opening an input file here
+    try {
+        ParseFile(mainArr); // opening an input file here
+    }
+
+    catch (const std::runtime_error& e) {
+        std::cerr << "RUNTIME ERROR: " << e.what();
+        return -1;
+    }
+
     FindMinMax(mainArr, min, max);
     
     Print("1. Najmniejszy: ", (int)min, "\nNajwiększy: ", (int)max);
