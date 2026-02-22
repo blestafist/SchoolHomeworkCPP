@@ -1,0 +1,39 @@
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+
+// =========================== CONFIGURATION ===========================
+
+const std::string INPUT_FILE_NAME = "gra.txt";
+const std::string OUTPUT_FILE_NAME = "wyniki5.txt";
+
+const int DIMENSIONS_X = 20;
+const int DIMENSIONS_Y = 12;
+
+int velocityX[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int velocityY[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+
+// =====================================================================
+
+void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    if (!inputFile) { throw std::runtime_error("Error while opening input file!"); }
+
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            inputFile >> arr[x][y];
+        }
+    }
+}
+
+
+void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], char (&helperArr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    
+}
+
+int main() {
+    char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
+    char helperArr[DIMENSIONS_X][DIMENSIONS_Y];
+
+    ParseFile(mainArr);
+}

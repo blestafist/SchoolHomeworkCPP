@@ -5,7 +5,7 @@
 // =========================== CONFIGURATION ===========================
 
 const std::string INPUT_FILE_NAME = "gra.txt";
-const std::string OUTPUT_FILE_NAME = "wynik4.txt";
+const std::string OUTPUT_FILE_NAME = "wyniki5.txt";
 
 const int DIMENSIONS_X = 20;
 const int DIMENSIONS_Y = 12;
