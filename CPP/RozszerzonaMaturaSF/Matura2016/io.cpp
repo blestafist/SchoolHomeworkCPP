@@ -37,22 +37,27 @@ void PrintArr(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     } 
 }
 
+int SumOfNeightbors(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
+    int aliveNeightbors = 0;
+
+    for (int i = 0; i < 8; i++) { // counting all alive neightbors
+        int nx = (indexX + velocityX[i] + DIMENSIONS_X) % DIMENSIONS_X;
+        int ny = (indexY + velocityY[i] + DIMENSIONS_Y) % DIMENSIONS_Y;
+
+        if (arr[nx][ny] == 'X') { aliveNeightbors++; }
+    }
+
+    return aliveNeightbors;
+}
+
+
 void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    char helperArr[DIMENSIONS_X][DIMENSIONS_Y];
+    char helperArr[DIMENSIONS_X][DIMENSIONS_Y] {};
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            int aliveNeightbors = 0;
+            int aliveNeightbors = SumOfNeightbors(arr, x, y);
             helperArr[x][y] = '.';
-
-            for (int i = 0; i < 8; i++) { // counting all alive neightbors
-                int nx = x + velocityX[i];
-                int ny = y + velocityY[i];
-
-                if (nx < 0 || nx >= DIMENSIONS_X || ny < 0 || ny >= DIMENSIONS_Y) { continue; }
-
-                if (arr[nx][ny] == 'X') { aliveNeightbors++; }
-            }
 
             // now calculating
             if ((aliveNeightbors == 3 && arr[x][y] == '.') || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y] == 'X')) {
