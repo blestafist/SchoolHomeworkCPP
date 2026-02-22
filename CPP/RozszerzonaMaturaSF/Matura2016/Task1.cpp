@@ -1,3 +1,4 @@
+#include <cstdio>
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -27,21 +28,28 @@ void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
+int SumOfNeightbors(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
+    int aliveNeightbors = 0;
+
+    for (int i = 0; i < 8; i++) { // counting all alive neightbors
+        int nx = indexX + velocityX[i];
+        int ny = indexY + velocityY[i];
+
+        if (nx < 0 || nx >= DIMENSIONS_X || ny < 0 || ny >= DIMENSIONS_Y) { continue; }
+
+        if (arr[nx][ny] == 'X') { aliveNeightbors++; }
+    }
+
+    return aliveNeightbors;
+}
+
+
 void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     char helperArr[DIMENSIONS_X][DIMENSIONS_Y];
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            int aliveNeightbors = 0;
-
-            for (int i = 0; i < 8; i++) { // counting all alive neightbors
-                int nx = x + velocityX[i];
-                int ny = y + velocityY[i];
-
-                if (nx < 0 || nx >= DIMENSIONS_X || ny < 0 || ny >= DIMENSIONS_Y) { continue; }
-
-                if (arr[nx][ny] == 'X') { aliveNeightbors++ }
-            }
+            int aliveNeightbors = SumOfNeightbors(arr, x, y);
 
             // now calculating
             if ((aliveNeightbors == 3 && arr[x][y] == '.') || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y] == 'X')) {
@@ -59,8 +67,12 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     // no need to return
 }
 
+
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
 
     ParseFile(mainArr);
+    for (int i = 1; i <= 37; i++) {
+        SimulateNextGen(mainArr);
+    }
 }
