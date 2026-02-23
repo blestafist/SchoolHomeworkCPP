@@ -80,7 +80,12 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
+
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
+
     ParseFile(mainArr);
     SimulateNextGen(mainArr);
-    std::cout << CountAlive(mainArr);
+    Print(CountAlive(mainArr));
 }
