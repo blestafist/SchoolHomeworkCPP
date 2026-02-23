@@ -89,6 +89,26 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
+void WriteSecondToFirst(char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            first[x][y] = second[x][y];
+        }
+    }
+}
+
+
+bool CompareArrays(const char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            if (first[x][y] != second[x][y]) { return false; }
+        }
+    }
+
+    return true;
+}
+
+
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
     ParseFile(mainArr);
