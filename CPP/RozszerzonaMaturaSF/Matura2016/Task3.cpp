@@ -26,16 +26,17 @@ void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     }
 }
 
-int CountAlive(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    int alive = 0;
+int SumOfNeightbors(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
+    int aliveNeightbors = 0;
 
-    for (int y = 0; y < DIMENSIONS_Y; y++) {
-        for (int x = 0; x < DIMENSIONS_X; x++) {
-            if (arr[x][y] == 'X') { alive++; }
-        }
+    for (int i = 0; i < 8; i++) { // counting all alive neightbors
+        int nx = (indexX + velocityX[i] + DIMENSIONS_X) % DIMENSIONS_X;
+        int ny = (indexY + velocityY[i] + DIMENSIONS_Y) % DIMENSIONS_Y;
+
+        if (arr[nx][ny] == 'X') { aliveNeightbors++; }
     }
 
-    return alive;
+    return aliveNeightbors;
 }
 
 
@@ -66,15 +67,8 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
+    char prevArr[DIMENSIONS_X][DIMENSIONS_Y];
+
     ParseFile(mainArr);
-
-    int prevAlive = -1;
-
-    for (int i = 0; i < 99; i++) {
-        if (prevAlive == CountAlive(mainArr)) { std::cout << "Pokolenie: " << i + 1 << "\nLiczba komorek: " << prevAlive; return 0; }
-        prevAlive = CountAlive(mainArr);
-        SimulateNextGen(mainArr);
-    }
-
-    std::cout << "Not found";
+    
 }
