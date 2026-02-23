@@ -26,6 +26,20 @@ void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     }
 }
 
+
+int CountAlive(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    int alive = 0;
+
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            if (arr[x][y] == 'X') { alive++; }
+        }
+    }
+
+    return alive;
+}
+
+
 int SumOfNeightbors(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
     int aliveNeightbors = 0;
 
@@ -65,10 +79,37 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
+void WriteSecondToFirst(char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            first[x][y] = second[x][y];
+        }
+    }
+}
+
+
+bool CompareArrays(const char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            if (first[x][y] != second[x][y]) { return false; }
+        }
+    }
+
+    return true;
+}
+
+
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
     char prevArr[DIMENSIONS_X][DIMENSIONS_Y];
 
     ParseFile(mainArr);
-    
+
+    for (int i = 1; i < 100; i++) {
+        WriteSecondToFirst(prevArr, mainArr);
+        SimulateNextGen(mainArr);
+        if (CompareArrays(mainArr, prevArr)) { std::cout << i + 1; break; }
+    }
+
+    std::cout << "\nLiczba żywych komórek: " << CountAlive(mainArr);
 }
