@@ -78,5 +78,5 @@ int main() {
         SimulateNextGen(mainArr);
     }
 
-    Print(SumOfNeightbors(mainArr, 18, 1));
+    Print("1. Ilość sąsiadów: ", SumOfNeightbors(mainArr, 18, 1));
 }

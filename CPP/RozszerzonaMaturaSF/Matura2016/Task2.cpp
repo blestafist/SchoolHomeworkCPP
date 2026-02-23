@@ -1,3 +1,4 @@
+#include <ios>
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -81,11 +82,11 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
 
-    std::ofstream outputFile (OUTPUT_FILE_NAME);
+    std::ofstream outputFile (OUTPUT_FILE_NAME, std::ios::app);
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
     auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
 
     ParseFile(mainArr);
     SimulateNextGen(mainArr);
-    Print(CountAlive(mainArr));
+    Print("2. Liczba żywych komórek: ", CountAlive(mainArr));
 }

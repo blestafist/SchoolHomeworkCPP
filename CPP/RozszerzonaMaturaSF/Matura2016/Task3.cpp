@@ -1,3 +1,4 @@
+#include <ios>
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -103,13 +104,17 @@ int main() {
     char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
     char prevArr[DIMENSIONS_X][DIMENSIONS_Y];
 
+    std::ofstream outputFile (OUTPUT_FILE_NAME, std::ios::app);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
+
     ParseFile(mainArr);
 
     for (int i = 1; i < 100; i++) {
         WriteSecondToFirst(prevArr, mainArr);
         SimulateNextGen(mainArr);
-        if (CompareArrays(mainArr, prevArr)) { std::cout << i + 1; break; }
+        if (CompareArrays(mainArr, prevArr)) { Print("3. Pokolenie: ", i + 1); break; }
     }
 
-    std::cout << "\nLiczba żywych komórek: " << CountAlive(mainArr);
+    Print("Liczba żywych komórek: ", CountAlive(mainArr));
 }
