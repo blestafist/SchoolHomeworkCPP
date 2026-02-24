@@ -2,3 +2,7 @@
 2. Liczba żywych komórek: 8
 3. Pokolenie: 51
 Liczba żywych komórek: 8
+3. Pokolenie: 51
+Liczba żywych komórek: 8
+3. Pokolenie: 51
+Liczba żywych komórek: 8

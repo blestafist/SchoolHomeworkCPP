@@ -1,4 +1,3 @@
-#include <ios>
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -23,6 +22,14 @@ void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
             inputFile >> arr[x][y];
+        }
+    }
+}
+
+void WriteSecondToFirst(char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    for (int y = 0; y < DIMENSIONS_Y; y++) {
+        for (int x = 0; x < DIMENSIONS_X; x++) {
+            first[x][y] = second[x][y];
         }
     }
 }
@@ -63,30 +70,15 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
             int aliveNeightbors = SumOfNeightbors(arr, x, y);
             helperArr[x][y] = '.';
 
-            // now calculating
             if ((aliveNeightbors == 3 && arr[x][y] == '.') || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y] == 'X')) {
                 helperArr[x][y] = 'X';
             }
         }
     }
 
-    // swap arrays
-    for (int y = 0; y < DIMENSIONS_Y; y++) {
-        for (int x = 0; x < DIMENSIONS_X; x++) {
-            arr[x][y] = helperArr[x][y];
-        }
-    }
-    // no need to return
+    WriteSecondToFirst(arr, helperArr);
 }
 
-
-void WriteSecondToFirst(char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    for (int y = 0; y < DIMENSIONS_Y; y++) {
-        for (int x = 0; x < DIMENSIONS_X; x++) {
-            first[x][y] = second[x][y];
-        }
-    }
-}
 
 
 bool CompareArrays(const char (&first)[DIMENSIONS_X][DIMENSIONS_Y], const char (&second)[DIMENSIONS_X][DIMENSIONS_Y]) {
