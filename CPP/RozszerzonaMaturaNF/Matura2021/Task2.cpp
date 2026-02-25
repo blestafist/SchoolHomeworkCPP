@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+#include <unordered_map>
 
 // =========================== CONFIGURATION ===========================
 
@@ -26,13 +28,17 @@ int main() {
 
     std::string town;
     Pair tempPair, hashPair; // hashPair -- first → area | second → num of lcl
+    std::unordered_map<std::string, Pair> map; // first → name of town, second is hash pair
 
     while (inputFile >> town >> town) {
+        hashPair.x = 0; hashPair.y = 0;
         for (int i = 0; i < PAIR_COUNT; i++) {
             inputFile >> tempPair.x >> tempPair.y;
-            if (tempPair.x == 0) { break; }
+            if (tempPair.x == 0) { inputFile.ignore(10000, '\n'); break; }
+            hashPair.x += tempPair.x * tempPair.y;
             hashPair.y++;
         }
+        map[town] = hashPair;
     }
 
     return 0;
