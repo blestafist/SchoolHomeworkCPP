@@ -6,7 +6,7 @@
 
 // =========================== CONFIGURATION ===========================
 
-const std::string INPUT_FILE_NAME = "galerie_przyklad.txt";
+const std::string INPUT_FILE_NAME = "galerie.txt";
 const std::string OUTPUT_FILE_NAME = "wynik4_1.txt";
 
 // =====================================================================
