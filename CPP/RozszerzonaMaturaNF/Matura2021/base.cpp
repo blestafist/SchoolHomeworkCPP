@@ -15,7 +15,9 @@ int main() {
     std::ofstream outputFile (OUTPUT_FILE_NAME);
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
 
-    while (inputFile >> XX) {
+    std::string tempVar;
+
+    while (inputFile >> tempVar) {
 
     }
 
