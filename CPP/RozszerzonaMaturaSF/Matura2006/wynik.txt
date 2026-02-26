@@ -1,1 +1,1 @@
-Ilość parzystych liczb w pliku: 483
+Ilość palidromnych liczb w pliku: 20
