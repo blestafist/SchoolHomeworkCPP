@@ -16,7 +16,7 @@ int main() {
 
     int currInt,
     maxOccValue = 0,
-    maxOccKey;
+    maxOccKey = 0;
 
     while (inputFile >> currInt) {
         map[currInt]++;
