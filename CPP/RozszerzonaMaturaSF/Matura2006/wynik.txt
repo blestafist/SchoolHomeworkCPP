@@ -1,3 +1,1 @@
-A. Słów, występujących więcej niż 1 raz: 21
-B. Słowo o największej liczbie wystąpeń: EBFAABCCBD
-C. Występuje razy: 30
+Ilość parzystych liczb w pliku: 483
