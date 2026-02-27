@@ -1,0 +1,12 @@
+Dla pliku liczby1.txtliczby podzielne przez 2: 489
+Dla pliku liczby1.txtliczby podzielne przez 3: 310
+Dla pliku liczby1.txtliczby podzielne przez 5: 186
+
+Dla pliku liczby2.txtliczby podzielne przez 2: 527
+Dla pliku liczby2.txtliczby podzielne przez 3: 331
+Dla pliku liczby2.txtliczby podzielne przez 5: 198
+
+Dla pliku liczby3.txtliczby podzielne przez 2: 521
+Dla pliku liczby3.txtliczby podzielne przez 3: 341
+Dla pliku liczby3.txtliczby podzielne przez 5: 213
+
