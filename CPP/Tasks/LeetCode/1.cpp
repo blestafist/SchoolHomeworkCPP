@@ -111,3 +111,15 @@ bool ValidParentheses(string s) {
     return seen.empty();
 }
 
+int lengthOfLastWord(string s) {
+    bool occFirstLetter = false;
+    int count = 1;
+
+    for (int i = s.size() - 1; i >= 0; --i) {
+        if (occFirstLetter && s[i] == ' ') { return count; }
+        if (!occFirstLetter && s[i] != ' ') { occFirstLetter = true; }
+        else if (occFirstLetter && s[i] != ' ') { count++; }
+    }
+
+    return s.size();
+}
