@@ -127,13 +127,13 @@ int lengthOfLastWord(string s) {
 }
 
 bool isPalindrome(int x) {
-    if (x < 0) { return false; }
-    unsigned long reversed = 0, origin = x;
+    if (x < 0 || (x % 10 == 0 && x != 0)) { return false; }
+    int reversed = 0;
 
-    while (origin) {
-        reversed = (reversed * 10) + (origin % 10);
-        origin /= 10;
+    while (x > reversed) {
+        reversed = (reversed * 10) + (x % 10);
+        x /= 10;
     } 
 
-    return x == reversed;
+    return x == reversed || x == reversed / 10;
 }
