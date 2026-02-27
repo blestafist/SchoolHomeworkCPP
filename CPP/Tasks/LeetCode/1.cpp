@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <iostream>
 #include <vector>
 #include <string>
 #include <unordered_set>
@@ -113,13 +114,14 @@ bool ValidParentheses(string s) {
 
 int lengthOfLastWord(string s) {
     bool occFirstLetter = false;
-    int count = 1;
+    int count = 0;
 
     for (int i = s.size() - 1; i >= 0; --i) {
-        if (occFirstLetter && s[i] == ' ') { return count; }
-        if (!occFirstLetter && s[i] != ' ') { occFirstLetter = true; }
-        else if (occFirstLetter && s[i] != ' ') { count++; }
+        if (s[i] != ' ') { occFirstLetter = true; count++; }
+        else if (occFirstLetter) {
+            return count;
+        }
     }
 
-    return occFirstLetter ? count : s.size();
+    return count;
 }
