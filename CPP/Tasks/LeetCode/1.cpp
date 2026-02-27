@@ -116,10 +116,10 @@ int lengthOfLastWord(string s) {
     int count = 1;
 
     for (int i = s.size() - 1; i >= 0; --i) {
-        if ((occFirstLetter && s[i] == ' ') || (occFirstLetter && s[i] != 0 && i == 0)) { return count; }
+        if (occFirstLetter && s[i] == ' ') { return count; }
         if (!occFirstLetter && s[i] != ' ') { occFirstLetter = true; }
         else if (occFirstLetter && s[i] != ' ') { count++; }
     }
 
-    return s.size();
+    return occFirstLetter ? count : s.size();
 }
