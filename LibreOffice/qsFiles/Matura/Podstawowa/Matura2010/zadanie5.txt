@@ -1,0 +1,12 @@
+A:
+Przedział: <10,440> i <510,600>
+
+B:
+liczba sztuk: 450
+
+C:
+Odpowiedz: 550
+
+D:
+Odpowiedz: 690
+
