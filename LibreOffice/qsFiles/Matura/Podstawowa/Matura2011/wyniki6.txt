@@ -1,0 +1,17 @@
+A:
+2, 9, 12, 18, 19, 20, 22
+
+B:
+55
+
+C:
+bardzo dobrą: 1
+niedostateczną: 6
+
+D:
+2, 45, 65, 70, 79
+
+E:
+Epoka:	przehistoria	starożytność	średniowiecze	historia nowożytna	historia najnowsza
+Liczba poprawnych odpowiedzi	278	263	281	320	298
+
