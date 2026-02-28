@@ -1,0 +1,19 @@
+A:
+Najniższa temperatura: 4,74
+Rok wystąpienia: 1829
+
+B:
+Największa temperatura: 9,82
+Rok wystąpienia: 1989
+
+C:
+
+	styczeń	  luty	marzec	kwiecień	maj	czerwiec	lipiec	sierpień	wrzesień	październik	listopad	grudzień
+min:    -13,5	-13,7	-6,9	2,4	7,9	13	14,6	14	9,1	1,8	-3,4	-14,8
+
+max:    3,5	5,1	7,4	13,2	18,2	22,4	23,5	23,8	16,8	12,6	7,6	3,9
+
+D:
+najdłuższy malejący ciąg: 6
+początkowy rok: 1982
+końcowy rok: 1987
