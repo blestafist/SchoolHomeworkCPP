@@ -16,11 +16,7 @@ int main() {
     currInt;
 
     while (inputFile >> currInt) {
-        localSum += currInt;
-        if (localSum < 0) {
-            localSum = 0;
-        }
-
+        localSum = std::max(localSum + currInt, currInt);
         if (localSum > maxSum) { maxSum = localSum; }
     }
 
