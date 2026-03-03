@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cstdlib>
 #include <iostream>
 using namespace std;
@@ -41,4 +42,19 @@ int mySqrt(int x) {
     }
 
     return res;
+}
+
+string convertToTitle(int columnNumber) {
+    string result = "";
+
+    while (columnNumber > 0) {
+        columnNumber -= 1;
+        char c = (columnNumber % 26) + 'A';
+        result += c;
+        columnNumber /= 26;
+    }
+
+    std::reverse(result.begin(), result.end());
+
+    return result;
 }
