@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 
@@ -63,4 +64,16 @@ int addDigits(int num) { // 258. Add Digits
     if (num == 0) { return 0; }
     if (num % 9 == 0) { return 9; }
     return num % 9;
+}
+
+int searchInsert(vector<int>& nums, int target) {
+    int left = 0, right = nums.size() - 1, mid, res;
+
+    while (left <= right) {
+        mid = left + (right - left) / 2;
+
+        if (target <= mid) {
+            
+        }
+    }
 }
