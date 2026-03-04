@@ -72,8 +72,16 @@ int searchInsert(vector<int>& nums, int target) {
     while (left <= right) {
         mid = left + (right - left) / 2;
 
-        if (target <= mid) {
-            
+        if (target == nums[mid]) { return mid; }
+        else if (target < nums[mid]) {
+            res = mid;
+            right = mid - 1;
+        }
+        else {
+            res = mid + 1;
+            left = mid + 1;
         }
     }
+
+    return res;
 }
