@@ -1,6 +1,0 @@
-ZadanieA
-10
-ZadanieB
-584
-ZadanieC
-48
