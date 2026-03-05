@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <unordered_map>
+#include <limits.h>
+
 using namespace std;
 
 
@@ -105,10 +107,34 @@ vector<string> fizzBuzz(int n) {
 
 
 int majorityElement(vector<int>& nums) {
-    unordered_map<int, int> map;
+    unordered_map<int, int> hashMap;
+    int maxEl = INT_MIN,
+    maxElKey;
+
 
     for (auto element : nums) {
-
+        hashMap[element]++;
+        if (hashMap[element] >= maxEl) {
+            maxEl = hashMap[element];
+            maxElKey = element;
+        }
     }
+
+    return maxElKey;
 }
 
+
+int majorityElement(vector<int>& nums) {
+    int major = nums[0], ct = 1;
+
+    for (int i = 1; i <= nums.size(); i++) {
+        if (ct == 0) {
+            ct++;
+            major = nums[i]
+        }
+        else if (nums[i] == major) { ++ct; }
+        else { --ct; }
+    }
+
+    return major;
+}
