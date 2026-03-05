@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <unordered_map>
 using namespace std;
 
 
@@ -101,3 +102,13 @@ vector<string> fizzBuzz(int n) {
 
     return vec;
 }
+
+
+int majorityElement(vector<int>& nums) {
+    unordered_map<int, int> map;
+
+    for (auto element : nums) {
+
+    }
+}
+
