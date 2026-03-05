@@ -58,7 +58,7 @@ void WriteToFile(const std::string& fileName, int downRange, int upperRange) {
         }
     }
 
-    std::cout << counter << "\n";
+    std::cout << "Dla przedziału <" << downRange << "; " << upperRange << "> " << counter << "\n";
     output.close();
 }
 
