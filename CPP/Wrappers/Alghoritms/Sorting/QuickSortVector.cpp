@@ -13,7 +13,7 @@ int PartitionQuickSort(std::vector<int>& arr, int first, int last) {
 
     ++fence;
 
-    std::swap(fence, last); // last not included, because it is pivot
+    std::swap(arr[fence], arr[last]); // last not included, because it is pivot
     return fence; // returning a new fence to get 2 new arrays;
 }
 
