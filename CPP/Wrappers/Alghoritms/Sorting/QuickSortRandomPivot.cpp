@@ -33,6 +33,6 @@ void QuickSortRec(std::vector<int>& arr, int first, int last) {
 
 void QuickSortRandomPivot(std::vector<int>& arr) {
     if (arr.size() <= 1) { return; }
-    srand(time(0)); // seed initialization for random pivot
+    srand(time(NULL)); // seed initialization for random pivot
     QuickSortRec(arr, 0, arr.size() - 1);
 }
