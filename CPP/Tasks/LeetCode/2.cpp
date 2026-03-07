@@ -155,3 +155,12 @@ int PartitionQuickSort(std::vector<int>& arr, int first, int last) {
     std::swap(fence, last); // last not included, because it is pivot
     return fence; // returning a new fence to get 2 new arrays;
 }
+
+void QuickSort(std::vector<int>& arr, int first, int last) {
+    if (first < last) {
+        int piv = PartitionQuickSort(arr, first, last);
+
+        QuickSort(arr, first, piv - 1);
+        QuickSort(arr, piv + 1, last);
+    }
+}
