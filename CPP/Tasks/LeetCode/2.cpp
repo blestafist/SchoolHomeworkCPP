@@ -166,6 +166,6 @@ void QuickSortRec(std::vector<int>& arr, int first, int last) {
 }
 
 void QuickSort(std::vector<int>& arr) {
-    if (arr.empty()) { return; } // checking if array is empty to not to fall into segmentation fault
+    if (arr.size() <= 1) { return; } // checking if array is empty to not to fall into segmentation fault
     QuickSortRec(arr, 0, arr.size() - 1);
 }
