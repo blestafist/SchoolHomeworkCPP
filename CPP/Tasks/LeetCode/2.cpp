@@ -138,3 +138,7 @@ int majorityElement2(vector<int>& nums) {
 
     return major;
 }
+
+void QuickSort() {
+    
+}
