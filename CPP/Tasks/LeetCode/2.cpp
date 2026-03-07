@@ -156,11 +156,16 @@ int PartitionQuickSort(std::vector<int>& arr, int first, int last) {
     return fence; // returning a new fence to get 2 new arrays;
 }
 
-void QuickSort(std::vector<int>& arr, int first, int last) {
+void QuickSortRec(std::vector<int>& arr, int first, int last) {
     if (first < last) {
         int piv = PartitionQuickSort(arr, first, last);
 
-        QuickSort(arr, first, piv - 1);
-        QuickSort(arr, piv + 1, last);
+        QuickSortRec(arr, first, piv - 1);
+        QuickSortRec(arr, piv + 1, last);
     }
+}
+
+void QuickSort(std::vector<int>& arr) {
+    if (arr.empty()) { return; } // checking if array is empty to not to fall into segmentation fault
+    QuickSortRec(arr, 0, arr.size() - 1);
 }
