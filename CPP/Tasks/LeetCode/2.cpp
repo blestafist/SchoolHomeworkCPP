@@ -124,13 +124,13 @@ int majorityElement(vector<int>& nums) {
 }
 
 
-int majorityElement(vector<int>& nums) {
+int majorityElement2(vector<int>& nums) {
     int major = nums[0], ct = 1;
 
-    for (int i = 1; i <= nums.size(); i++) {
+    for (int i = 1; i <= nums.size(); ++i) {
         if (ct == 0) {
-            ct++;
-            major = nums[i]
+            ++ct;
+            major = nums[i];
         }
         else if (nums[i] == major) { ++ct; }
         else { --ct; }
