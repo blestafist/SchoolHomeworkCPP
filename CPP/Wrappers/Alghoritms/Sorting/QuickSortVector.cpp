@@ -6,7 +6,7 @@ int PartitionQuickSort(std::vector<int>& arr, int first, int last) {
 
     for (int i = first; i < last; i++) {
         if (arr[i] <= pivot) {
-            ++i; 
+            ++fence; 
             std::swap(arr[fence], arr[i]);
         }
     }
