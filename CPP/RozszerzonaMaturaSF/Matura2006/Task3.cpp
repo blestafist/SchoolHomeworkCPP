@@ -8,7 +8,7 @@ const std::string OUTPUT_FILE_NAME = "wynik.txt";
 
 // =====================================================================
 
-bool IsPalidrome(const std::string& str) {
+bool IsPalindrome(const std::string& str) {
     for (size_t i = 0; i < str.size() / 2; i++) {
         if (str[i] != str[str.size() - 1 - i]) { return false; }
     }
@@ -30,7 +30,7 @@ int main() {
     int counter = 0;
 
     while (inputFile >> tempWord) {
-        if (IsPalidrome(tempWord)) { ++counter; }
+        if (IsPalindrome(tempWord)) { ++counter; }
     }
 
     Print("Ilość palidromnych liczb w pliku: ", counter);

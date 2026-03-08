@@ -8,11 +8,7 @@ int main() {
     currInt;
 
     for (int i = 0; i < 6; i++) {
-        localSum += arr[i];
-        if (localSum < 0) {
-            localSum = 0;
-        }
-
+        localSum = std::max(localSum + arr[i], arr[i]);
         if (localSum > maxSum) { maxSum = localSum; }
     }
 

@@ -25,7 +25,7 @@ int main() {
 
     while (inputFile >> tempWord) {
         for (char c : EVEN_CHARS) {
-            if (tempWord.back() == c) { ++counter; }
+            if (tempWord.back() == c) { counter++; }
         }
     }
 
