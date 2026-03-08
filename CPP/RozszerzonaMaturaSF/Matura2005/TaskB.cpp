@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <limits.h>
 
 // =========================== CONFIGURATION ===========================
 
@@ -12,8 +13,10 @@ int main() {
         std::ifstream inputFile (fileName);
         if (!inputFile) { std::cerr << "Error while opening input file!"; return -1; }
 
-        int localSum = 0,
-        maxSum = 0,
+        int tempInt; inputFile >> tempInt;
+
+        int localSum = tempInt,
+        maxSum = tempInt,
         currInt;
 
         while (inputFile >> currInt) {
