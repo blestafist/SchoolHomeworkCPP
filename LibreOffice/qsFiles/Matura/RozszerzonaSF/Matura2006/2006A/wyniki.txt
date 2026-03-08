@@ -1,0 +1,18 @@
+A:
+Pracownicy	Tygodniowe zarobki (brutto)
+Jan Kowalski	671,78 zł
+Jerzy Nowy	967,28 zł
+Piotr Myhan	432,50 zł
+Adam Nowak	432,50 zł
+Andrzej Dec	905,46 zł
+Jacek Marks	907,86 zł
+Leon Stefan	671,38 zł
+Karol Mytnik	1 498,45 zł
+Jan Beztroski	432,50 zł
+Dawid Gorski	432,50 zł
+
+
+B:
+7 352,20 zł
+
+
