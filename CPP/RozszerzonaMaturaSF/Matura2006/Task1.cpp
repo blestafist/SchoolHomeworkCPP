@@ -26,7 +26,7 @@ int main() {
     }
 
 
-    int maxOcc = 0, moreThanOneOccCount = 0;
+    int maxOcc = 1, moreThanOneOccCount = 0;
     std::string maxOccWord;
 
     for (const auto& [word, count] : wordsCounter) {
