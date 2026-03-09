@@ -30,7 +30,7 @@ int main() {
     int counter = 0;
 
     while (inputFile >> tempWord) {
-        if (IsPalindrome(tempWord)) { ++counter; }
+        if (IsPalindrome(tempWord)) { counter++; }
     }
 
     Print("Ilość palidromnych liczb w pliku: ", counter);
