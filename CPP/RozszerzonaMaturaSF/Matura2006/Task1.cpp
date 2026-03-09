@@ -30,10 +30,8 @@ int main() {
     std::string maxOccWord;
 
     for (const auto& [word, count] : wordsCounter) {
-        if (count > 1) {
-            moreThanOneOccCount++;
-            if (count > maxOcc) { maxOcc = count; maxOccWord = word; }
-        }
+        if (count > 1) { moreThanOneOccCount++; }
+        if (count > maxOcc) { maxOcc = count; maxOccWord = word; }
     }
 
     Print("A. Słów, występujących więcej niż 1 raz: ", moreThanOneOccCount);
