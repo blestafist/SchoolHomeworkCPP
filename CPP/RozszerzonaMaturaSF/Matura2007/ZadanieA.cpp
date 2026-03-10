@@ -1,15 +1,6 @@
 #include <iostream>
 #include <fstream>
 
-/*
-
-1. Check if num is prime
-2. Check if sum of digits is prime
-3. Check if sum of bin is prime
-4. Iterate the following range & count
-5. Write to file
-
-*/
 
 bool IsPrime(int num) { // 1
     if (num == 2 || num == 3) { return true; }
@@ -23,43 +14,39 @@ bool IsPrime(int num) { // 1
 }
 
 
-bool SumDigitsPrime(int num) { // 2
-    short result = 0;
-
-    while (num > 0) {
-        result += num % 10;
-        num /= 10;
-    }
+bool SumDigitsPrime(int num) {
+    int result = 0;
+    while (num > 0) { result += num % 10; num /= 10; }
 
     return IsPrime(result);
 }
 
 
-bool SumDigitsPrimeBin(int num) { // 3
-    short result = 0;
-
-    while (num > 0) {
-        result += num % 2;
-        num /= 2;
-    }
+bool SumDigitsPrimeBin(int num) {
+    int result = 0;
+    while (num > 0) { result += num % 2; num /= 2; }
 
     return IsPrime(result);
+}
+
+bool IsSuperB(int num) {
+    return IsPrime(num) && SumDigitsPrimeBin(num) && SumDigitsPrime(num);
 }
 
 
 void WriteToFile(const std::string& fileName, int downRange, int upperRange) {
-    std::ofstream output(fileName);
+    std::ofstream outputFile(fileName);
     int counter = 0;
 
     for (int i = downRange; i <= upperRange; i++) {
-        if (IsPrime(i) && (SumDigitsPrime(i) && SumDigitsPrimeBin(i))) {
+        if (IsSuperB(i)) {
             counter++;
-            output << i << "\n";
+            outputFile << i << "\n";
         }
     }
 
     std::cout << "Dla przedziału <" << downRange << "; " << upperRange << "> " << counter << "\n";
-    output.close();
+    outputFile << "\n\nDla przedziału <" << downRange << "; " << upperRange << "> " << counter << "\n";
 }
 
 
