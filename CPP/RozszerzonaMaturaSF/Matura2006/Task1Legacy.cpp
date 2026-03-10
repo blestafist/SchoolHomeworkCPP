@@ -2,8 +2,12 @@
 #include <fstream>
 #include <algorithm>
 
+// =========================== CONFIGURATION ===========================
+
 const std::string INPUT_FILE_NAME = "dane.txt";
 const std::string OUTPUT_FILE_NAME = "wynik.txt";
+
+// =====================================================================
 
 int main() {
     std::ifstream inputFile (INPUT_FILE_NAME);
@@ -15,7 +19,7 @@ int main() {
     std::string tab[10000], maxWord;
     int wordCount = 0;
 
-    while (inputFile >> tab[wordCount] && wordCount < 10000) { wordCount++; }
+    while (inputFile >> tab[wordCount] && wordCount < 10000) { wordCount++; } // getting file length
 
     std::sort(tab, tab + wordCount);
 
