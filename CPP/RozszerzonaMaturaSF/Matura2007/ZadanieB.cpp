@@ -55,7 +55,7 @@ int main() { // entry point
     for (int i = DOWN_RANGE; i <= UPPER_RANGE; i++) {
         if (SumDigitsPrime(i)) {
             sumDigitsPrimeCounter++;
-            if (IsSuperB(i)) { sum++; }
+            if (IsSuperB(i)) { sum += i; }
         }
     }
 
