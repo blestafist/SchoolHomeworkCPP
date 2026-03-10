@@ -1,17 +1,6 @@
 #include <fstream>
 #include <iostream>
 
-/*
-
-1. Pull the word from the file
-2. Reverse the word, write it to output file
-3. Measure its length
-4. If needed. override the shortest and longest var
-5. Close the file
-6. Print results
-
-*/
-
 // ================================== CONFIGURATION ==================================
 
 const std::string INPUT_FILE_NAME = "slowa.txt";
@@ -30,10 +19,10 @@ void ReverseString(std::string& str) {
     }
 }
 
+
 int main() {
     std::ifstream inputFile(INPUT_FILE_NAME);
-
-    if(!inputFile.is_open()) { std::cout << "Error while opening the file"; }
+    if(!inputFile) { std::cerr << "Error while opening the file"; return -1; }
 
     std::ofstream outputFilePass(OUTPUT_FILE_NAME), outputFileWords(OUTPUT2_FILE_NAME);
 
@@ -50,14 +39,10 @@ int main() {
         std::cout << tempWord << "\n";
     }
 
-    outputFilePass.close();
-
     std::cout << "Minimal length: " << minLength << " in word \"" << shortestStr << "\"\n";
     outputFileWords << "Minimal length: " << minLength << " in word \"" << shortestStr << "\"\n";
 
     std::cout << "Max length: " << maxLength << " in word \"" << longestStr << "\"\n";
     outputFileWords << "Max length: " << maxLength << " in word \"" << longestStr << "\"\n";
-
-    outputFileWords.close();
     return 0;
 }
