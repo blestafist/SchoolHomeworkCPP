@@ -1,33 +1,21 @@
-#include <fstream>
 #include <iostream>
+#include <fstream>
 
-/*
+// =========================== CONFIGURATION ===========================
 
-! 1st
+const std::string OUTPUT_FILE_NAME = "wyniki.txt";
 
-1. IsPrime interface realisation
-2. Check if sum of digits is prime
-3. Count and display the answer
+const int DOWN_RANGE = 100;
+const int UPPER_RANGE = 10000;
 
-! 2nd
+// =====================================================================
 
-1. Count the sum of nums in 2.txt (<100, 10000>)
-2. Check if prime
 
-*/
-
-// ========================================== CONFIGURATION ==========================================
-
-const std::string INPUT_FILE_NAME = "2.txt"
-
-// ===================================================================================================
-
-bool IsPrime(unsigned short num) {
-    if (num < 2) { return false; }
+bool IsPrime(int num) { // 1
     if (num == 2 || num == 3) { return true; }
-    if (num % 2 == 0 || num % 3 == 0) { return false; }
+    if (num % 2 == 0 || num % 3 == 0 || num < 2) { return false; }
 
-    for (unsigned short i = 5; i * i <= num; i += 6) {
+    for (int i = 5; i * i <= num; i += 6) {
         if (num % i == 0 || num % (i + 2) == 0) { return false; }
     }
 
@@ -35,31 +23,48 @@ bool IsPrime(unsigned short num) {
 }
 
 
-
-bool SumDigitsPrime(unsigned short num) { // 2
-    short result = 0;
-
-    while (num > 0) {
-        result += num % 10;
-        num /= 10;
-    }
+bool SumDigitsPrime(int num) {
+    int result = 0;
+    while (num > 0) { result += num % 10; num /= 10; }
 
     return IsPrime(result);
 }
 
-int main() {
-    unsigned short counter = 0, tempNum;
-    long sumResult = 0;
 
-    for (unsigned short i = 100; i < 10000; i++) {
-        if (SumDigitsPrime(i)) { counter++; }
+bool SumDigitsPrimeBin(int num) {
+    int result = 0;
+    while (num > 0) { result += num % 2; num /= 2; }
+
+    return IsPrime(result);
+}
+
+bool IsSuperB(int num) {
+    return IsPrime(num) && SumDigitsPrimeBin(num);
+}
+
+
+int main() { // entry point
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
+
+    int sum = 0;
+    int sumDigitsPrimeCounter = 0;
+
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
+
+    for (int i = DOWN_RANGE; i <= UPPER_RANGE; i++) {
+        if (SumDigitsPrime(i)) {
+            sumDigitsPrimeCounter++;
+            if (IsSuperB(i)) { sum++; }
+        }
     }
 
-    std::ifstream inputFile ("2.txt");
-
-    while (inputFile >> tempNum) {
-        tempNum += sumResult;
+    Print("Ilość liczb, których suma cyfr jest liczbą pierwszą: ", sumDigitsPrimeCounter);
+    
+    if (IsPrime(sum)) {
+        Print("Tak, suma wszystkich liczb B pierwszych jest pierwsza");
     }
+    else { Print("Nie, suma wszystkich liczb B pierwszych nie jest pierwsza"); }
 
-    std::cout << counter << "\n" << IsPrime(sumResult) << "\n";
+    return 0;
 }

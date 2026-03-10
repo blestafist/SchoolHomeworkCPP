@@ -1,0 +1,2 @@
+Ilość liczb, których suma cyfr jest liczbą pierwszą: 2973
+Nie, suma wszystkich liczb B pierwszych nie jest pierwsza
