@@ -1,80 +1,61 @@
 #include <fstream>
 #include <iostream>
-#include <string>
-#include <vector>
-
 
 // ================================== CONFIGURATION ==================================
 
-const std::string INPUT_FILE_NAME = "slowa.txt";
-const std::string OUTPUT_FILE_NAME = "hasla_b.txt";
-const std::string OUTPUT2_FILE_NAme = "slowa_b.txt";
+const std::string INPUT_FILE_NAME   = "slowa.txt";
+const std::string OUTPUT_FILE_NAME  = "hasla_b.txt";
+const std::string OUTPUT2_FILE_NAME = "slowa_b.txt";
 
 // ===================================================================================
 
-bool IsPalindrome(const std::string& str) {
-    for (char i = 0; i < str.size() / 2; i++) {
-        if (str[i] != str[str.size() - 1 - i]) { return false; }
-    }
-
+bool IsPalindrome(const std::string& str, int len) {
+    for (int i = 0; i < len / 2; i++)
+        if (str[i] != str[len - 1 - i]) { return false; };
     return true;
 }
 
-std::string ReturnW2(std::string str) { // transferring by value
-    std::string anotherPart = "";
+std::string ReturnW2(const std::string& str) {
+    int w1Len = 1;
+    for (int len = str.size(); len >= 1; len--) {
+        if (IsPalindrome(str, len)) { w1Len = len; break; }
+    }
+    std::string reversed = "";
+    for (int i = str.size() - 1; i >= w1Len; i--) { reversed += str[i]; }
 
-    do {
-        if (IsPalindrome(str)) { // if is palidrome compose a new pass
-            return anotherPart;
-        }
-
-        // if not move character to
-        // ! ANOTHER  
-        // var
-        
-        anotherPart += str[str.size() - 1];
-        str.pop_back();
-
-    } while (str.size() > 1);
-
-    return anotherPart;
+    return reversed;
 }
 
 int main() {
     std::ifstream inputFile(INPUT_FILE_NAME);
-    if(!inputFile.is_open()) { std::cout << "Error while opening the file"; }
+    if (!inputFile) { std::cerr << "Error opening input file!\n"; return -1; }
 
-    std::ofstream outputFilePass(OUTPUT_FILE_NAME), outputFileWords(OUTPUT2_FILE_NAme);
-    std::string tempWord, wordModified, shortestStr, longestStr;
-    short minLength, maxLength;
-    int sumOfLength = 0;
+    std::ofstream outputFilePass(OUTPUT_FILE_NAME), outputFileWords(OUTPUT2_FILE_NAME);
+    if (!outputFilePass || !outputFileWords) { std::cerr << "Error opening output file!\n"; return -1; }
 
-    std::vector<std::string> contains12Chars {};
+    auto PrintWords = [&](auto&&... args) { (std::cout << ... << args) << "\n"; (outputFileWords << ... << args) << "\n"; };
 
-    inputFile >> tempWord;
-    shortestStr = tempWord; longestStr = tempWord; minLength = tempWord.size(); maxLength = tempWord.size();
+    std::string tempWord, wordModified;
+    std::string shortestStr = "", longestStr = "", contains12Chars = "";
+    int sumOfLength = 0, minLength = -1, maxLength = -1;
 
     while (inputFile >> tempWord) {
         wordModified = ReturnW2(tempWord) + tempWord;
-        outputFilePass << wordModified << "\n";
-        std::cout << wordModified << "\n";
+        std::cout << wordModified << '\n';
+        outputFilePass << wordModified << '\n';
 
-        if (wordModified.size() == 12) { contains12Chars.push_back(wordModified); }
+        int len = wordModified.size();
+        sumOfLength += len;
 
-        if (wordModified.size() < minLength) { minLength = wordModified.size(); shortestStr = wordModified; }
-        if (wordModified.size() > maxLength) { maxLength = wordModified.size(); longestStr = wordModified; }
-
-        sumOfLength += wordModified.size();
+        if (len == 12) { contains12Chars += wordModified + "\n"; }
+        if (minLength == -1 || len < minLength) { minLength = len; shortestStr = wordModified; }
+        if (maxLength == -1 || len > maxLength) { maxLength = len; longestStr  = wordModified; }
     }
 
-    outputFilePass.close();
-
-    std::cout << "\n\nHasła o długości 12: \n";
-    outputFileWords << "\n\nHasła o długości 12: \n";
-    for (short i = 0; i < contains12Chars.size(); i++) { std::cout << contains12Chars[i] << "\n"; outputFileWords << contains12Chars[i] << "\n"; }
-    
-    std::cout << "\n\nNajdłuższe hasło: " << longestStr << "\n\nNajkrótsze hasło: " << shortestStr << "\n\nSuma długości wszystkich haseł: " << sumOfLength << "\n";
-    outputFileWords << "\n\nNajdłuższe hasło: " << longestStr << "\n\nNajkrótsze hasło: " << shortestStr << "\n\nSuma długości wszystkich haseł: " << sumOfLength << "\n";
+    PrintWords("1. Hasla o dlugosci 12:\n", contains12Chars);
+    PrintWords("2. Najdluzsze haslo: ",     longestStr);
+    PrintWords("   Najkrotsze haslo: ",     shortestStr);
+    PrintWords("3. Suma dlugosci hasel: ",  sumOfLength);
 
     return 0;
 }
