@@ -52,10 +52,10 @@ int main() {
         if (maxLength == -1 || len > maxLength) { maxLength = len; longestStr  = wordModified; }
     }
 
-    PrintWords("1. Hasla o dlugosci 12:\n", contains12Chars);
-    PrintWords("2. Najdluzsze haslo: ",     longestStr);
+    PrintWords("\n\n1. Hasla o dlugosci 12:\n", contains12Chars);
+    PrintWords("\n2. Najdluzsze haslo: ",     longestStr);
     PrintWords("   Najkrotsze haslo: ",     shortestStr);
-    PrintWords("3. Suma dlugosci hasel: ",  sumOfLength);
+    PrintWords("\n3. Suma dlugosci hasel: ",  sumOfLength);
 
     return 0;
 }

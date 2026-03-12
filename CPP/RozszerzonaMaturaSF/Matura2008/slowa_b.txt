@@ -1,14 +1,13 @@
 
 
-Hasła o długości 12: 
+1. Hasla o dlugosci 12:
 BDJBFBBFBJDB
 DFDAHEEHADFD
 IHBIBCCBIBHI
 FABBEAAEBBAF
 
 
-Najdłuższe hasło: AJBEIKKFIIGIIJBAHADIBCIDHDICBIDAHABJIIGIIFKKIEBJA
+2. Najdluzsze haslo: AJBEIKKFIIGIIJBAHADIBCIDHDICBIDAHABJIIGIIFKKIEBJA
+   Najkrotsze haslo: OKOOKO
 
-Najkrótsze hasło: OKOOKO
-
-Suma długości wszystkich haseł: 27691
+3. Suma dlugosci hasel: 27731
