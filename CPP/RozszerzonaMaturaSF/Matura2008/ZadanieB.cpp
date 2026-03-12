@@ -35,9 +35,15 @@ int main() {
 
     auto PrintWords = [&](auto&&... args) { (std::cout << ... << args) << "\n"; (outputFileWords << ... << args) << "\n"; };
 
-    std::string tempWord, wordModified;
-    std::string shortestStr = "", longestStr = "", contains12Chars = "";
-    int sumOfLength = 0, minLength = -1, maxLength = -1;
+    std::string tempWord, // temporary word used to get data from file
+    wordModified, // modified word, after composing
+    shortestStr = "", // shortest wordModified container
+    longestStr = "", // longest wordModified container
+    contains12Chars = ""; // a complex container for wordModified, divien by \n
+
+    int sumOfLength = 0,  
+    minLength = -1, 
+    maxLength = -1;
 
     while (inputFile >> tempWord) {
         wordModified = ReturnW2(tempWord) + tempWord;
