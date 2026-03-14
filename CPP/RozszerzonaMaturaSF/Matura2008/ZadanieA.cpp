@@ -30,10 +30,10 @@ int main() {
     short minLength = 31, maxLength = 0;
 
     while (inputFile >> tempWord) {
+        ReverseString(tempWord);
+
         if (tempWord.size() < minLength) { minLength = tempWord.size(); shortestStr = tempWord; }
         if (tempWord.size() > maxLength) { maxLength = tempWord.size(); longestStr = tempWord; }
-
-        ReverseString(tempWord);
 
         outputFilePass << tempWord << "\n";
         std::cout << tempWord << "\n";

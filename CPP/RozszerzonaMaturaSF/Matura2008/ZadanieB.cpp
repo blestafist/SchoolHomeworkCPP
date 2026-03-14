@@ -1,67 +1,75 @@
-#include <fstream>
 #include <iostream>
+#include <fstream>
 
-// ================================== CONFIGURATION ==================================
+// ============================================ CONFIGURATION ============================================
 
-const std::string INPUT_FILE_NAME   = "slowa.txt";
-const std::string OUTPUT_FILE_NAME  = "hasla_b.txt";
-const std::string OUTPUT2_FILE_NAME = "slowa_b.txt";
+const std::string INPUT_FILE_NAME = "slowa.txt";
+const std::string PASS_FILE_NAME = "hasla_b.txt";
+const std::string ANSWERS_FILE_NAME = "slowa_b.txt";
 
-// ===================================================================================
+// =======================================================================================================
 
 bool IsPalindrome(const std::string& str, int len) {
-    for (int i = 0; i < len / 2; i++)
-        if (str[i] != str[len - 1 - i]) { return false; };
+    for (int i = 0; i < len / 2; i++) {
+        if (str[i] != str[len - 1 - i]) { return false; }
+    }
+
     return true;
 }
 
-std::string ReturnW2(const std::string& str) {
-    int w1Len = 1;
-    for (int len = str.size(); len >= 1; len--) {
-        if (IsPalindrome(str, len)) { w1Len = len; break; }
-    }
-    std::string reversed = "";
-    for (int i = str.size() - 1; i >= w1Len; i--) { reversed += str[i]; }
 
-    return reversed;
+std::string ComposeW2(const std::string& origin) {
+    int w1Len = 1;
+
+    for (int i = origin.size(); i >= 1; i--) {
+        if (IsPalindrome(origin, i)) { w1Len = i; break; }
+    }
+
+    std::string result = "";
+    for (int i = origin.size() - 1; i >= w1Len; i--) {
+        result += origin[i];
+    }
+
+    return result;
 }
 
+
 int main() {
-    std::ifstream inputFile(INPUT_FILE_NAME);
-    if (!inputFile) { std::cerr << "Error opening input file!\n"; return -1; }
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    if (!inputFile) { std::cerr << "Error while opening input file!"; return -1; }
 
-    std::ofstream outputFilePass(OUTPUT_FILE_NAME), outputFileWords(OUTPUT2_FILE_NAME);
-    if (!outputFilePass || !outputFileWords) { std::cerr << "Error opening output file!\n"; return -1; }
+    std::ofstream passFile (PASS_FILE_NAME), answersFile (ANSWERS_FILE_NAME);
+    if (!passFile || !answersFile) { std::cerr << "Error while opening output files!"; return -1; }
 
-    auto PrintWords = [&](auto&&... args) { (std::cout << ... << args) << "\n"; (outputFileWords << ... << args) << "\n"; };
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (answersFile << ... << args) << "\n"; };
 
-    std::string tempWord, // temporary word used to get data from file
-    wordModified, // modified word, after composing
-    shortestStr = "", // shortest wordModified container
-    longestStr = "", // longest wordModified container
-    contains12Chars = ""; // a complex container for wordModified, divien by \n
+    std::string tempWord, 
+    longestStr = "",
+    shortestStr = "",
+    contains12Chars = "";
 
-    int sumOfLength = 0,  
-    minLength = -1, 
-    maxLength = -1;
+    int longest = -1,
+    shortest = -1,
+    sumLength = 0;
 
     while (inputFile >> tempWord) {
-        wordModified = ReturnW2(tempWord) + tempWord;
-        std::cout << wordModified << '\n';
-        outputFilePass << wordModified << '\n';
+        std::string composed = ComposeW2(tempWord) + tempWord;
+        int len = composed.size(); sumLength += len;
 
-        int len = wordModified.size();
-        sumOfLength += len;
+        std::cout << composed << "\n";
+        passFile << composed << "\n";
 
-        if (len == 12) { contains12Chars += wordModified + "\n"; }
-        if (minLength == -1 || len < minLength) { minLength = len; shortestStr = wordModified; }
-        if (maxLength == -1 || len > maxLength) { maxLength = len; longestStr  = wordModified; }
+        if (len == 12) { contains12Chars += composed + "\n"; }
+        if (longest == -1 || len > longest) { longest = len; longestStr = composed; }
+        if (shortest == -1 || len < shortest) { shortest = len; shortestStr = composed; }
     }
 
-    PrintWords("\n\n1. Hasla o dlugosci 12:\n", contains12Chars);
-    PrintWords("\n2. Najdluzsze haslo: ",     longestStr);
-    PrintWords("   Najkrotsze haslo: ",     shortestStr);
-    PrintWords("\n3. Suma dlugosci hasel: ",  sumOfLength);
+    std::cout << "\n\n";
+
+    Print("Hasła o długości 12: \n", contains12Chars);
+    Print("\nNajdłuższe hasło: ", longestStr);
+    Print("Najkrótsze hasło: ", shortestStr);
+    Print("\nSuma wszystkich długości: ", sumLength);
 
     return 0;
 }
