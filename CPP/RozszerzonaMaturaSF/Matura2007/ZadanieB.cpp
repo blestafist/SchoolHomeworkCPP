@@ -38,6 +38,7 @@ bool SumDigitsPrimeBin(int num) {
     return IsPrime(result);
 }
 
+
 bool IsSuperB(int num) {
     return IsPrime(num) && SumDigitsPrimeBin(num);
 }

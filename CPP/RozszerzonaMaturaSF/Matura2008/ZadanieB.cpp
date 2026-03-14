@@ -66,10 +66,10 @@ int main() {
 
     std::cout << "\n\n";
 
-    Print("Hasła o długości 12: \n", contains12Chars);
-    Print("\nNajdłuższe hasło: ", longestStr);
+    Print("1. Hasła o długości 12: \n", contains12Chars);
+    Print("\n2. Najdłuższe hasło: ", longestStr);
     Print("Najkrótsze hasło: ", shortestStr);
-    Print("\nSuma wszystkich długości: ", sumLength);
+    Print("\n3. Suma wszystkich długości: ", sumLength);
 
     return 0;
 }
