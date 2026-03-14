@@ -1,6 +1,5 @@
 #include <iostream>
 #include <fstream>
-#include <stdexcept>
 
 // ============================================ CONFIGURATION ============================================
 
@@ -10,7 +9,7 @@ const std::string ANSWERS_FILE_NAME = "slowa_b.txt";
 
 // =======================================================================================================
 
-bool IsPalidrome(const std::string& str, int len) {
+bool IsPalindrome(const std::string& str, int len) {
     for (int i = 0; i < len / 2; i++) {
         if (str[i] != str[len - 1 - i]) { return false; }
     }
@@ -23,7 +22,7 @@ std::string ComposeW2(const std::string& origin) {
     int w1Len = 1;
 
     for (int i = origin.size(); i >= 1; i--) {
-        if (IsPalidrome(origin, i)) { w1Len = i; break; }
+        if (IsPalindrome(origin, i)) { w1Len = i; break; }
     }
 
     std::string result = "";
@@ -51,11 +50,11 @@ int main() {
 
     int longest = -1,
     shortest = -1,
-    sumLength;
+    sumLength = 0;
 
     while (inputFile >> tempWord) {
-        std::string composed = ComposeW2(tempWord);
-        int len = composed.size();
+        std::string composed = ComposeW2(tempWord) + tempWord;
+        int len = composed.size(); sumLength += len;
 
         std::cout << composed << "\n";
         passFile << composed << "\n";
@@ -65,5 +64,12 @@ int main() {
         if (shortest == -1 || len < shortest) { shortest = len; shortestStr = composed; }
     }
 
+    std::cout << "\n\n";
 
+    Print("Hasła o długości 12: \n", contains12Chars);
+    Print("\nNajdłuższe hasło: ", longestStr);
+    Print("Najkrótsze hasło: ", shortestStr);
+    Print("\nSuma wszystkich długości: ", sumLength);
+
+    return 0;
 }
