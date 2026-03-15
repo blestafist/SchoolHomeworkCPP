@@ -26,6 +26,8 @@ int main() {
 
     std::ofstream outputFilePass(OUTPUT_FILE_NAME), outputFileWords(OUTPUT2_FILE_NAME);
 
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFileWords << ... << args) << "\n"; };
+
     std::string tempWord, shortestStr, longestStr;
     short minLength = 31, maxLength = 0;
 
@@ -39,10 +41,8 @@ int main() {
         std::cout << tempWord << "\n";
     }
 
-    std::cout << "Minimal length: " << minLength << " in word \"" << shortestStr << "\"\n";
-    outputFileWords << "Minimal length: " << minLength << " in word \"" << shortestStr << "\"\n";
+    Print("Minimalna długość: ", minLength, " w słowie \"", shortestStr, "\"");
+    Print("Maksymalna długość: ", maxLength,  " w słowie \"",  longestStr,  "\"");
 
-    std::cout << "Max length: " << maxLength << " in word \"" << longestStr << "\"\n";
-    outputFileWords << "Max length: " << maxLength << " in word \"" << longestStr << "\"\n";
     return 0;
 }
