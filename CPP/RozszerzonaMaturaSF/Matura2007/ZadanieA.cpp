@@ -36,6 +36,7 @@ bool IsSuperB(int num) {
 
 void WriteToFile(const std::string& fileName, int downRange, int upperRange) {
     std::ofstream outputFile(fileName);
+    if (!outputFile) { std::cerr << "Error while opening output file: " << fileName; return;  }
     int counter = 0;
 
     for (int i = downRange; i <= upperRange; i++) {
