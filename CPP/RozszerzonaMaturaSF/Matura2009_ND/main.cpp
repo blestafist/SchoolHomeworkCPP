@@ -23,11 +23,25 @@ struct TwoStr {
             return a.find(b) != std::string::npos;
         }
 
+        bool AContainsBWithout() {
+            if (b.size() > a.size()) { return false; }
+            size_t maxLength = a.size() - b.size() + 1;
+
+            for (size_t i = 0; i < maxLength; i++) {
+                for (size_t j = 0; j < b.size(); j++) {
+                    if (a[j + i] != b[j]) { break; }
+                    if (j == b.size() - 1) { return true; }
+                }
+            }
+
+            return false;
+        }
+
         void ComposeWord() {
 
-        }   
+        }
 
-    
+
     private:
         void ComposeLongestFromFront() {
             for (char i = 0; i < b.size(); i++) {
@@ -45,6 +59,7 @@ bool IsPalindrome(const std::string& word) {
 }
 
 
+
 int main() {
     std::ifstream inputFIle (INPUT_FILE);
     std::ofstream outputFileAnswers(OUTPUT_FILE), outputFileWords(OUTPUT_WORDS_FILE);
@@ -52,16 +67,21 @@ int main() {
     std::string tempWord;
     bool prevSecond = true;
 
-    short palidromeCount = 0;
+    short palindromeCount = 0;
 
 
-    while (inputFIle >> tempWord) {
+    /* while (inputFIle >> tempWord) {
         if (IsPalindrome(tempWord)) { palidromeCount++; }
 
         if (prevSecond) {  }
-    }
+    } */
 
-    
+    std::string a = "001101",
+    b = "110";
+
+    std::cout << AContainsBExt(a, b);
+
+
 
     return 0;
 }
