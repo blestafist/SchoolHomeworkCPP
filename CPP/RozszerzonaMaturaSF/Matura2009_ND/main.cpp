@@ -47,7 +47,7 @@ struct TwoStr {
             ComposeLongestFromBack();
             composedBack = c;
 
-            c = composedBack.size() > composedFront.size() ? composedBack : composedFront;
+            c = composedBack.size() < composedFront.size() ? composedBack : composedFront;
         }
 
 
@@ -97,7 +97,7 @@ struct TwoStr {
 
 
 bool IsPalindrome(const std::string& word) {
-    for (char i = 0; i < word.size() / 2; i++) {
+    for (size_t i = 0; i < word.size() / 2; i++) {
         if (word[i] != word[word.size() - 1 - i]) { return false; }
     }
 
