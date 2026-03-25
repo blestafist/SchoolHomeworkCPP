@@ -1,6 +1,5 @@
-a) Liczba par, w ktorych jedna liczba jest wielokrotnoscia drugiej: 10
+a) Ile jest wierszy, w których jedna z liczb jest wielokrotnością drugiej? 10
 
-b) Liczba par wzglednie pierwszych (NWD = 1): 584
+b) Ile jest wierszy zawierających pary względnie pierwsze (NWD = 1)? 584
 
-c) Liczba par o tej samej sumie cyfr: 48
-
+c) Ile jest wierszy, dla których suma cyfr pierwszej liczby jest równa sumie cyfr drugiej liczby? 48
