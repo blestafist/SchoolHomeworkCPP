@@ -1,0 +1,12 @@
+| Nazwisko | Imię     | Data urodzenia   | Miejsce urodzenia | Stanowisko | Zestawienie    |
+| -------- | -------- | ---------------- | ----------------- | ---------- | -------------- |
+| Abak     | Karolina | 10 czerwca 1957  | Wroclaw           | grafik     | Karolina Abak  |
+| Gates    | Anna     | 2 lipca 1967     | JeleniaGora       | grafik     | Anna Gates     |
+| Inny     | Stefan   | 7 czerwca 1966   | Leszno            | grafik     | Stefan Inny    |
+| Inny     | Bogdan   | 7 czerwca 1966   | Olsztyn           | grafik     | Bogdan Inny    |
+| Kmicic   | Bogdan   | 13 czerwca 1964  | Poznan            | grafik     | Bogdan Kmicic  |
+| Mieta    | Roman    | 17 marca 1963    | Swidnica          | grafik     | Roman Mieta    |
+| Rengifo  | Stefan   | 30 kwietnia 1964 | Krakow            | grafik     | Stefan Rengifo |
+| Zysk     | Maryla   | 11 kwietnia 1965 | Szczecin          | grafik     | Maryla Zysk    |
+
+

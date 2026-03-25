@@ -1,0 +1,20 @@
+| Nazwisko  | Imię      | Data urodzenia | Miejsce urodzenia | Stanowisko |
+| --------- | --------- | -------------- | ----------------- | ---------- |
+| Janasik   | Anatol    | 21-01-68       | Bydgoszcz         | menadzer   |
+| Kmicic    | Jan       | 10-08-66       | Bydgoszcz         | informatyk |
+| Kiel      | Barbara   | 05-09-70       | Bydgoszcz         | informatyk |
+| Gagatek   | Zenon     | 03-12-67       | Bydgoszcz         | portier    |
+| Soski     | Robert    | 26-07-68       | Gdynia            | ksiegowy   |
+| Musial    | Jacek     | 30-08-67       | Gdansk            | informatyk |
+| Boruta    | Michal    | 21-12-64       | Gdynia            | magazynier |
+| Jasiak    | Monika    | 08-03-68       | Gdansk            | statystyk  |
+| Karpowicz | Dorota    | 27-03-59       | Bialystok         | rzecznik   |
+| Potocki   | Stanislaw | 02-01-63       | Gdynia            | radca      |
+| Mieta     | Karol     | 11-09-64       | Gdansk            | ksiegowy   |
+| Kiel      | Stanislaw | 05-10-71       | Bydgoszcz         | menadzer   |
+| Gagatek   | Stefan    | 03-11-67       | Bydgoszcz         | ksiegowy   |
+| Miturski  | Mateusz   | 30-10-60       | Bydgoszcz         | informatyk |
+| Myslicki  | Stanislaw | 11-08-62       | Bydgoszcz         | porzadkowy |
+| Bosman    | Stefan    | 01-01-70       | Bydgoszcz         | portier    |
+
+
