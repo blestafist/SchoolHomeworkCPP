@@ -4,22 +4,11 @@
 
 // ===================== CONFIGURATION =====================
 
-const std::string INPUT_FILE = "napisy.txt";
-const std::string OUTPUT_FILE = "zadanie4.txt";
+const std::string INPUT_FILE_NAME = "napisy.txt";
+const std::string OUTPUT_FILE_NAME = "zadanie4.txt";
 
 // =========================================================
 
-/* 
-
-1. Count all words with size() % 2 == 0;
-2. Count all words where num of '0' == num of '1'
-3. Count words with:
-    - All chars are '0'
-    - All chars are '1'
-4. Make an arr with .size()
-5. Obfuscate the fucking code
-
-*/
 
 bool SameCharsQuantity(const std::string& str) {
     int counter = 0;
@@ -41,21 +30,24 @@ bool ConsistsOnlyOneType(const std::string& str, char flag) {
 
 
 int main() {
-    std::ifstream inputFile (INPUT_FILE);
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    if (!inputFile) { std::cerr << "Error while opening input file"; return -1; }
 
-    if (!inputFile.is_open()) { std::cerr << "Error while opening the file"; return -1; }
-
-    std::ofstream outputFile;
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
+    if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
     std::string tempWord;
 
-    // define counters
-    int evenCharsCounter = 0, 
-    sameCharsQuantityCounter = 0, 
-    wordsOnlyFromZeroes = 0, 
-    wordsOnlyFromOnes = 0;
+    int evenCharsCounter = 0,
+        sameCharsQuantityCounter = 0,
+        wordsOnlyFromZeroes = 0,
+        wordsOnlyFromOnes = 0;
 
-    // define an array with "cups"
     int sizeArr[15] {};
+
+    auto Print = [&](auto&&... args) {
+        (std::cout << ... << args) << "\n";
+        (outputFile << ... << args) << "\n";
+    };
 
     while (inputFile >> tempWord) {
         if (tempWord.size() % 2 == 0) { evenCharsCounter++; }
@@ -64,34 +56,20 @@ int main() {
         else if (ConsistsOnlyOneType(tempWord, '0')) { wordsOnlyFromZeroes++; }
         else if (ConsistsOnlyOneType(tempWord, '1')) { wordsOnlyFromOnes++; }
 
-        sizeArr[tempWord.size() - 2]++;
+        if (tempWord.size() >= 2 && tempWord.size() <= 16) {
+            sizeArr[tempWord.size() - 2]++;
+        }
     }
 
-    inputFile.close();
-
-    outputFile.open(OUTPUT_FILE);
-    if (!outputFile.is_open()) { std::cerr << "Error while opening output file!"; return -1;}
-
-    std::cout << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
-    outputFile << "1. Ilość napisów o parzystej długości: " << evenCharsCounter;
-
-    std::cout << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
-    outputFile << "\n\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: " << sameCharsQuantityCounter;
-
-    std::cout << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
-    std::cout << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
-    outputFile << "\n\n3. Ilość napisów, zawierających same zera: " << wordsOnlyFromZeroes;
-    outputFile << "\nIlość napisów, zawierających same jedynki: " << wordsOnlyFromOnes;
-
-    std::cout << "\n\n4. Ilośc napisów o długości K: \n";
-    outputFile << "\n\n4. Ilośc napisów o długości K: \n";
+    Print("1. Ilość napisów o parzystej długości: ", evenCharsCounter);
+    Print("\n2. Ilość napisów, zawierających tą samą liczbę zer i jedynek: ", sameCharsQuantityCounter);
+    Print("\n3. Ilość napisów, zawierających same zera: ", wordsOnlyFromZeroes);
+    Print("Ilość napisów, zawierających same jedynki: ", wordsOnlyFromOnes);
+    Print("\n4. Ilość napisów o długości K: ");
 
     for (int i = 0; i < 15; i++) {
-        std::cout << i + 2 << ": " << sizeArr[i] << "\n";
-        outputFile << i + 2 << ": " << sizeArr[i] << "\n";
+        Print(i + 2, ": ", sizeArr[i]);
     }
 
-
-    outputFile.close();
     return 0;
 }
