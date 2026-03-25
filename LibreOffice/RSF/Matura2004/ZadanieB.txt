@@ -1,0 +1,7 @@
+| Wykształcenie | Count - Wykształcenie |
+| ------------- | --------------------- |
+| podstawowe    | 25%                   |
+| średnie       | 32%                   |
+| wyższe        | 43%                   |
+
+

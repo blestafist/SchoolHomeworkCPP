@@ -1,0 +1,5 @@
+|                                                  |         |
+| ------------------------------------------------ | ------- |
+| Suma wszystkich liczb w systemie szestnastkowym: | 2936681 |
+
+

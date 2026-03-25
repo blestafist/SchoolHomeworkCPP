@@ -1,0 +1,23 @@
+| Slowa |
+| ----- |
+| AAA   |
+| AAB   |
+| AAC   |
+| ABA   |
+| ABB   |
+| ABC   |
+| ACA   |
+| BAA   |
+| BAB   |
+| BAC   |
+| BBB   |
+| BCA   |
+| BCC   |
+| CAA   |
+| CAB   |
+| CAC   |
+| CCA   |
+| CCB   |
+| CCC   |
+
+

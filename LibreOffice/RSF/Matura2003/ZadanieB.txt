@@ -1,0 +1,22 @@
+| Slowa            | Count - Slowa |
+| ---------------- | ------------- |
+| AAA              | 28            |
+| AAB              | 92            |
+| AAC              | 35            |
+| ABA              | 44            |
+| ABB              | 227           |
+| ABC              | 78            |
+| ACA              | 31            |
+| BAA              | 36            |
+| BAB              | 30            |
+| BAC              | 25            |
+| BBB              | 30            |
+| BCA              | 27            |
+| BCC              | 32            |
+| CAA              | 38            |
+| CAB              | 51            |
+| CAC              | 49            |
+| CCA              | 37            |
+| CCB              | 55            |
+| CCC              | 55            |
+| **Total Result** | **1000**      |
