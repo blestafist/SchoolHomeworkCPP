@@ -1,2 +1,0 @@
-Minimal length: 4 in word "EHJA"
-Max length: 28 in word "DCBAJAHHJIGABCDCCDCBAGIJHHAJ"
