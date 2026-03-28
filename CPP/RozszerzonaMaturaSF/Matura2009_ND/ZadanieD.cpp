@@ -12,9 +12,9 @@ const std::string OUTPUT_FILE = "slowa.txt";
 bool ContainsSubstring(const std::string& a, const std::string& b) {
     if (b.size() > a.size()) { return false; }
     
-    size_t maxStartPos = a.size() - b.size() + 1;
+    size_t maxStartPos = a.size() - b.size();
     
-    for (size_t i = 0; i < maxStartPos; i++) {
+    for (size_t i = 0; i <= maxStartPos; i++) {
         bool found = true;
         for (size_t j = 0; j < b.size(); j++) {
             if (a[i + j] != b[j]) { found = false; break; }
