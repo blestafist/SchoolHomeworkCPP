@@ -1,0 +1,22 @@
+1:
+Komitet	A	B	C	D	E	F
+Lączna suma głosów	6331	3801	3866	4941	4351	2281
+
+2:
+Najmniej głosów:	4
+Najwięcej głosów:	2
+
+3:
+Komitet	Liczba mandatów
+A	9
+B	1
+C	4
+D	4
+E	4
+F	2
+
+4:
+Komitet		A	B	C	D	E	F
+Liczba głosów	93	50	50	69	62	26
+
+
