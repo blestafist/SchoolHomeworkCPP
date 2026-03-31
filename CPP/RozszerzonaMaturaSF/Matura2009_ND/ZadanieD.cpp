@@ -28,7 +28,7 @@ bool ContainsSubstring(const std::string& a, const std::string& b) {
 std::string MergeWithOverlap(const std::string& first, const std::string& second) {
     int maxOverlap = 0;
     
-    for (int i = 1; i <= (int)first.size() && i <= (int)second.size(); i++) {
+    for (int i = 1; i <= first.size() && i <= second.size(); i++) {
         bool matches = true;
         
         for (int j = 0; j < i; j++) {
