@@ -3,29 +3,31 @@
 
 // =========================== CONFIGURATION ===========================
 
-const std::string INPUT_FILE = "dane.txt";
-const std::string OUTPUT_FILE = "zad_5.txt";
+const std::string INPUT_FILE_NAME = "dane.txt";
+const std::string OUTPUT_FILE_NAME = "zad_5.txt";
 
 // =====================================================================
 
-bool IsPalindrome(const std::string& word) {
-    for (size_t i = 0; i < word.size() / 2; i++) {
-        if (word[i] != word[word.size() - 1 - i]) { return false; }
+bool IsPalindrome(const std::string& str) {
+    for (size_t i = 0; i < str.size() / 2; i++) {
+        if (str[i] != str[str.size() - 1 - i]) { return false; }
     }
+
     return true;
 }
 
 int main() {
-    std::ifstream inputFile(INPUT_FILE);
-    std::ofstream outputFile(OUTPUT_FILE);
+    std::ifstream inputFile(INPUT_FILE_NAME);
+    std::ofstream outputFile(OUTPUT_FILE_NAME);
     
-    std::string word;
+    std::string tempWord;
     int palindromeCount = 0;
     
-    while (inputFile >> word) {
-        if (IsPalindrome(word)) { palindromeCount++; }
+    while (inputFile >> tempWord) {
+        if (IsPalindrome(tempWord)) { palindromeCount++; }
     }
     
+    std::cout << "a) " << palindromeCount << "\n";
     outputFile << "a) " << palindromeCount << "\n";
     
     return 0;
