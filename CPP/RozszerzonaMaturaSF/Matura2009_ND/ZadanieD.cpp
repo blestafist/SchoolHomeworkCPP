@@ -1,28 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 
 // =========================== CONFIGURATION ===========================
 
-const std::string INPUT_FILE = "dane.txt";
-const std::string OUTPUT_FILE = "slowa.txt";
+const std::string INPUT_FILE_NAME = "dane.txt";
+const std::string OUTPUT_FILE_NAME = "slowa.txt";
 
 // =====================================================================
 
 bool ContainsSubstring(const std::string& a, const std::string& b) {
-    if (b.size() > a.size()) { return false; }
-    
-    size_t maxStartPos = a.size() - b.size();
-    
-    for (size_t i = 0; i <= maxStartPos; i++) {
-        bool found = true;
-        for (size_t j = 0; j < b.size(); j++) {
-            if (a[i + j] != b[j]) { found = false; break; }
-        }
-        if (found) { return true; }
-    }
-    
-    return false;
+    return a.find(b) != std::string::npos;
 }
 
 std::string MergeWithOverlap(const std::string& first, const std::string& second) {
@@ -60,8 +47,8 @@ std::string FindShortestWord(const std::string& a, const std::string& b) {
 }
 
 int main() {
-    std::ifstream inputFile(INPUT_FILE);
-    std::ofstream outputFile(OUTPUT_FILE);
+    std::ifstream inputFile(INPUT_FILE_NAME);
+    std::ofstream outputFile(OUTPUT_FILE_NAME);
     
     std::string a, b;
     
