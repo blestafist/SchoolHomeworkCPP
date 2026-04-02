@@ -16,7 +16,7 @@ const char X_OFFSET [8] { -1, 0, 1, -1, 1, -1, 0, 1 };
 // ========================================================================================
 
 
-int AliveNeighboursCount (const char (&generation)[DIMENSION_Y][DIMENSION_X], int y, int x)  // Count of alive neighbours around the cell
+int AliveNeighboursCount (const bool (&generation)[DIMENSION_Y][DIMENSION_X], int y, int x)  // Count of alive neighbours around the cell
 {
     int counter = 0;
 
@@ -25,44 +25,44 @@ int AliveNeighboursCount (const char (&generation)[DIMENSION_Y][DIMENSION_X], in
         int nY = (y + Y_OFFSET[i] + DIMENSION_Y) % DIMENSION_Y;
         int nX = (x + X_OFFSET[i] + DIMENSION_X) % DIMENSION_X;
 
-        if (generation[nY][nX] == 'X') { counter++; }
+        if (generation[nY][nX]) { counter++; }
     }
     return counter;
 }
 
 
-bool IsCellAlive (char (&generation)[DIMENSION_Y][DIMENSION_X], int y, int x)   // Checks if the cell is alive in the next generation
+bool IsCellAlive (const bool (&generation)[DIMENSION_Y][DIMENSION_X], int y, int x)   // Checks if the cell is alive in the next generation
 {
     int AliveNeighbours = AliveNeighboursCount(generation, y, x);
 
-    if (generation[y][x] == 'X') { return AliveNeighbours == 2 || AliveNeighbours == 3; }  // Conditions of cell live in a new generation
-    else { return AliveNeighbours == 3; }
+    if (generation[y][x]) {                                     // Conditions of cell live in a new generation
+        return (AliveNeighbours == 2 || AliveNeighbours == 3); 
+    }  
+    return (AliveNeighbours == 3);
 }
 
 
-void SimulateGen (char (&generation)[DIMENSION_Y][DIMENSION_X], int num)    // Simulates the life of cells in a selected generation
+void ComputeNextGen (const bool (&generation)[DIMENSION_Y][DIMENSION_X], bool (&nextGen)[DIMENSION_Y][DIMENSION_X])    // Simulates the life of cells in a next generation
 {
-    if (num <= 1) { return; }
-
-    char helperGen[DIMENSION_Y][DIMENSION_X];
-
     for (int y = 0; y < DIMENSION_Y; y++)
     {
         for (int x = 0; x < DIMENSION_X; x++)   // Goes throught previous generation
         {
-            IsCellAlive(generation, y, x) ? helperGen[y][x] = 'X' : helperGen[y][x] = '.';    
+            nextGen[y][x] = (IsCellAlive(generation, y, x));    
         }
     }
+}
 
+
+void CopyGeneration (const bool (&source)[DIMENSION_Y][DIMENSION_X], bool (&dest)[DIMENSION_Y][DIMENSION_X] )
+{
     for (int y = 0; y < DIMENSION_Y; y++)
     {
         for (int x = 0; x < DIMENSION_X; x++)
         {
-            generation[y][x] = helperGen[y][x];
+            dest[y][x] = source[y][x];
         }
     }
-
-    SimulateGen(generation, num - 1);
 }
 
 
@@ -74,17 +74,25 @@ int main()
     std::ofstream outputFile(OUTPUT_FILE_NAME);
     if (!outputFile) { std::cerr << "Error while opening outputFile\n"; return -1; }
 
-    char generation[DIMENSION_Y][DIMENSION_X];
+    bool generation[DIMENSION_Y][DIMENSION_X],
+    nextGen[DIMENSION_Y][DIMENSION_X];
 
+    char tempChar;
+    
     for (int y = 0; y < DIMENSION_Y; y++)    
     {
         for (int x = 0; x < DIMENSION_X; x++)   // Fill the 2D array of first generation 
         {
-            inputFile >> generation[y][x];
+            inputFile >> tempChar;
+            generation[y][x] = (tempChar == 'X');
         }
     }
 
-    SimulateGen(generation, 37);
+    for (int i = 1; i < 37; i++)
+    {
+        ComputeNextGen(generation, nextGen);
+        CopyGeneration(nextGen, generation); 
+    }
     
     std::cout << "A\nLiczba żywych sąsiadów: " << AliveNeighboursCount(generation, 1, 18);
     outputFile << "A\nLiczba żywych sąsiadów: " << AliveNeighboursCount(generation, 1, 18);

@@ -1,2 +1,2 @@
-C
-W pokoleniu nr 51, liczba żywych komórek : 8
+A
+Liczba żywych sąsiadów: 4
