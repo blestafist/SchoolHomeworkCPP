@@ -29,7 +29,7 @@ void ParseFile(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
-int SumOfNeightbors(const bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
+int SumOfNeighbors(const bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
     int aliveNeightbors = 0;
 
     for (int i = 0; i < 8; i++) { // counting all alive neightbors
@@ -48,7 +48,7 @@ void SimulateNextGen(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            int aliveNeightbors = SumOfNeightbors(arr, x, y);
+            int aliveNeightbors = SumOfNeighbors(arr, x, y);
             helperArr[x][y] = false;
 
             // now calculating
@@ -69,7 +69,7 @@ void SimulateNextGen(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 
 int main() {
-    bool mainArr[DIMENSIONS_X][DIMENSIONS_Y];
+    bool mainArr[DIMENSIONS_X][DIMENSIONS_Y] {};
 
     std::ofstream outputFile (OUTPUT_FILE_NAME);
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
@@ -80,5 +80,5 @@ int main() {
         SimulateNextGen(mainArr);
     }
 
-    Print("1. Ilość sąsiadów: ", SumOfNeightbors(mainArr, 18, 1));
+    Print("1. Ilość sąsiadów: ", SumOfNeighbors(mainArr, 18, 1));
 }
