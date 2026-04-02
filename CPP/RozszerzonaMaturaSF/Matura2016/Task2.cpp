@@ -1,4 +1,3 @@
-#include <ios>
 #include <iostream>
 #include <fstream>
 #include <stdexcept>
@@ -16,37 +15,39 @@ int velocityY[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
 
 // =====================================================================
 
-void ParseFile(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+void ParseFile(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     std::ifstream inputFile (INPUT_FILE_NAME);
     if (!inputFile) { throw std::runtime_error("Error while opening input file!"); }
+    char currC;
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            inputFile >> arr[x][y];
+            inputFile >> currC;
+            currC == 'X' ? arr[x][y] = true : arr[x][y] = false; 
         }
     }
 }
 
-int SumOfNeightbors(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
+int SumOfNeighbors(const bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y], int indexX, int indexY) {
     int aliveNeightbors = 0;
 
     for (int i = 0; i < 8; i++) { // counting all alive neightbors
         int nx = (indexX + velocityX[i] + DIMENSIONS_X) % DIMENSIONS_X;
         int ny = (indexY + velocityY[i] + DIMENSIONS_Y) % DIMENSIONS_Y;
 
-        if (arr[nx][ny] == 'X') { aliveNeightbors++; }
+        if (arr[nx][ny]) { aliveNeightbors++; }
     }
 
     return aliveNeightbors;
 }
 
 
-int CountAlive(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+int CountAlive(const bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     int alive = 0;
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            if (arr[x][y] == 'X') { alive++; }
+            if (arr[x][y]) { alive++; }
         }
     }
 
@@ -54,17 +55,17 @@ int CountAlive(const char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 }
 
 
-void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
-    char helperArr[DIMENSIONS_X][DIMENSIONS_Y] {};
+void SimulateNextGen(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
+    bool helperArr[DIMENSIONS_X][DIMENSIONS_Y] {};
 
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
-            int aliveNeightbors = SumOfNeightbors(arr, x, y);
-            helperArr[x][y] = '.';
+            int aliveNeightbors = SumOfNeighbors(arr, x, y);
+            helperArr[x][y] = false;
 
             // now calculating
-            if ((aliveNeightbors == 3 && arr[x][y] == '.') || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y] == 'X')) {
-                helperArr[x][y] = 'X';
+            if ((aliveNeightbors == 3 && !arr[x][y]) || ((aliveNeightbors == 2 || aliveNeightbors == 3) && arr[x][y])) {
+                helperArr[x][y] = true;
             }
         }
     }
@@ -80,7 +81,7 @@ void SimulateNextGen(char (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
 
 
 int main() {
-    char mainArr[DIMENSIONS_X][DIMENSIONS_Y];
+    bool mainArr[DIMENSIONS_X][DIMENSIONS_Y];
 
     std::ofstream outputFile (OUTPUT_FILE_NAME, std::ios::app);
     if (!outputFile) { std::cerr << "Error while opening output file!"; return -1; }
