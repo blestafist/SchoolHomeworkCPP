@@ -23,7 +23,7 @@ void ParseFile(bool (&arr)[DIMENSIONS_X][DIMENSIONS_Y]) {
     for (int y = 0; y < DIMENSIONS_Y; y++) {
         for (int x = 0; x < DIMENSIONS_X; x++) {
             inputFile >> currC;
-            currC == 'X' ? arr[x][y] = true : arr[x][y] = false; 
+            arr[x][y] = (currC == 'X');
         }
     }
 }
