@@ -41,9 +41,8 @@ std::string FindShortestWord(const std::string& a, const std::string& b) {
     
     std::string mergeAB = MergeWithOverlap(a, b);
     std::string mergeBA = MergeWithOverlap(b, a);
-    
-    if (mergeAB.size() <= mergeBA.size()) { return mergeAB; }
-    else { return mergeBA; }
+
+    return mergeAB.size() <= mergeBA.size() ? mergeAB : mergeBA;
 }
 
 int main() {
