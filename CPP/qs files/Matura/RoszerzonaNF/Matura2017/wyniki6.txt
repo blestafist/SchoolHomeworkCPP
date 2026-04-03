@@ -1,0 +1,9 @@
+6.1:
+jasność najjaśniejszego piksela: 221
+jasność najciemniejszego piksela: 7
+6.2:
+najmniejsza liczba wierszy do usunięcia: 149
+6.3:
+liczba kontrastujących pikseli: 753
+6.4:
+liczba najdłuższej linii pionowej: 5
