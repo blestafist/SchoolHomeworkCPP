@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <sys/types.h>
 
 // ===================== CONFIGURATION =====================
 
