@@ -1,0 +1,8 @@
+4.1: 5
+4.2: 14 i 39
+4.3
+nr działki(kilku):
+28
+32
+45
+długość boku placu: 12
