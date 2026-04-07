@@ -1,0 +1,9 @@
+4.1
+Liczba napisów dwucyklicznych: 18
+najdłuższy napis dwucykliczny: 00100101100011100010010110001110
+jego długość: 32
+4.2
+Liczba niepoprawnych napisów: 359
+najmniejsza długość niepoprawnego napisu: 4
+4.3
+Największa liczba w zapisie binarnym: 1101011001100101, jej zapis dziesiętny: 54885
