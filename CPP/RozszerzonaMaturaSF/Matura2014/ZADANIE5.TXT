@@ -16,10 +16,11 @@ BCV
 CEGIKOT
 CEGKZ
 
-Napisy, które występują więcej niż 1 raz: 
+
+Napisy, występujące więcej niż 1 raz: 
+SWIFT
 BZYFFLOICLUNWLTH
 CEGKZ
 FHJLMU
-GC
 QULA
-SWIFT
+GC
