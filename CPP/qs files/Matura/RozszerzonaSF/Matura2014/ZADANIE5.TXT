@@ -1,0 +1,26 @@
+a:
+Liczba napisów pierszych: 122
+b:
+Napisy rosnące:
+FHJLMU
+BEJNOSY
+MNS
+AEIOUY
+BDL
+JT
+BJQR
+AHJS
+FHJLMU
+DIT
+CEGKZ
+BCV
+CEGIKOT
+CEGKZ
+c:
+słowa występujące więcej niż raz: 
+GC
+FHJLMU
+BZYFFLOICLUNWLTH
+CEGKZ
+SWIFT
+QULA
