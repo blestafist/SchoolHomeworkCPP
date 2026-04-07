@@ -52,7 +52,6 @@ int main() {
     while (inputFile >> tempWord) {
         if (SumASCIIPrime(tempWord)) { primeStringsCount++; }
         if (IncreasingString(tempWord)) { increasingStrings += tempWord + "\n"; }
-
         wordsOcc[tempWord]++;
     }
 
