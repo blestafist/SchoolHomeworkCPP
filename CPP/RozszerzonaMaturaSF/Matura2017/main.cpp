@@ -14,8 +14,8 @@
 
 // =========================== CONFIGURATION ===========================
 
-const std::string INPUT_FILE = "binarne.txt";
-const std::string OUTPUT_FILE = "zadanie4.txt";
+const std::string INPUT_FILE_NAME = "binarne.txt";
+const std::string OUTPUT_FILE_NAME = "zadanie4.txt";
 
 // =====================================================================
 
@@ -30,6 +30,7 @@ bool ContainsTwoIdSubstr(const std::string& str) {
     return true;
 }
 
+
 bool IsLower9(const std::string str) {
     for (char i = 0 ; i < str.size(); i += 4) {
         if (str[i] == '1') { 
@@ -42,10 +43,11 @@ bool IsLower9(const std::string str) {
 
 
 int ConvertToDecimal(const std::string& str) {
-    int result = 0;
+    long long result = 0;
 
     for (char c : str) {
         result = (result << 1) + (c - '0');
+        if (result > 65535) { return 65536; }
     }
 
     return result;
@@ -53,14 +55,14 @@ int ConvertToDecimal(const std::string& str) {
 
 
 int main() {
-    std::ifstream inputFile (INPUT_FILE);
-    std::ofstream outputFile (OUTPUT_FILE);
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
 
     std::string binary, highestBinary, twoSubstr;
-    
     short longestSubstr = 0, minimalInorrectLength = 30000;
-
     int decimal, highestD = 0, substrCounter = 0, incorrectCounter = 0;
+
+    auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
 
     while (inputFile >> binary) {
         decimal = ConvertToDecimal(binary);
@@ -82,18 +84,9 @@ int main() {
         }
     }
 
-    inputFile.close();
-
-    std::cout << "A. Ilość napisów dwucyklicznych: " << substrCounter << ". Najdłuższy: " << twoSubstr << ". Jego długość: " << twoSubstr.length();
-    outputFile << "A. Ilość napisów dwucyklicznych: " << substrCounter << ". Najdłuższy: " << twoSubstr << ". Jego długość: " << twoSubstr.length();
-
-    std::cout << "\n\nB. Liczba niepoprawnych napisów: " << incorrectCounter << ". Najkrótszy: " << minimalInorrectLength;
-    outputFile << "\n\nB. Liczba niepoprawnych napisów: " << incorrectCounter << ". Najkrótszy: " << minimalInorrectLength;
-
-    std::cout << "\n\nC. Największa poniżej 65535: " << highestD << ". W binarnym: " << highestBinary << "\n";
-    outputFile << "\n\nC. Największa poniżej 65535: " << highestD << ". W binarnym: " << highestBinary << "\n";
-
-    outputFile.close();
+    Print("4.1: Liczba napisów: ", substrCounter, ", Najdłuższy: ", twoSubstr, ", Długość: ", twoSubstr.length());
+    Print("4.2: Niepoprawne: ", incorrectCounter, ", Najkrótszy: ", minimalInorrectLength);
+    Print("4.3: Największa (dec): ", highestD, ", (bin): ", highestBinary);
 
     return 0;
 }
