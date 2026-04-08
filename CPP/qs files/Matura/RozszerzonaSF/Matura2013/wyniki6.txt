@@ -1,0 +1,6 @@
+a:
+Ilość liczb w których pierwsza cyfra równa ostatniej: 447
+b:
+Pierwsza cyfra równa ostatniej w systemie dziesiętnym: 324
+c:
+Ilość liczb spełniających warunek: 49 najmniejsza liczba: 24 największa liczba: 1133357
