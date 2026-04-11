@@ -3,4 +3,4 @@ liczb parzystych: 497
 b
 Największe słowo binarne: 1111101111110110 jej wartość w systemie dziesiętnym: 64502
 c
-Ilość liczb mająca 9 cyfr 101 suma tych liczb w systemie dwójkowym: 1001100111110111
+Ilość liczb mających 9 cyfr: 101, suma tych liczb w systemie dwójkowym: 1001100111110111
