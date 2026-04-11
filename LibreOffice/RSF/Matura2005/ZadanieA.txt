@@ -1,0 +1,14 @@
+Firma D1 jest wygodniejsza w przedziale: <1; 3617,62>
+
+Firma D2 jest wygodniejsza w przedziale: <3617,63; 7000>
+
+
+
+| Tabela dla poszczególnych N |         |         |
+| --------------------------- | ------- | ------- |
+| N                           | Cena D1 | Cena D2 |
+| 100                         | 1,10    | 5,51    |
+| 1000                        | 10,19   | 16,76   |
+| 5000                        | 53,15   | 51,11   |
+
+
