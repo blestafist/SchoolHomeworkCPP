@@ -1,0 +1,13 @@
+| Pracownicy    | Przeprac | Wynagrodz | Premia    | Zarobki     |
+| ------------- | -------- | --------- | --------- | ----------- |
+| Jan Kowalski  | 4,00     | 43,20 zł  | 196,08 zł | 671,78 zł   |
+| Jerzy Nowy    | 9,00     | 93,60 zł  | 441,18 zł | 967,28 zł   |
+| Piotr Myhan   | 0,00     | 0,00 zł   | 0,00 zł   | 432,50 zł   |
+| Adam Nowak    | 0,00     | 0,00 zł   | 0,00 zł   | 432,50 zł   |
+| Andrzej Dec   | 8,00     | 80,80 zł  | 392,16 zł | 905,46 zł   |
+| Jacek Marks   | 8,00     | 83,20 zł  | 392,16 zł | 907,86 zł   |
+| Leon Stefan   | 4,00     | 42,80 zł  | 196,08 zł | 671,38 zł   |
+| Karol Mytnik  | 18,00    | 183,60 zł | 882,35 zł | 1 498,45 zł |
+| Jan Beztroski | 0,00     | 0,00 zł   | 0,00 zł   | 432,50 zł   |
+| Dawid Gorski  | 0,00     | 0,00 zł   | 0,00 zł   | 432,50 zł   |
+
