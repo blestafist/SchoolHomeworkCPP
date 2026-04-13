@@ -23,7 +23,7 @@ bool TwoBlocksContainer(const std::string& str) {
     if (str[0] != '0' || str[str.size() - 1] != '1') { return false; }
     bool wasChange = false;
 
-    for (unsigned char i = 0; i < str.size() - 1; i++) {
+    for (int i = 0; i < str.size() - 1; i++) {
         if (str[i] != str[i + 1]) { 
             if (wasChange) { return false; }
             wasChange = true;
@@ -33,8 +33,8 @@ bool TwoBlocksContainer(const std::string& str) {
     return wasChange;
 }
 
-char CountLongest0Occ(const std::string& str) {
-    char occ = 0, maxOcc = 0;
+int CountLongest0Occ(const std::string& str) {
+    int occ = 0, maxOcc = 0;
     for (char c : str) {
         if (c == '0') { occ++; if (occ > maxOcc) { maxOcc = occ; } } else { occ = 0; }
     }
