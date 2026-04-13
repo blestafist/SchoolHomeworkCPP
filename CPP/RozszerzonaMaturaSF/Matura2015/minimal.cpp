@@ -10,13 +10,13 @@ const std::string OUTPUT_FILE = "wynik4.txt";
 // =====================================================================
 
 bool More0Than1(const std::string& str) {
-    char occ = 0;
+    int weight = 0;
 
     for (char c : str) {
-        if (c == '0') { occ++; } else { occ--; }
+        weight += c == '0' ? 1 : -1;
     }
 
-    return occ > 0;
+    return weight > 0;
 }
 
 bool TwoBlocksContainer(const std::string& str) {
