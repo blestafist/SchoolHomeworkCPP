@@ -1,7 +1,8 @@
-#include <cstddef>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstddef>
+#include <array>
 #include <vector>
 #include <algorithm>
 
@@ -17,9 +18,9 @@ const size_t WORDS_PER_LINE = 5;
 // ====================================================================
 
 
-bool SameLength (const std::vector<std::string>& line) {
+bool SameLength (const std::array<std::string, WORDS_PER_LINE>& line) {
     const size_t targetLen = line[0].size();
-    for (size_t i = 1; i < line.size(); i++) {
+    for (size_t i = 1; i < WORDS_PER_LINE; i++) {
         if (line[i].size() != targetLen) { return false; }
     }
     return true;
@@ -27,9 +28,9 @@ bool SameLength (const std::vector<std::string>& line) {
 
 
 // Sorting word copies and comparing them to the first word
-bool AllAnagrams (std::vector<std::string> line) {
+bool AllAnagrams (std::array<std::string, WORDS_PER_LINE> line) {
     std::sort(line[0].begin(), line[0].end());
-    for (size_t i = 1; i < line.size(); i++) {
+    for (size_t i = 1; i < WORDS_PER_LINE; i++) {
         std::sort(line[i].begin(), line[i].end());
         if (line[0] != line[i]) { return false; }
     }
@@ -38,9 +39,9 @@ bool AllAnagrams (std::vector<std::string> line) {
 
 
 // Merges vector of words into a single space-separated string
-std::string MergeLine (const std::vector<std::string>& line) {
+std::string MergeLine (const std::array<std::string, WORDS_PER_LINE>& line) {
     std::string result = "";
-    for (size_t i = 0; i < line.size(); i++) {
+    for (size_t i = 0; i < WORDS_PER_LINE; i++) {
         result += line[i];
         if (i < WORDS_PER_LINE - 1) { result += " "; }
     }
@@ -56,29 +57,27 @@ int main() {
     if (!outputFileA || !outputFileB) { std::cerr << "ERROR: Could not create output file" << std::endl; return 1; }
 
     std::string word;
-    std::vector <std::string> line;
+    std::array<std::string, WORDS_PER_LINE> line;
     std::vector <std::string> sameLenResults, anagramResults;
 
-    line.reserve(WORDS_PER_LINE);
-
+    size_t i = 0;   // Index of word in line
     while (inputFile >> word) {
-        line.push_back(word);
+        line[i++] = word;
 
-        if (line.size() == WORDS_PER_LINE) {
+        if (i == WORDS_PER_LINE) {
             if (SameLength(line)) {
-                std::string merged = MergeLine(line);
+                std::string merged = MergeLine(line);    
                 sameLenResults.push_back(merged);
-                if (AllAnagrams(line)) { anagramResults.push_back(merged);} 
+                if (AllAnagrams(line)) { anagramResults.push_back(merged); } 
             }
-
-            line.clear();
+            i = 0;
         }
     }
     
     auto PrintA = [&] (auto&&... args) { (std::cout << ... << args) << '\n'; (outputFileA << ... << args) << '\n'; };
     auto PrintB = [&] (auto&&... args) { (std::cout << ... << args) << '\n'; (outputFileB << ... << args) << '\n'; };
 
-    PrintA("a:\n");   
+    PrintA("a:\n");
     for (const std::string& s : sameLenResults) { PrintA(s); }
 
     PrintB("\nb:\n");
