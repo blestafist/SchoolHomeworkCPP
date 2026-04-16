@@ -1,5 +1,4 @@
 #include <iostream>
-#include <climits>
 
 unsigned long long IntPower(int base, int exponent) {
     unsigned long long result = 1;
@@ -27,7 +26,7 @@ bool IsArmstrong(unsigned long long num) {
 
     int numOfPlaces = NumOfPlaces(num);
     unsigned long long sum = 0, cp = num;
-    
+
     while (cp > 0) {
         sum += IntPower((cp % 10), numOfPlaces);
         cp /= 10;
