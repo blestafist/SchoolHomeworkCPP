@@ -24,8 +24,10 @@ int NumOfPlaces(unsigned long long num) {
 
 bool IsArmstrong(unsigned long long num) {
     if (num == 0) { return true; }
+
     int numOfPlaces = NumOfPlaces(num);
     unsigned long long sum = 0, cp = num;
+    
     while (cp > 0) {
         sum += IntPower((cp % 10), numOfPlaces);
         cp /= 10;
