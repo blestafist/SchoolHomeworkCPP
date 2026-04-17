@@ -1,0 +1,3 @@
+Najdłuższy blok trójkowy w pliku: bloki1.txt
+998
+W przedziale: 1 → 998

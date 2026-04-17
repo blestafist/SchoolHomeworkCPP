@@ -4,7 +4,7 @@
 // ============================================ CONFIGURATION ============================================
 
 const std::string INPUT_FILE_NAME = "bloki1.txt";
-const std::string OUTPUT_FILE_NAME = "wyniki3.txt";
+const std::string OUTPUT_FILE_NAME = "wyniki.txt";
 
 const int MOD_BLOCK = 3; // блок модулей (в этом задании *троичный* блок)
 
