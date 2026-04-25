@@ -1,4 +1,6 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
 
 bool IsAutobiographic(int num) {
     int cp = num, pos = 0, digitsCount[10] {};
@@ -13,6 +15,19 @@ bool IsAutobiographic(int num) {
         if (digitsCount[pos - 1] != num % 10) { return false; }
         num /= 10;
         --pos;
+    }
+
+    return true;
+}
+
+bool IsAutobiographicSTL(int num) {
+    std::string s = std::to_string(num);
+
+    for (size_t i = 0; i < s.size(); ++i) {
+        int digit = s[i] - '0';
+        int cnt = std::count(s.begin(), s.end(), '0' + i);
+
+        if (digit != cnt) { return false; }
     }
 
     return true;
