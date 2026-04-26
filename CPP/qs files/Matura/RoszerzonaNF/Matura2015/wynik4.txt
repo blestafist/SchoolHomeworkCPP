@@ -1,7 +1,5 @@
-1.
-422
-2.
-podzielnych przez 2: 500 podzielnych przez 8: 123
-3.
+4.1: 422
+4.2: podzielnych przez 2: 500 podzielnych przez 8: 123
+4.3: 
 najmniejsza: 859
 największa: 925
