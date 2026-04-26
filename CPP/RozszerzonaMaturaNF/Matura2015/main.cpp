@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 // ================================ CONFIGURATION ===================================
 
@@ -10,27 +11,15 @@ const short FILE_LENGTH = 1000;
 
 // =================================================================================
 
-bool IsCountOfZerosMore(const std::string& str)
-{
-    int counter = 0;
-    for(char c : str) {
-        c == '0' ? counter++ : counter--;
-    }
-    return counter > 0; // сука хули они сдохли заебали
+bool AreZeroesMajority (const std::string& binaryStr) {
+    size_t zeroesCounter = std::count(binaryStr.begin(), binaryStr.end(), '0');
+	return zeroesCounter > (binaryStr.size() / 2);
 }
 
 
-bool CompareTwoBinary(const std::string& binaryOld, const std::string& binaryNew) // true → first value greater
-{
-	if (binaryNew.size() < binaryOld.size()) { return true; }
-	if (binaryNew.size() > binaryOld.size()) { return false; }
-
-	for (int i = 0; i < binaryNew.size(); i++) {
-		if (binaryNew[i] == '0' && binaryOld[i] == '1') { return true; }
-        else if (binaryNew[i] == '1' && binaryOld[i] == '0') { return false; }
-	}
-
-	return false;
+bool IsBinarySmaller (const std::string& bin1, const std::string& bin2) { // true → second value greater, first smaller
+	if (bin1.size() != bin2.size()) { return bin1.size() < bin2.size(); }
+	return bin1 < bin2;
 }
 
 
