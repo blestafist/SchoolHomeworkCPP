@@ -1,0 +1,7 @@
+4.1: 139
+
+4.2: 1404
+
+4.3: liczba wierszy z sumą cyfr 35: 4
+największa suma cyfr w wierszu: 88
+liczba jej wystąpień: 2
