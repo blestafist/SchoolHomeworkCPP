@@ -1,6 +1,8 @@
 #include <iostream>
 
 unsigned long long IntPower(int base, int exponent) {
+    if (exponent == 0) { return 1; }
+    else if (base == 0) { return 0; }
     unsigned long long result = 1;
     for (int i = 0; i < exponent; i++) {
         result *= base;
@@ -38,9 +40,12 @@ bool IsArmstrong(unsigned long long num) {
 }
 
 int main() {
-    for (unsigned long long i = 0; i < 100000000000ULL; i++) {
-        if (IsArmstrong(i)) { std::cout << i << '\n'; }
+    int ctr = 0;
+    for (int i = 10; i <= 1000; i++) {
+        if (IsArmstrong(i)) { std::cout << i << '\n'; ctr++; }
     }
+
+    std::cout << "Ilość liczb: " << ctr;
 
     return 0;
 }

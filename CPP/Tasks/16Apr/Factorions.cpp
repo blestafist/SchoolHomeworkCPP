@@ -28,9 +28,15 @@ int main() {
         factorials[i] = Factorial(i);
     }
 
-    for (unsigned long long i = 0; i < 1000000000ULL; i++) {
+    int ctr = 0;
+
+    for (int i = 10; i <= 1000; i++) {
         if (IsFactorion(i)) {
             std::cout << i << '\n';
+            ctr++;
         }
     }
+
+    std::cout << "Ilość liczb: " << ctr;
+    return 0;
 }
