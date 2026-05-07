@@ -2,6 +2,7 @@
 #include <vector> // provides std::vector (also size_t)
 #include <cstdlib> // but I'm including it with different header
 
+
 void SelectionSort(std::vector<int>& arr, bool changeOrder = false) {
     size_t len = arr.size();
     for (size_t shift = 0; shift + 1 < len; ++shift) { // shift + 1 < len is same as shift < len - 1 but safer for size_t (unsigned int)

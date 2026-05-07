@@ -1,6 +1,7 @@
 #include <utility> // for std::swap
 #include <cstdlib> // for size_t
 
+
 template<typename T, size_t len> // using template for type of array and len of array
 void SelectionSort(T (&arr)[len], bool changeOrder = false) {
     for (size_t shift = 0; shift + 1 < len; ++shift) { // shift + 1 < len is same as shift < len - 1 but safer for size_t (unsigned int)
