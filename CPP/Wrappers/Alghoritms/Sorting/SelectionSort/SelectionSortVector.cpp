@@ -1,7 +1,6 @@
-#include <iostream>
 #include <utility> // for std::swap
-#include <random> // for random num generation (std::random_device, std::mt19937)
-#include <vector>
+#include <vector> // provides std::vector (also size_t)
+#include <cstdlib> // but I'm including it with different header
 
 void SelectionSort(std::vector<int>& arr, bool changeOrder = false) {
     size_t len = arr.size();
@@ -20,39 +19,4 @@ void SelectionSort(std::vector<int>& arr, bool changeOrder = false) {
         // swap if necessary
         if (bestIndex != shift) { std::swap(arr[bestIndex], arr[shift]); }
     }
-}
-
-
-void FillRandom(std::vector<int>& arr, int downRange, int upperRange) { // fill arr with random numbers using better random generator
-    static std::random_device randomDevice; // seeding using device random
-    static std::mt19937 generator(randomDevice());
-    std::uniform_int_distribution<int> distribution(downRange, upperRange); // distibution (диапазон) of nums
-
-    for (auto& i : arr) {
-        i = distribution(generator);
-    }
-}
-
-
-void PrintArr(const std::vector<int>& arr) {
-    for (auto i : arr) {
-        std::cout << i << ' ';
-    }
-    std::cout << '\n';
-}
-
-
-int main() {
-    std::vector<int> arr(10);
-
-    FillRandom(arr, 100, 200);
-    PrintArr(arr);
-
-    SelectionSort(arr);
-    PrintArr(arr);
-
-    SelectionSort(arr, true);
-    PrintArr(arr);
-
-    return 0;
 }
