@@ -28,7 +28,11 @@ int main() {
 
 	std::string word1, word2;
 
-    while (i)
+  while (inputFile >> word1 >> word2) {
+    size_t res = std::max(LongestPrefixSuffix(word1, word2), LongestPrefixSuffix(word2, word1));
+
+    if (res >= 5) { std::cout << word1 << ' ' << word2 << ' ' << res << '\n'; }
+  }
 
 	return 0;
 }
