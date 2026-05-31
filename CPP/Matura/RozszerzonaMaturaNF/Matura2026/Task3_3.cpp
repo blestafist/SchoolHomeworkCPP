@@ -21,18 +21,18 @@ size_t LongestPrefixSuffix(const std::string& str1, const std::string& str2) {
 }
 
 int main() {
-	std::ifstream inputFile (INPUT_FILE_NAME);
-	if (!inputFile) { std::cerr << "Error while opening input file!"; return 1; }
+    std::ifstream inputFile (INPUT_FILE_NAME);
+    if (!inputFile) { std::cerr << "Error while opening input file!"; return 1; }
 
-	std::ofstream outputFile (OUTPUT_FILE_NAME);
+    std::ofstream outputFile (OUTPUT_FILE_NAME);
 
-	std::string word1, word2;
+    std::string word1, word2;
 
-  while (inputFile >> word1 >> word2) {
-    size_t res = std::max(LongestPrefixSuffix(word1, word2), LongestPrefixSuffix(word2, word1));
+    while (inputFile >> word1 >> word2) {
+        size_t res = std::max(LongestPrefixSuffix(word1, word2), LongestPrefixSuffix(word2, word1));
 
-    if (res >= 5) { std::cout << word1 << ' ' << word2 << ' ' << res << '\n'; }
-  }
+        if (res >= 5) { std::cout << word1 << ' ' << word2 << ' ' << res << '\n'; }
+    }
 
 	return 0;
 }
