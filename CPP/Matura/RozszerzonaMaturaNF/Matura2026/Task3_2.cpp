@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <unordered_set>
 #include <algorithm>
 
 // ================================== CONFIGURATION ==================================
@@ -12,11 +13,12 @@ const std::string OUTPUT_FILE_NAME = "wyniki3.txt";
 
 int BothOcc(const std::string& str1, const std::string& str2) {
 	int result = 0;
-	std::string allUnique = "";
+	std::unordered_set<char> allUnique;
 
-	for (char c : str1) {
-		if (allUnique.find(c) == std::string::npos) {
-			allUnique += c;
+	std::string source = str1.size() < str2.size() ? str1 : str2;
+	for (char c : source) {
+		if (!allUnique.count(c)) {
+			allUnique.emplace(c);
 		}
 	}
 
@@ -27,7 +29,7 @@ int BothOcc(const std::string& str1, const std::string& str2) {
 		result += std::min(occOne, occTwo);
 	}
 
-	return result; // temp value to change
+	return result;
 }
 
 int main() {
@@ -35,6 +37,7 @@ int main() {
 	if (!inputFile) { std::cerr << "Error while opening input file!"; return 1; }
 
 	std::ofstream outputFile (OUTPUT_FILE_NAME);
+	auto Print = [&] (auto&&... args) { (std::cout << ... << args) << "\n"; (outputFile << ... << args) << "\n"; };
 
 	std::string word1, word2, maxWord;
 	int maxSum = -1;
@@ -47,8 +50,7 @@ int main() {
 		}
 	}
 
-	std::cout << maxWord << ' ' << maxSum;
-	outputFile << maxWord << ' ' << maxSum;
+	Print(maxWord, " → ", maxSum);
 
 	return 0;
 }
